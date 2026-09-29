@@ -1,0 +1,24 @@
+\documentclass[a4paper]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{subfiles}
+\usepackage[style=apa]{biblatex}
+\newcommand{\mdv}[2]{\frac{D #1}{D #2}}
+
+\addbibresource{bibliography.bib}
+
+\geometry{margin=1in}
+
+\title{First overview of governing equations}
+\author{Lou van der Grinten}
+\date{\today}
+
+\begin{document}
+    \maketitle  
+    \subfile{section1.tex}
+    \subfile{section2.tex}
+
+    \printbibliography[heading=bibintoc, title={References}]
+\end{document} 

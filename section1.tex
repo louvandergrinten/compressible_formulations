@@ -1,0 +1,30 @@
+% !TEX root=section1.tex
+\documentclass[document.tex]{subfiles}
+
+\begin{document}
+    \section{A note on notations}
+\subsection{Material derivative} \label{material derivative}
+The following equations are all equivalent, which can be shown algebraically. 
+\begin{align*}
+\frac{d}{dt} &= \frac{\partial}{\partial t}+ u \frac{\partial}{\partial x} + v \frac{\partial}{\partial y} + w\frac{\partial}{\partial z}\\
+&= \frac{\partial}{\partial t} + \textbf{u}\cdot \nabla \\
+&= \frac{\partial}{\partial t} + \textbf{u}\cdot \text{div}() \\
+\end{align*}
+
+\subsection{Tensors} \label{tensors}
+\begin{align*}
+\tau	_{ij}\frac{\partial u_i}{\partial x_j} = \boldsymbol{\tau}:\nabla\textbf{u}
+\end{align*}
+where 
+\begin{align*}
+\nabla\mathbf{u} =
+\begin{pmatrix}
+\dfrac{\partial u}{\partial x} & \dfrac{\partial u}{\partial y} & \dfrac{\partial u}{\partial z} \\[2mm]
+\dfrac{\partial v}{\partial x} & \dfrac{\partial v}{\partial y} & \dfrac{\partial v}{\partial z} \\[2mm]
+\dfrac{\partial w}{\partial x} & \dfrac{\partial w}{\partial y} & \dfrac{\partial w}{\partial z}
+\end{pmatrix}
+\end{align*}
+The : is called the double contraction operator or the matrix inner product. It contracts two tensors into a scalar. 
+Since $\tau$ is the symmetric stress tensor, 
+
+\end{document}

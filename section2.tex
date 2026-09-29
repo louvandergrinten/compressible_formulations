@@ -1,0 +1,135 @@
+% !TEX root=section2.tex
+\documentclass[document.tex]{subfiles}
+
+\begin{document}
+
+% Starting equations across literature
+\section{Starting equations (partial differential equations)}
+\subsection{Energy equation}
+\subsubsection{CRB}
+CRB: \cite{cube11}
+\begin{align}
+\rho	  C_v \frac{dT}{dt} + p\left( \frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} + \frac{\partial w}{\partial z}\right) = k_T \nabla ^2 T
+\end{align}
+
+\subsubsection{Jarvis \& McKenzie, 1980}
+jamc80 \cite{jamc80}:
+\begin{align}
+\rho C_p\left(\frac{\partial T}{\partial t}-\frac{\alpha T}{\rho C_p} \frac{\partial P}{\partial t} + \textbf{u} \cdot [\nabla T - (\nabla T)_s]\right) = \nabla \cdot (K\nabla T) + H +\tau	_{ij} \frac{\partial u_i}{\partial	x_j}
+\end{align}	
+
+\subsubsection{Gassmöller et al., 2020}
+Gassmöller: \cite{gada20}
+\begin{align}
+\rho C_p \left(\frac{\partial T}{\partial t} + \textbf{u} \cdot \nabla T\right) - \nabla \cdot(k\nabla T) = \rho	H +\tau	: \dot{\varepsilon} + \alpha	T(\textbf{u} \cdot \nabla p) + Q_L
+\end{align}
+
+\subsubsection{Schubert et al., 2001}
+\cite{scto01} presents three thermmal energy equations: 
+
+The general form of the energy equation (6.9.1) is:
+\begin{equation}
+    \rho T \mdv{s}{t} = \tau_{ij}\pdv{u_i}{x_j} + \pdv{}{x_j}\left(k\pdv{T}{x_j}\right) + \rho H 
+\end{equation}
+
+For an incompressible Newtonian fluid (eq. 6.9.13 + 6.9.14): 
+\begin{equation}
+    \rho C_v \mdv{T}{t} = \pdv{}{x_i}(k\pdv{T}{x_i}) + \frac{\mu}{2}\left(\pdv{u_i}{x_j} + \pdv{u_j}{x_i}\right)^2+\rho H
+\end{equation}
+with $\frac{\mu}{2}\left(\pdv{u_i}{x_j} + \pdv{u_j}{x_i}\right)^2$ the viscous dissipation function. 
+
+In terms of $C_p$ instead of $C_v$ (for a compressible fluid) (eq. 6.9.16): 
+\begin{equation}
+    \rho C_p \left(\mdv{T}{t} - (\pdv{T}{p})_s \mdv{p}{t}\right) = \pdv{}{x_i}(k\pdv{T}{x_i}) + \frac{\mu}{2}\left(\pdv{u_i}{x_j} + \pdv{u_j}{x_i}\right)^2+\rho H
+\end{equation}
+with (eq. 6.9.15, 6.9.17):
+\begin{align*}
+    (\pdv{T}{p})_s &= \frac{\alpha T}{\rho C_p} \\
+    (\mdv{T}{t})_s &= (\pdv{T}{p})_s \mdv{p}{t} = \frac{\alpha T}{\rho C_p} \mdv{p}{t}
+\end{align*}
+\subsection{Momentum equation}
+
+\subsubsection{CRB}
+CRB: \cite{cube11} per component 
+\begin{subequations}
+\begin{align}
+x &: \rho	\left(\frac{du}{dt} + f_*w-fv\right) = -\frac{\partial p}{\partial x} + \frac{\partial \tau^{xx}}{\partial x} + \frac{\partial \tau^{xy}}{\partial y} + \frac{\partial \tau^{xz}}{\partial z}\\
+y &: \rho\left(\frac{dv}{dt}+fu \right) = -\frac{\partial p}{\partial y} + \frac{\tau^{xy}}{\partial x} + \frac{\partial \tau ^{yy}}{\partial y} + \frac{\partial \tau^{yz}}{\partial z}\\
+z &: \rho \left(\frac{dw}{dt} - f_*u\right) = -\frac{\partial p}{\partial z }-\rho g+ \frac{\tau^{xz}}{\partial x} + \frac{\tau^{yz}}{\partial y} + \frac{\partial \tau^{zz}}{\partial z}
+\end{align}
+\end{subequations}
+
+\subsubsection{Jarvis \& McKenzie, 1980}
+jamc80, eq. 4 \cite{jamc80}: 
+\begin{align}
+\rho	\left(\frac{\partial \textbf{u}}{\partial t} +\textbf{u} \cdot \nabla\textbf{u}\right) = -\nabla P + \rho	\textbf{g} + \frac{\partial}{\partial x_j}\tau_{ij}
+\end{align}
+
+\subsubsection{Gassmöller et al., 2020}
+Gassmöller \cite{gada20}: 
+\begin{align}
+-\nabla \cdot \tau + \nabla p = \rho \textbf{g}
+\end{align}
+
+\subsubsection{Schubert et al. 2001}
+\begin{align} %FIX FOR MDV:d needs to be D
+\rho	 \dv{u_i}{t} = -\pdv{p}{x_i} + \pdv{\tau	_{ij}}{x_j} + \rho g_i
+\end{align}
+
+In 2D, the momementum equation components are: 
+\begin{align}
+\rho \left(
+    \pdv{u_x}{t}
+    + u_x \pdv{u_x}{x}
+    + u_y \pdv{u_x}{y}
+\right)
+&= -\pdv{p}{x}
+   + \pdv{\tau_{xx}}{x}
+   + \pdv{\tau_{xy}}{y},
+\\
+\rho \left(
+    \pdv{u_y}{t}
+    + u_x \pdv{u_y}{x}
+    + u_y \pdv{u_y}{y}
+\right)
+&= -\pdv{p}{y}
+   + \pdv{\tau_{xy}}{x}
+   + \pdv{\tau_{yy}}{y}
+   + \rho g.
+\end{align}
+
+Note that the assumption is made that gravity acts in the positive y-direction. Section 6.14?
+
+\subsection{Mass equation (continuity equation) (trivial)}
+
+jamc80, eq. 3 \cite{jamc80}: 
+\begin{align}
+\frac{\partial \rho}{\partial t} + \nabla \cdot(\rho \textbf{u})=0
+\end{align}
+
+CRB \cite{cube11}: 
+\begin{align}
+\frac{\partial \rho}{\partial t } + \frac{\partial}{\partial x}(\rho u) + \frac{\partial}{\partial y}(\rho v)+ \frac{\partial}{\partial z}(\rho w) = 0
+\end{align}
+
+Gassmöller \cite{gada20}: 
+\begin{align}
+\frac{\partial \rho}{\partial t} + \nabla \cdot(\rho \textbf{u})=0
+\end{align}
+
+schubert et al. (2001) \cite{scto01}
+\begin{align} \label{mass scto}
+\frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x_1}(\rho u_i) = \frac{1}{\rho}\frac{D\rho}{Dt} + \frac{\partial u_1}{\partial x_1} = 0
+\end{align}
+
+where $\frac{D}{Dt}$ represents the material derivative (\ref{material derivative}). For incompressible flow, $\frac{D\rho}{Dt} = 0$, so eq \ref{mass scto} reduces to: 
+\begin{align}
+\frac{\partial u_i}{\partial x_i} = \nabla \cdot \textbf{u} =0
+\end{align}
+
+
+\subsection{Starting equations (constitutive equations)}
+
+\subsection{Initial and boundary conditions}
+
+\end{document}
