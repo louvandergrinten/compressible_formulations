@@ -1,0 +1,68 @@
+% !TEX root=appendix_1_tables.tex
+\documentclass[document.tex]{subfiles}
+
+\begin{document}
+\section{Appendix 1: tables of constants and reference/scaling values used}
+\begin{table}[ht] 
+    \centering
+    \caption{Constants used by \cite{scto01}}
+    \label{schubert constants}
+    \begin{tabular}{lll}
+        \toprule
+        Constant & Value & Name \\
+        \midrule
+        $k_b$  & 0 & Bulk viscosity \\
+        $\alpha$  &  & thermal expansivity \\
+        $\chi_T$  &  & isothermal compressibility \\
+        $c_v$  &  & specific heat at constant volume \\
+        $c_p$  &  & specific heat at constant pressure \\
+        $\chi_a$ & & adiabatic compressibility \\
+        $k$  &  & thermal conductivity \\
+        $H$  &   & rate of internal heat production per unit mass \\
+        $K_a$ &  & adiabatic bulk modulus \\
+        $K_T$ & & isothermal bulk modulus\\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \caption{Reference values used by \cite{scto01}}
+    \label{schubert ref}
+    \renewcommand{\arraystretch}{1.8}   % taller rows
+    \setlength{\tabcolsep}{12pt}        % wider column gaps
+    \begin{tabular}{lcl}
+        \toprule
+        Symbol & Value & Description \\
+        \midrule
+        $\Delta T$ & & Characteristic temperature difference driving thermal convection \\
+        $\chi_{T_r}$ & & Representative isothermal compressibility \\
+        $\alpha_r$ & & Representative thermal expansivity \\
+        $u_r$ & $\dfrac{k_r}{\rho_r c_{p_r} b}$ & Velocity scale \\
+        $\mu_r$ & $10^{21}$ Pa\,s & Representative viscosity \\
+        $\chi_a$ & & Adiabatic compressibility \\
+        $b$ & & Depth of convecting region \\
+        $p_r$ & $\dfrac{\mu_r u_r}{b}$ & Scale for dynamic pressure variations \\
+        $k_r$ & 4 W\,m$^{-1}$\,K$^{-1}$ & Reference value thermal conductivity \\
+        $c_{p_r}$ & 1 kJ\,kg$^{-1}$\,K$^{-1}$ & Reference specific heat at constant pressure \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+    \centering
+    \caption{Dimensionless parameters and their values for the Earth's mantle}
+    \label{dimensionless parameters schubert}
+    \renewcommand{\arraystretch}{1.8}   % taller rows
+    \setlength{\tabcolsep}{12pt}        % wider column gaps
+    \begin{tabular}{lccl}
+        \toprule
+        Parameter & Definition & Value & Description \\
+        \midrule
+        $\mathrm{Pr}$ & $\dfrac{\mu_r c_{p_r}}{k_r}$ & $2.5 \times 10^{23}$ & Prandtl number \\
+        $\mathrm{M}^2$ & $\dfrac{k_r^2 \chi_{T_r}}{\rho_r c_{p_r}^2 b^2}$ & $10^{-33}$ & Mach number (squared) \\
+        $\epsilon$ & $\alpha_r \Delta T_r$ & & Fractional density change due to temperature variations \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+\end{document}
