@@ -4,19 +4,23 @@
 
 \begin{document}
 \section{\cite{scto01} basic equations}
-This document/section has a different approach to structure the derivation of the ALA: this is a summary of the derivation of the ALA done by \cite{scto01}.
+This document/section has a different approach to structure the derivation of the ALA: 
+this is a summary of the derivation of the ALA done by \cite{scto01}.
 \textcolor{red}{red text means assumtions/approximations were made toward the ALA}. 
 \subsection{Mass equation/continuity equation/conservation of mass}
 \begin{align} \label{mass scto}
-\frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x_1}(\rho u_i) = \frac{1}{\rho}\frac{D\rho}{Dt} + \frac{\partial u_1}{\partial x_1} = 0
+\frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x_1}(\rho u_i) = 
+\frac{1}{\rho}\frac{D\rho}{Dt} + \frac{\partial u_1}{\partial x_1} = 0
 \end{align}
 
-where $\frac{D}{Dt}$ represents the material derivative (\ref{material derivative}). For incompressible flow, $\frac{D\rho}{Dt} = 0$, so eq \ref{mass scto} reduces to: 
+where $\frac{D}{Dt}$ represents the material derivative (\ref{material derivative}). 
+For incompressible flow, $\frac{D\rho}{Dt} = 0$, so eq \ref{mass scto} reduces to: 
 \begin{align} \label{mass equation}
 \frac{\partial u_i}{\partial x_i} = \nabla \cdot \textbf{u} =0
 \end{align}
 
-\textcolor{red}{For the special case of an incompressible fluid, $\mdv{\rho}{t} = 0$, so equation \ref{mass equation} reduces to}
+\textcolor{red}{For the special case of an incompressible fluid, $\mdv{\rho}{t} = 0$, 
+so equation \ref{mass equation} reduces to}
 \begin{align}
     \color{red}
     \pdv{u_i}{x_i} = 0
@@ -27,7 +31,8 @@ Starting governing equation (6.4.1):
 \begin{align} \label{momentum equation}
     \rho \mdv{u_i}{t} = - \pdv{p}{x_i} + \pdv{\tau_{ij}}{x_j}+\rho g_i
 \end{align}
-\textcolor{red}{we assume gravity $g$ to be the only body force.The coriolis force is negligibly small in the Earth's mantle, and the centrifugal 
+\textcolor{red}{we assume gravity $g$ to be the only body force.The coriolis force is 
+negligibly small in the Earth's mantle, and the centrifugal 
 force due to the Earth's rotation is included in the gravity term.}
 
 In 2D, the momementum equation components are: 
@@ -52,14 +57,16 @@ In 2D, the momementum equation components are:
    + \rho g.
 \end{align}
 
-\textcolor{red}{Note that the assumption is made that gravity acts in the positive y-direction. Section 6.14?ext}
+\textcolor{red}{Note that the assumption is made that gravity acts in the positive y-direction. 
+Section 6.14?ext}
 
 \subsection{Navier-Stokes equation}
 The local strain rate tensor $e_{ij}$ is given by: 
 \begin{align} \label{strain rate tensor}
     e_{ij} = \frac{1}{2}\left(\pdv{u_i}{x_j}+\pdv{u_j}{x_i}\right)
 \end{align}
-\textcolor{red}{For a Newtonian, isotropic fluid, the relation between the deviatoric(!) stress tensor and the strain rate tensor is}
+\textcolor{red}{For a Newtonian, isotropic fluid, the relation between the deviatoric(!) 
+stress tensor and the strain rate tensor is}
 \begin{align} \label{6.5.2}
     \color{red}
     \tau_{ij} = 2\mu e_{ij} + \lambda e_{kk} \delta_{ij}
@@ -83,7 +90,7 @@ and substitution of eq. \ref{stress tensor with bulk viscosity} into eq. \ref{mo
 \textcolor{red}{For many fluids, $k_B$ is taken to be zero \textbf{(Stokes assumption)}, 
 so eq. \ref{stress tensor with bulk viscosity} becomes} 
 
-\begin{align} \label{stokes stress tensor}
+\begin{align} \label{6.5.6}
     \color{red}
      \tau_{ij} = \mu \left(\pdv{u_i}{x_j}+\pdv{u_j}{x_i} - \frac{2}{3}\pdv{u_k}{x_k}\delta_{ij}\right)
 \end{align}
@@ -97,13 +104,15 @@ so eq. \ref{stress tensor with bulk viscosity} becomes}
 \end{align}
 
 
-\textcolor{red}{for incompressible flow, equation \ref{mass equation} tells us $\pdv{u_k}{x_k} =0$, and together with a constant dynamic viscosity $\mu$ so eq. \ref{6.5.7} reduces to}: 
+\textcolor{red}{for incompressible flow, equation \ref{mass equation} tells us $\pdv{u_k}{x_k} =0$, 
+and together with a constant dynamic viscosity $\mu$ so eq. \ref{6.5.7} reduces to}: 
 \begin{align}
     \color{red}
     \rho \mdv{u_i}{t} = - \pdv{p}{x_i} + \mu \pdv[2]{u_i}{x_j} + \rho g_i
 \end{align}
 
-This equation represents a balance between inertial forces $\left(\mdv{u_i}{t}\right)$, pressure forces $\left(\pdv{p}{x_i}\right)$, viscous forces $\left(\mu \pdv[2]{u_i}{x_j}\right)$ 
+This equation represents a balance between inertial forces $\left(\mdv{u_i}{t}\right)$, pressure 
+forces $\left(\pdv{p}{x_i}\right)$, viscous forces $\left(\mu \pdv[2]{u_i}{x_j}\right)$ 
 and the body force due to gravity $\left(\rho g_i\right)$
 
 \subsection{Thermal energy equations/conservation of energy}
@@ -113,14 +122,15 @@ The general form of the energy equation (6.9.1) is:
 \begin{equation} \label{6.9.1}
     \rho T \mdv{s}{t} = \tau_{ij}\pdv{u_i}{x_j} + \pdv{}{x_j}\left(k\pdv{T}{x_j}\right) + \rho H 
 \end{equation}
-The terms on the right side of \ref{6.9.1} are, respectively, volumetric heat production rates due to viscous dissipation (internal friction), thermal conduction,
-and internal heat generation (radiogenic?). 
+The terms on the right side of \ref{6.9.1} are, respectively, volumetric heat production rates due 
+to viscous dissipation (internal friction), thermal conduction, and internal heat generation (radiogenic?). 
 \textcolor{red}{Where it is assumed that Fourier's law of heat conduction for an isotropic medium is applicable:}
 \begin{align}
     \color{red}
     q_i = -k \pdv{T}{x_i}
 \end{align}
-Where $q_i$ is the heat flux vector. Additionally, the viscous dissipation term can be written as the dissipation function: 
+Where $q_i$ is the heat flux vector. Additionally, the viscous dissipation term can be written 
+as the dissipation function: 
 \begin{align} \label{dissipation function}
     \Phi = \tau_{ij} \pdv{u_i}{x_j}
 \end{align}
@@ -150,8 +160,10 @@ It can be shown that
 
 Plugging \ref{6.9.6} into \ref{6.9.1} gives 
 \begin{align} \label{6.9.7}
+    \begin{split}
     \rho c_p \mdv{T}{t} - \alpha T \mdv{P}{t} &= \pdv{x_i} \left(k\pdv{T}{x_i}\right) + \Phi + \rho H \\
-    \rho c_p \left(mdv{T}{t} - \frac{\alpha T}{\rho c_p} \mdv{P}{t} \right) &=\pdv{x_i} \left(k\pdv{T}{x_i}\right) + \Phi + \rho H \\
+    \rho c_p \left(\mdv{T}{t} - \frac{\alpha T}{\rho c_p} \mdv{P}{t} \right) &=\pdv{x_i} \left(k\pdv{T}{x_i}\right) + \Phi + \rho H \\    
+    \end{split}
 \end{align}
 
 % OLD CODE %
@@ -176,9 +188,126 @@ Plugging \ref{6.9.6} into \ref{6.9.1} gives
 % \end{align}
 
 \section{Approximate equations}
+In this section, Schubert derives the approximate forms of the equations of conservation
+of energy and momentum appropriate to mantle convection. 
+
+\subsection{Equation of state (density $\rho$)}
+From now on, density $\rho$ is considered a function of temperature $T$ and pressure $p$ only, neglecting the 
+density changes associated with mineral phase transitions and changes in chemical composition. 
+\newline
+Most of the density change in the mantle is due to hydrostatic compression. The mantle density increases by approximately 
+65\% between the surface and the core-mantle boundary. This is Schubert's justification for assuming a linearized equation of 
+state for mantle density: 
+\begin{align}
+    \begin{split}
+    \label{6.10.1}
+    \rho &= \overline{\rho}(\overline{T}, \overline{p}) + \rho ' \\
+    \rho &= \overline{\rho}(\overline{T}, \overline{p}) + \left( \overline{\pdv{\rho}{p}}\right)_T p' +
+     \left( \overline{\pdv{\rho}{T}} \right)_p T'\\
+    \rho &= \overline{\rho}(\overline{T}, \overline{p}) + \overline{\rho \chi}_T p' -\overline{\alpha\rho}T'\\
+\end{split}
+\end{align}
+with 
+\begin{align}
+    \begin{split}
+    T &= \overline{T} + T'\\
+    p &= \overline{p} +p' \\
+    \end{split}
+\end{align}
+
+Where the overbar $(\overline{\rho})$ refers to a reference state and the primes ($\rho'$) departures from it. 
+The reference state is assumed motionless and steady:
+\begin{itemize}
+    \item motionless: $\overline{u_i} = 0$
+    \item steady: $\pdv{\overline{u_i}}{t} = 0$
+    \item motionless and steady: $\mdv{\overline{u_i}}{t} = 0$
+    \item $\tau_{ij} = \mu \left(\pdv{u_i}{x_j}+\pdv{u_j}{x_i} - \frac{2}{3}\pdv{u_k}{x_k}\delta_{ij}\right) = 0$ (\ref{6.5.6})
+\end{itemize}
+This reduces the momentum equation (\ref{6.5.7}, \ref{momentum equation}) to its static form: 
+\begin{equation} \label{6.10.3}
+    0 = -\pdv{\overline{p}}{x_i} + \overline{\rho g_i}
+\end{equation}
+Integrating equation \ref{6.10.3} results in the hydrostatic equation. Further needed for the caluclation of the reference
+state is the equation for the adiabatic temperature gradient (since the reference state temperature is assumed adiabatic)
+\begin{equation}
+    \left(\pdv{T}{x_i}\right)_s = \frac{\alpha T g_i}{c_p}
+\end{equation}
+And a specification of the reference state equation of state $\overline{\rho} = \overline{\rho}(\overline{T}, \overline{\rho})$.
+
+\subsection{Nondimensionalization}
+Now, the linearized equation of state (\ref{6.10.1}) will be nondimensionalized with scaling factors consisting of 
+representative/characteristic values presented in table \ref{schubert ref}. With these, dimensionless variables (denoted with 
+an asterisk *) are introduced by dividing the dimensional variables with their characteristic counterpart. Rewriting the linearized
+equation of state (\ref{6.10.1}) in terms of these nondimensional variables gives: 
+\begin{align}
+    \label{6.10.7}
+\end{align}
+ 
 
 
+%%APPENDICES
+\section{Appendix 1: tables of constants and reference/scaling values used}
+\begin{table}[ht] 
+    \centering
+    \caption{Constants used by \cite{scto01}}
+    \label{schubert constants}
+    \begin{tabular}{lll}
+        \toprule
+        Constant & Value & Name \\
+        \midrule
+        $k_b$  & 0 & Bulk viscosity \\
+        $\alpha$  &  & thermal expansivity \\
+        $\chi_T$  &  & isothermal compressibility \\
+        $c_v$  &  & specific heat at constant volume \\
+        $c_p$  &  & specific heat at constant pressure \\
+        $\chi_a$ & & adiabatic compressibility \\
+        $k$  &  & thermal conductivity \\
+        $H$  &   & rate of internal heat production per unit mass \\
+        $K_a$ &  & adiabatic bulk modulus \\
+        $K_T$ & & isothermal bulk modulus\\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
+\begin{table}[ht]
+    \centering
+    \caption{Reference values used by \cite{scto01}}
+    \label{schubert ref}
+    \renewcommand{\arraystretch}{1.8}   % taller rows
+    \setlength{\tabcolsep}{12pt}        % wider column gaps
+    \begin{tabular}{lcl}
+        \toprule
+        Symbol & Value & Description \\
+        \midrule
+        $\Delta T_r$ & & Characteristic temperature difference driving thermal convection \\
+        $\chi_{T_r}$ & & Representative isothermal compressibility \\
+        $\alpha_r$ & & Representative thermal expansivity \\
+        $u_r$ & $\dfrac{k_r}{\rho_r c_{p_r} b}$ & Velocity scale (follows from assuming $Pe = 1$) \\
+        $\mu_r$ & $10^{21}$ Pa\,s & Representative viscosity \\
+        $b$ & & Depth of convecting region \\
+        $p_r$ & $\dfrac{\mu_r u_r}{b}$ & Scale for dynamic pressure variations \\
+        $k_r$ & 4 W\,m$^{-1}$\,K$^{-1}$ & Reference value thermal conductivity \\
+        $c_{p_r}$ & 1 kJ\,kg$^{-1}$\,K$^{-1}$ & Reference specific heat at constant pressure \\
+        $t_r$ & $\frac{b}{u_r} = \frac{\rho_r c_{p_r} b^2}{k}$ & reference timescale \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
 
+\begin{table}[ht]
+    \centering
+    \caption{Dimensionless parameters and their values for the Earth's mantle}
+    \label{dimensionless parameters schubert}
+    \renewcommand{\arraystretch}{1.8}   % taller rows
+    \setlength{\tabcolsep}{12pt}        % wider column gaps
+    \begin{tabular}{lccl}
+        \toprule
+        Parameter & Definition & Value & Description \\
+        \midrule
+        $\mathrm{Pr}$ & $\dfrac{\mu_r c_{p_r}}{k_r}$ & $2.5 \times 10^{23}$ & Prandtl number \\
+        $\mathrm{M}^2$ & $\dfrac{k_r^2 \chi_{T_r}}{\rho_r c_{p_r}^2 b^2}$ & $10^{-33}$ & Mach number (squared) \\
+        $\epsilon$ & $\alpha_r \Delta T_r$ & & Fractional density change due to temperature variations \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 \end{document}
