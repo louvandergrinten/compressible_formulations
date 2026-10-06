@@ -9,8 +9,8 @@ this is a summary of the derivation of the ALA done by \cite{scto01}.
 \textcolor{red}{red text means assumtions/approximations were made toward the ALA}. 
 \subsection{Mass equation/continuity equation/conservation of mass}
 \begin{align} \label{mass scto}
-\frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x_1}(\rho u_i) = 
-\frac{1}{\rho}\frac{D\rho}{Dt} + \frac{\partial u_1}{\partial x_1} = 0
+\frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x_i}(\rho u_i) = 
+\frac{1}{\rho}\frac{D\rho}{Dt} + \frac{\partial u_i}{\partial x_i} = 0
 \end{align}
 
 where $\frac{D}{Dt}$ represents the material derivative (\ref{material derivative}). 
@@ -191,7 +191,7 @@ Plugging \ref{6.9.6} into \ref{6.9.1} gives
 In this section, Schubert derives the approximate forms of the equations of conservation
 of energy and momentum appropriate to mantle convection. 
 
-\subsection{Equation of state (density $\rho$)}
+\subsection{Linearizing the equation of state (density $\rho$)}
 From now on, density $\rho$ is considered a function of temperature $T$ and pressure $p$ only, neglecting the 
 density changes associated with mineral phase transitions and changes in chemical composition. 
 \newline
@@ -237,8 +237,8 @@ And a specification of the reference state equation of state $\overline{\rho} = 
 \subsection{Nondimensionalization}
 Now, the linearized equation of state (\ref{6.10.1}) will be nondimensionalized with scaling factors consisting of 
 representative/characteristic values presented in table \ref{schubert ref}. With these, dimensionless variables (denoted with 
-an asterisk *) are introduced by dividing the dimensional variables with their characteristic counterpart. Rewriting the linearized
-equation of state (\ref{6.10.1}) in terms of these nondimensional variables gives: 
+an asterisk *) are introduced by dividing the dimensional variables with their characteristic counterpart. Rewriting the \textbf{linearized
+equation of state} (\ref{6.10.1}) in terms of these nondimensional variables gives: 
 \begin{align}
     \label{6.10.7}
     \frac{\nond{\rho}}{\nond{\refst{\rho}}} = 1 + \nond{\refst{\chi}_T}p' M^2 Pr - \nond{\refst{\alpha}} \nond{T'} \epsilon
@@ -248,10 +248,206 @@ where
     M^2 = \dfrac{k_r^2 \chi_{T_r}}{\rho_r c^2_{p_r} b^2}, \quad Pr = \frac{\mu_r c_{p_r}}{k_r}, \quad \epsilon = \alpha_r \Delta T_r
 \end{equation}
 which are the Mach number (squared, measuring the influence of compressibility), Prandtl number (ratio of momentum diffusivity to thermal diffusivity, or,
-equivalently the ratio between advection and conduction) and the fractional density change due to temperature variations, respectively. I refer to table \ref{dimensionless parameters schubert}
+equivalently the ratio between advection and conduction) and the fractional density change due to temperature variations, respectively. 
+I refer to table \ref{dimensionless parameters schubert}
 for an overview of all dimensionless parameters discussed in this document. 
 Plugging in the values from table \ref{schubert ref} gives $Pr \approx 2.5 \times 10^{23}$, which is considered practically infinite, and 
-$M^2 \approx 10^{-33}$ and consequently $M^2Pr \approx 2 \times 10^{-10} \ll 1$
+$M^2 \approx 10^{-33}$ and consequently $M^2Pr \approx 2 \times 10^{-10} \ll 1$. If $\epsilon \ll 1$ as well, $\frac{\nond{\rho}}{\nond{\refst{\rho}}} \approx 1$ and 
+density perturbations tue to mantle convection are small compared to the reference hydrostatic density of the mantle. 
+\newline
+The dimensionless form of the \textbf{conservation of mass equation} (eq. \ref{mass scto}) can be obtained in the same manner: 
+\begin{align}
+    \label{eq:6.10.9}
+  & \nond{\refst{\rho}}\,\nond{\refst{\chi}_{T}}\, M^2 \mathit{Pr}\,
+    \pdv{\nond{p'}}{\nond{t}}
+    - \nond{\refst{\alpha}}\,\nond{\refst{\rho}}\,\epsilon\,
+    \pdv{\nond{T'}}{\nond{t}} \nonumber \\
+  & + \pdv{\nond{x}_i}
+    \left[ \left\{ \nond{\refst{\rho}}
+    + \nond{\refst{\rho}}\,\nond{\refst{\chi}_{T}}\, \nond{p'} M^2 \mathit{Pr}
+    - \nond{\refst{\rho}}\,\nond{\refst{\alpha}}\,\epsilon\, \nond{T'}
+    \right\} \nond{u_i} \right]
+    = 0
+\end{align}
+
+
+The dimensionless and scaled \textbf{Navier-Stokes equation} (from eq. \ref{6.5.7} and \ref{6.10.7}) is 
+\begin{align}
+  & \frac{1}{\mathit{Pr}}
+    \left\{ \nond{\refst{\rho}}
+    + \nond{\refst{\rho}}\,\nond{\refst{\chi}_{T}}\, M^2 \mathit{Pr}\, \nond{p'}
+    - \nond{\refst{\rho}}\,\nond{\refst{\alpha}}\,\epsilon\, \nond{T'}
+    \right\}
+    \mdv{\nond{u_i}}{\nond{t}}
+    = - \pdv{\nond{p'}}{\nond{x_i}}
+    + \nond{\refst{g}_i}\,\nond{\refst{\rho}}\,\nond{\refst{\chi}_{T}}\, \nond{p'}\,
+      \frac{D}{\gamma_r}\,\frac{c_{p,r}}{c_{v,r}} \nonumber \\
+  & - \nond{\refst{g}_i}\,\nond{\refst{\rho}}\,\nond{\refst{\alpha}}\, \nond{T'}\, \mathit{Ra}
+    + \pdv{\nond{x_j}}
+    \left\{ \nond{\mu}
+    \left( \pdv{\nond{u_i}}{\nond{x_j}} + \pdv{\nond{u_j}}{\nond{x_i}}
+    - \frac{2}{3}\,\delta_{ij}\,\pdv{\nond{u_k}}{\nond{x_k}} \right)
+    \right\}
+  \label{eq:6.10.19}
+\end{align}
+where the dimensionless parameter Ra is the Rayleigh number:
+\begin{equation}
+  \mathit{Ra} \equiv
+  \frac{\alpha_r \, \Delta T_r \, \rho_r^2 \, g_r \, b^3 \, c_{p,r}}
+       {\mu_r \, k_r}
+  \label{eq:6.10.20}
+\end{equation}
+The Rayleigh number controls the strenght of the buoyancy force term associated with temperature variations, 
+which is the major driving force of thermal convection. 
+
+The scaled and nondimensional \textbf{energy equation} (\ref{6.9.7}) is 
+\begin{align}
+  & \left\{ \nond{\refst{\rho}}
+    + \nond{\refst{\rho}}\,\nond{\refst{\chi}_{T}}\, M^2 \mathit{Pr}\, \nond{p'}
+    - \nond{\refst{\rho}}\,\nond{\refst{\alpha}}\,\epsilon\, \nond{T'} \right\}
+    \left( \nond{\refst{c}_p} \right)
+    \mdv{}{\nond{t}}
+    \left( \nond{\refst{T}} + \nond{T'} \right)
+    \nonumber \\
+  & \quad - \nond{\refst{\alpha}}
+    \left( \nond{\refst{T}} + \nond{T'} \right)
+    \mdv{\nond{p'}}{\nond{t}}\,\frac{\epsilon D}{\mathit{Ra}}
+    - \nond{\refst{\alpha}}
+    \left( \nond{\refst{T}} + \nond{T'} \right)
+    \nond{\refst{g}_i}\,\nond{u_i}\,\nond{\refst{\rho}}\,D
+    \nonumber \\
+  & = \pdv{\nond{x_i}}
+    \left\{ \nond{\refst{k}}\,\pdv{\nond{x_i}}
+    \left( \nond{\refst{T}} + \nond{T'} \right) \right\}
+    + \nond{\Phi}\,\frac{D5}{\mathit{Ra}}
+    \nonumber \\
+  & \quad + \left( \nond{\refst{\rho}}
+    + \nond{\refst{\rho}}\,\nond{\refst{\chi}_{T}}\, M^2 \mathit{Pr}\, \nond{p'}
+    - \nond{\refst{\rho}}\,\nond{\refst{\alpha}}\,\epsilon^{*}\, \nond{T'} \right)
+    \nond{H}
+    \left( \frac{b^2 H_r \rho_r}{k_r \, \Delta T_r} \right)
+  \label{eq:6.10.25}
+\end{align}
+
+%%% APPROXIMATIONS
+\subsection{Approximations}
+In the limit of $\epsilon \to 0$ and $M^2Pr \to 0$, eq. \ref{eq:6.10.9} reduces to 
+\begin{equation}
+    \label{eq:6.10.10}
+    \pdv{\nond{x_i}}(\nond{\refst{\rho}} \nond{u_i}) = 0
+\end{equation}
+Which is known as the \textbf{anelastic conservation of mass equation} or the \textbf{liquid anelastic 
+approximation} (\ref{jamc80}).
+The absence of the $\pdv{\rho'}{t}$ term eliminates seismic waves from the set of equations 
+governing mantle convection. This makes sense physically, since seismic activity and 
+mantle convection occur on very different time scales. 
+If, additionally, $\refst{\rho}$ is considered constant with depth, eq. \ref{eq:6.10.10} reduces to the incompressible 
+continuity equation: 
+\begin{equation}
+    \label{eq:incompressible continuity}
+    \pdv{u_i}{x_i} = 0 
+\end{equation} 
+This approximation is called the \textbf{Boussinesq approximation}.For this approximation to be appropriate, the change in $\refst{\rho}$ with depth
+has to be investigated. Using the adiabatic compressibility
+\begin{equation}
+    \chi_a = \frac{1}{\rho} \left(\pdv{\rho}{p}\right)_s
+\end{equation}
+and the hydrostatic equation 
+\begin{equation}
+    \pdv{\refst{\rho}}{x_i} = \refst{\rho}\refst{g_i}
+\end{equation}
+gives the density gradient 
+\begin{align}
+    \begin{split}
+        \pdv{\refst{\rho}}{x_i} &= \left(\pdv{\refst{\rho}}{\refst{p}}\right)_s 
+        \pdv{\refst{p}}{x_i} = \refst{\rho}\refst{\chi}_a \pdv{P}{x_i} \\
+    &= \refst{\rho}^2\chi_a\refst{g}_i
+    \end{split}
+\end{align}
+
+The local density scale height is defined as 
+\begin{align}
+    \begin{split}
+        \refst{h}_d &\equiv \left\{\frac{1}{\refst{\rho}} \abs{\pdv{\refst{\rho}}{x_i}} \right\}^{-1} \\
+    &= (\refst{\rho}\refst{\chi}_a\refst{g})^{-1} \\
+    &=\frac{\refst{\gamma}\refst{c}_p}{\refst{\alpha}\refst{g}}\\
+    \end{split}
+\end{align}
+where $\gamma = \frac{\alpha}{\rho c_p \chi_a}$ is the Grünseisen parameter. 
+The change in $\refst{\rho}$ with depth is negligible (and the Boussinesq/ incompressible approximation applicable) if $\frac{b}{\refst{h}_d} \ll 1$. 
+Assuming characteristic values, this condition gives
+\begin{align}
+    \begin{split}
+        \frac{b}{\refst{h}_d} &= \frac{1}{\gamma_r}\frac{\alpha_rg_rb}{c_{p_r}} \\
+    &= \frac{D}{\gamma_r} \ll 1
+    \end{split}
+\end{align} 
+With $D$ the dissipation number. For the Earth's mantle, $D/\gamma_r \approx 0.5$, and
+the incompressible mass conservation equation is not very accurate. However, due to its simplicity, 
+it is often adopted into models of mantle convection where the effect of compressibility are minor. 
+
+Returning to the (dimensionless and scaled) Navier-Stokes equations, we can see that when
+\begin{equation}
+    \frac{1}{Pr} \to 0 \quad and \quad   M^2Pr \to 0
+\end{equation}
+eq. \ref{eq:6.10.19} reduces to its \textbf{anelastic (liquid) approximation}:
+\begin{align}
+  0 &= - \pdv{\nond{p'}}{\nond{x_i}}
+    + \nond{g_i}\,\nond{\refst{\rho}}\,\nond{\refst{\chi}_{T}}\, \nond{p'}\,
+      \frac{D}{\gamma_r}\,\frac{c_{p,r}}{c_{v,r}}
+    - \nond{g_i}\,\nond{\refst{\rho}}\,\nond{\refst{\alpha}}\, \nond{T'}\, \mathit{Ra}
+    \nonumber \\
+  &\quad + \pdv{\nond{x_j}}
+    \left\{ \nond{\mu}
+    \left( \pdv{\nond{u_i}}{\nond{x_j}} + \pdv{\nond{u_j}}{\nond{x_i}}
+    - \frac{2}{3}\,\delta_{ij}\,\pdv{\nond{u_k}}{\nond{x_k}} \right)
+    \right\}
+  \label{eq:6.10.21}
+\end{align}
+and the dimensional form 
+\begin{align}
+  0 &= - \pdv{p'}{x_i}
+    + \refst{\rho}\,\refst{g}_i
+      \left( \refst{\chi}_{T}\, p' - \refst{\alpha}\, T' \right)
+    + \pdv{x_j}
+    \left\{ \mu
+    \left( \pdv{u_i}{x_j} + \pdv{u_j}{x_i}
+    - \frac{2}{3}\,\delta_{ij}\,\pdv{u_k}{x_k} \right)
+    \right\}
+  \label{eq:6.10.22}
+\end{align}
+
+With the additional limit of $D/\gamma_r \to 0$ (together with incompressibility 
+and $\refst{\nond{\rho}}=\refst{\nond{\alpha}}= 1$) the dimensionless Navier-Stokes equations further reduce to 
+the \textbf{Boussinesq approximation}: 
+\begin{align}
+  0 &= - \pdv{\nond{p'}}{\nond{x_i}}
+    - \nond{\refst{g}_i}\, \nond{T'}\, \mathit{Ra}
+    + \pdv{\nond{x_j}}
+    \left\{ \nond{\mu}
+    \left( \pdv{\nond{u_i}}{\nond{x_j}} + \pdv{\nond{u_j}}{\nond{x_i}} \right)
+    \right\}
+  \label{eq:6.10.23}
+\end{align}
+and the dimensional form
+\begin{align}
+  0 &= - \pdv{p'}{x_i}
+    - \refst{\rho}\,\refst{g}_i\,\refst{\alpha}\, T'
+    + \pdv{x_j}
+    \left\{ \mu
+    \left( \pdv{u_i}{x_j} + \pdv{u_j}{x_i} \right)
+    \right\}
+  \label{eq:6.10.24}
+\end{align}  
+
+Returning to the (nondimensional) heat equation (\ref{eq:6.10.25}) and applying the conditions of 
+$M^2Pr \to 0$ and $\epsilon \to 0$ for the \textbf{anelastic approximation}, this reduces to 
+\textcolor{green}{TO DO: derivation of ALA energy equation and put in doc (schubert p. 270)
+}
+
+
+
+
 
 
 %%APPENDICES
