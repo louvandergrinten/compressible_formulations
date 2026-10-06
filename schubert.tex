@@ -241,8 +241,17 @@ an asterisk *) are introduced by dividing the dimensional variables with their c
 equation of state (\ref{6.10.1}) in terms of these nondimensional variables gives: 
 \begin{align}
     \label{6.10.7}
+    \frac{\nond{\rho}}{\nond{\refst{\rho}}} = 1 + \nond{\refst{\chi}_T}p' M^2 Pr - \nond{\refst{\alpha}} \nond{T'} \epsilon
 \end{align}
- 
+where 
+\begin{equation} %%%HELP how to make \chi_T look better
+    M^2 = \dfrac{k_r^2 \chi_{T_r}}{\rho_r c^2_{p_r} b^2}, \quad Pr = \frac{\mu_r c_{p_r}}{k_r}, \quad \epsilon = \alpha_r \Delta T_r
+\end{equation}
+which are the Mach number (squared, measuring the influence of compressibility), Prandtl number (ratio of momentum diffusivity to thermal diffusivity, or,
+equivalently the ratio between advection and conduction) and the fractional density change due to temperature variations, respectively. I refer to table \ref{dimensionless parameters schubert}
+for an overview of all dimensionless parameters discussed in this document. 
+Plugging in the values from table \ref{schubert ref} gives $Pr \approx 2.5 \times 10^{23}$, which is considered practically infinite, and 
+$M^2 \approx 10^{-33}$ and consequently $M^2Pr \approx 2 \times 10^{-10} \ll 1$
 
 
 %%APPENDICES
