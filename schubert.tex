@@ -442,13 +442,59 @@ and the dimensional form
 
 Returning to the (nondimensional) heat equation (\ref{eq:6.10.25}) and applying the conditions of 
 $M^2Pr \to 0$ and $\epsilon \to 0$ for the \textbf{anelastic approximation}, this reduces to 
-\textcolor{green}{TO DO: derivation of ALA energy equation and put in doc (schubert p. 270)
-}
 
+\begin{align}
+  & \nond{\refst{\rho}}\,\nond{\refst{c}_p}\,
+    \mdv{}{\nond{t}}
+    \left( \nond{\refst{T}} + \nond{T'} \right)
+    - \nond{\refst{\alpha}}
+    \left( \nond{\refst{T}} + \nond{T'} \right)
+    \nond{\refst{g}_i}\,\nond{u_i}\,\nond{\refst{\rho}}\,D
+    \nonumber \\
+  & = \pdv{\nond{x_i}}
+    \left\{ \nond{\refst{k}}\,\pdv{\nond{x_i}}
+    \left( \refst{T} + T' \right) \right\}
+    + \nond{\Phi}\,\frac{D}{\mathit{Ra}}
+    + \nond{\refst{\rho}}\,\nond{H}
+    \left( \frac{b^2 H_r \rho_r}{k_r \, \Delta T_r} \right)
+  \label{eq:6.10.27}
+\end{align}
 
-
-
-
+Now, using thermodynamic relations in combination with the hydrostatic equation (6.9.17+6.9.18) give 
+\begin{equation}
+    \left(\pdv{T}{x_i}\right)_s = \frac{\alpha T g_i}{c_p}
+\end{equation}
+or, in dimensionless form
+\begin{equation}
+    \left(\pdv{\nond{\refst{T}}}{\nond{x_i}}\right)_s = \frac{\nond{\refst{\rho}}\nond{\refst{T}}D \nond{\refst{g}}_i}{\nond{\refst{c}}_p}
+\end{equation}
+Where the dissipation number $D$ arises from the nondimensionalization. With this relation, the $\nond{\refst{T}}$ terms in the RHS of equation 
+\ref{eq:6.10.27} cancel out and the anelastic, dimensionless form of the energy equation becomes
+\begin{align}
+  \nond{\refst{\rho}}\,\nond{\refst{c}_p}\,
+    \mdv{\nond{T'}}{\nond{t}}
+    - \nond{T'}\,\nond{\refst{\alpha}}\,\nond{\refst{g}_i}\,\nond{u_i}\,
+      \nond{\refst{\rho}}\, D
+  &= \pdv{\nond{x_i}}
+    \left\{ \nond{\refst{k}}\,\pdv{\nond{x_i}}
+    \left( \nond{\refst{T}} + \nond{T'} \right) \right\}
+    \nonumber \\
+  &\quad + \nond{\Phi}\,\frac{D}{\mathit{Ra}}
+    + \nond{\refst{\rho}}\,\nond{H}
+    \left( \frac{b^2 H_r \rho_r}{k_r \, \Delta T_r} \right)
+  \label{eq:6.10.29}
+\end{align}
+and in dimensional form 
+\begin{equation}
+  \refst{\rho}\,\refst{c}_p\,
+    \mdv{T'}{t}
+    - T'\,\refst{\alpha}\,\refst{g}_i\,u_i\,\refst{\rho}
+  = \pdv{x_i}
+    \left\{ \refst{k}\,\pdv{x_i}
+    \left( \refst{T} + T' \right) \right\}
+    + \Phi + \refst{\rho}\,H
+  \label{eq:6.10.30}
+\end{equation}
 
 %%APPENDICES
 \section{Appendix 1: tables of constants and reference/scaling values used}
