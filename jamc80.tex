@@ -1,7 +1,64 @@
-% !TEX root=schubert.tex
+% !TEX root=jamc80.tex
 \documentclass[document.tex]{subfiles}
 
 \begin{document}
-\section{\ref{jamc80} General equations}
+\section{\cite{jamc80} General equations}
+Conservation of mass, momentum and energy: 
+\begin{align}
+    \pdv{\rho}{t} + \nabla \cdot (\rho\bm{u}) &= 0 \\
+    \rho\left(\pdv{\bm(u)}{t} + \bm{u} \cdot \nabla \bm{u}\right) &= -\nabla P +\rho g + \pdv{x_j} \tau_{ij}\\
+    \rho C_p \left\{\pdv{T}{t} - \frac{\alpha T}{\rho C_p}\pdv{P}{t} + \bm{u} \cdot [\nabla T - (\nabla T)_s]\right\} &= 
+    \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}}
+\end{align}
+All terms and symbols used in these equations are shown in table \ref{table:symbols}. 
+The (Newtonian) relation between the deviatoric stress tensor $\tau_{ij}$ and the velocity field is
+\begin{equation}
+\tau_{ij} = \eta \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}
+ - \frac{2}{3}\,\delta_{ij}\,\frac{\partial u_k}{\partial x_k} \right) 
+ + \eta_2\,\delta_{ij}\,\frac{\partial u_k}{\partial x_k}.
+\label{eq:8}
+\end{equation}
+Combining \ref{eq:8} with eq. 3 (momentum) gives the general Navier-Stokes equations, 
+but \textcite{jamc80} does not show these. Instead, they assume that $\frac{1}{Pr} \to 0$, which
+they assume (\textcolor{green}{do they?}) is the case for the Earth's mantle, the inertial forces can be ignored. The resulting equations 
+will be discussed in the next section, which covers the approximations made by \textcite{jamc80}. 
 
+\section{\cite{jamc80} Approximate equations}
+Problem statement: for the Boussinesq approximation to be valid, the depth range of convection $d$ must be 
+small compared to the temperature scale height $H_T$ ($d/H_T \ll 1$). This is not the case for many systems of 
+deep convection, amongst which the convection of planetary mantles. Physically, $d/H_T \approx O(1)$ means that 
+the influence of viscous dissipation, variable adiabatic temperature- and density gradients must be maintained in the 
+set of governing equations. 
+\newline
+The assumptions made for the \textbf{anelastic liquid approximation} are that $d=O(H_T)$ and that $\alpha T \ll 1$
+\textcolor{green}{what does this mean and how does this relate to Prandtl number? 
+and if $\alpha \ll 1$, how come $D$ is not $\ll 1$?} 
+
+
+\section{Appendix 1: tables of constants}
+\begin{table}[ht] 
+    \centering
+    \caption{Constants used by \cite{jamc80}}
+    \label{table:symbols}
+    \begin{tabular}{>{$}l<{$}  c  l}
+        \toprule
+        \text{Symbol} & Value & Meaning \\
+        \midrule
+        d & & depth of the convecting layer \\
+        H_T & & temperature scale height of the liquid \\
+        C_p & & specific heat at constant pressure \\
+        \alpha & & volume coefficient of thermal expansion \\
+        \tau_{ij} && deviatoric stress tensor \\
+        (\nabla T)_s & $\frac{\alpha T}{\rho C_p}\nabla P$ & adiabatic temperature gradient \\
+        K && thermal conductivity \\
+        H && rate of internal heat production \\
+        \eta && dynamic viscosity \\
+        \eta_0 & $\ll 1$ & second or bulk viscosity \\
+
+
+        % T_0 & & reference temperature \\
+        % \Delta T^* & & temperature increase relative to reference temperature \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 \end{document}

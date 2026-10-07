@@ -9,6 +9,8 @@
 \usepackage{parskip}
 \usepackage[style=apa]{biblatex}
 \usepackage{mathtools}
+\usepackage{bm}
+\usepackage{array}
 
 %%% material derivative
 \newcommand{\mdv}[2]{\frac{D #1}{D #2}}
@@ -31,10 +33,13 @@
 
 \begin{document}
     \maketitle  
+    %%% Note: after section is done, change root to document.tex so it will
+    %%% be compiled in main file
     \subfile{section1.tex}
     \subfile{section2.tex}
     \subfile{appendix_1_tables.tex}
     \subfile{schubert.tex}
+    \subfile{jamc80.tex}
 
     \printbibliography[heading=bibintoc, title={References}]
 \end{document} 
