@@ -1,9 +1,8 @@
 % !TEX root=schubert.tex
 \documentclass[document.tex]{subfiles}
-\usepackage{xcolor}
 
 \begin{document}
-\section{\cite{scto01} basic equations}
+\section{\cite{scto01} General equations}
 This document/section has a different approach to structure the derivation of the ALA: 
 this is a summary of the derivation of the ALA done by \cite{scto01}.
 \textcolor{red}{red text means assumtions/approximations were made toward the ALA}. 
@@ -187,7 +186,7 @@ Plugging \ref{6.9.6} into \ref{6.9.1} gives
 % \rho \mdv{u_i}{t} = -\pdv{p}{x_i} + \pdv{\tau	_{ij}}{x_j} + \rho g_i
 % \end{align}
 
-\section{Approximate equations}
+\section{\ref{scto01} Approximate equations}
 In this section, Schubert derives the approximate forms of the equations of conservation
 of energy and momentum appropriate to mantle convection. 
 
@@ -466,10 +465,11 @@ Now, using thermodynamic relations in combination with the hydrostatic equation 
 \end{equation}
 or, in dimensionless form
 \begin{equation}
+    \label{eq:adiabatic temperature gradient}
     \left(\pdv{\nond{\refst{T}}}{\nond{x_i}}\right)_s = \frac{\nond{\refst{\rho}}\nond{\refst{T}}D \nond{\refst{g}}_i}{\nond{\refst{c}}_p}
 \end{equation}
 Where the dissipation number $D$ arises from the nondimensionalization. With this relation, the $\nond{\refst{T}}$ terms in the RHS of equation 
-\ref{eq:6.10.27} cancel out and the anelastic, dimensionless form of the energy equation becomes
+\ref{eq:6.10.27} cancel out and the \textbf{anelastic, dimensionless form of the energy equation} becomes
 \begin{align}
   \nond{\refst{\rho}}\,\nond{\refst{c}_p}\,
     \mdv{\nond{T'}}{\nond{t}}
@@ -495,9 +495,16 @@ and in dimensional form
     + \Phi + \refst{\rho}\,H
   \label{eq:6.10.30}
 \end{equation}
+If $\ndref{k}$, $\ndref{\alpha}$, $\ndref{c}_p$ and $\ndref{g}_i$ are considered constant, then the 
+terms representing heat conduction along the adiabat become \textcolor{green}{INSERT EQ 6.10.31-32 HERE}
+where eq. \ref{eq:adiabatic temperature gradient} was used. 
+
+Assuming $D \to 0$, which physically means assuming the representative thermal expansivity $\alpha_r$ to be zero, 
+we arrive at the \textbf{Boussinesq energy equation}. \textcolor{green}{INSERT EQ. 6.10.34-48 HERE }
+
 
 %%APPENDICES
-\section{Appendix 1: tables of constants and reference/scaling values used}
+\section{Appendix 1: tables of constants and reference/scaling values}
 \begin{table}[ht] 
     \centering
     \caption{Constants used by \cite{scto01}}
