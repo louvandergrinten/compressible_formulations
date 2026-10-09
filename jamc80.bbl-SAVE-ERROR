@@ -1,0 +1,109 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{jamc80}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=9accd0fe963eae78af2cc4ba186dd8ef}{%
+           family={Jarvis},
+           familyi={J\bibinitperiod},
+           given={Gary\bibnamedelima T.},
+           giveni={G\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=677d9dc5be965c9ebe7b7cbdf44a5cb6}{%
+           family={Mckenzie},
+           familyi={M\bibinitperiod},
+           given={Dan\bibnamedelima P.},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{fullhash}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{fullhashraw}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{bibnamehash}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{authorbibnamehash}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{authornamehash}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{authorfullhash}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{authorfullhashraw}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Fluid Mechanics}
+      \field{number}{3}
+      \field{title}{Convection in a compressible fluid with infinite Prandtl number}
+      \field{volume}{96}
+      \field{year}{1980}
+      \field{pages}{515\bibrangedash 583}
+      \range{pages}{69}
+      \verb{doi}
+      \verb 10.1017/S002211208000225X
+      \endverb
+    \endentry
+  \enddatalist
+  \datalist[entry]{apa/global//global/global/global}
+    \entry{jamc80}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=9accd0fe963eae78af2cc4ba186dd8ef}{%
+           family={Jarvis},
+           familyi={J\bibinitperiod},
+           given={Gary\bibnamedelima T.},
+           giveni={G\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=677d9dc5be965c9ebe7b7cbdf44a5cb6}{%
+           family={Mckenzie},
+           familyi={M\bibinitperiod},
+           given={Dan\bibnamedelima P.},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{fullhash}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{fullhashraw}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{bibnamehash}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{authorbibnamehash}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{authornamehash}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{authorfullhash}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \strng{authorfullhashraw}{49a7cc548e427f5b2bb80f9aae2a5493}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Fluid Mechanics}
+      \field{number}{3}
+      \field{title}{Convection in a compressible fluid with infinite Prandtl number}
+      \field{volume}{96}
+      \field{year}{1980}
+      \field{pages}{515\bibrangedash 583}
+      \range{pages}{69}
+      \verb{doi}
+      \verb 10.1017/S002211208000225X
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
