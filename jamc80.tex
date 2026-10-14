@@ -4,21 +4,26 @@
 \begin{document}
 \section{\cite{jamc80} General equations}
 Conservation of mass, momentum and energy: 
+
+\textcolor{green}{ADD ALGEBRA COMPARISON SCHUBERT in final doc}
 \begin{align}
-    \pdv{\rho}{t} + \nabla \cdot (\rho\bm{u}) &= 0 \\
-    \rho\left(\pdv{\bm{u}}{t} + \bm{u} \cdot \nabla \bm{u}\right) &= -\nabla P +\rho g + \pdv{x_j} \tau_{ij}\\
+    \pdv{\rho}{t} + \nabla \cdot (\rho\bm{u}) &= 0  \label{eq:3}\\
+    \rho\left(\pdv{\bm{u}}{t} + \bm{u} \cdot \nabla \bm{u}\right) &= -\nabla P +\rho g + \pdv{x_j} \tau_{ij} \label{eq:4}\\
     \rho C_p \left\{\pdv{T}{t} - \frac{\alpha T}{\rho C_p}\pdv{P}{t} + \bm{u} \cdot [\nabla T - (\nabla T)_s]\right\} &= 
-    \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}}
+    \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}} \label{eq:5}
 \end{align}
+
 All terms and symbols used in these equations are shown in table \ref{table:symbols}. 
 The (Newtonian) relation between the deviatoric stress tensor $\tau_{ij}$ and the velocity field is
+
 \begin{equation}
 \tau_{ij} = \eta \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}
  - \frac{2}{3}\,\delta_{ij}\,\frac{\partial u_k}{\partial x_k} \right) 
  + \eta_2\,\delta_{ij}\,\frac{\partial u_k}{\partial x_k}.
 \label{eq:8}
 \end{equation}
-Combining \ref{eq:8} with eq. 3 (momentum) gives the general Navier-Stokes equations, 
+
+Combining Eq.~\eqref{eq:8} with the momentum equation \eqref{eq:4} gives the general Navier-Stokes equations, 
 but \textcite{jamc80} does not show these. Instead, they assume that $\frac{1}{Pr} \to 0$, which
 they assume (\textcolor{green}{do they?}) is the case for the Earth's mantle, the inertial forces can be ignored. The resulting equations 
 will be discussed in the next section, which covers the approximations made by \textcite{jamc80}. 
@@ -54,8 +59,8 @@ With $\nabla S = 0$ since the reference state is adiabatic, and with $\nabla P_H
 \begin{equation}
     \frac{1}{\rho_r} \pdv{\rho_r}{z} = -\frac{\rho_r g}{K_s}
 \end{equation} 
-with $K_s = \rho_r\left(\pdv{P_H}{\rho_r}\right)_s$. Using the definition of the Gruneisen parameter $\Gamma$ and the temperature scale height of the liquid
-$H_T$ gives the Adams-Williamson relation
+with $K_s = \rho_r\left(\pdv{P_H}{\rho_r}\right)_s$. Using the definition of the Grüneisen parameter $\Gamma$ and the temperature scale height of the liquid
+$H_T$ gives the Adams-Williamson relation \textcolor{green}{add images!}
 \begin{equation} \label{eq:adams-williamson}
     \frac{1}{\rho_r} \pdv{\rho_r}{z} = -\frac{1}{H_T \Gamma}
 \end{equation}
@@ -66,16 +71,113 @@ Integration of equation \ref{eq:adams-williamson} over $z$ gives the reference d
 \end{equation}
 where $\rho_0 = \rho_r(z=d)$ is the reference density value at the surface \textcolor{green}{orientation of coordinate system??}
 Plugging this expression of the reference density distribution into \ref{eq:11} gives the (linearized equation) of state
-\begin{equation} \label{eq:16 eq of state}
+\begin{equation} \label{eq:16}
     \rho(T,P) = \rho_0 \exp[(d-z)/H_T \Gamma][1-\alpha (T-T_s)+K_T^{-1}(P-P_H)]
 \end{equation}
 
 \subsection{Nondimensionalization}
-\ref{table:characteristic values}, \ref{table:dimensionless variables}. \textcolor{green}{move tables here?}
+\ref{table:characteristic_values}, \ref{table:characteristic_values}. \textcolor{green}{move tables here?}
+In this section, \cite{jamc80} introduces various characteristic values of variables in order to nondimensionalize the preceding equations. These characteristic values and the resulting dimensionless 
+variables are presented in the tables below.The characteristic value for \textbf{velocity} is taken directly from \cite{mcrw74}, and their derivation is expanded below: 
+
+\begin{mdframed} 
+    Our starting point is the momentum equation (in the notation of \cite{mcrw74}), with the left-hand side set to 0 (on the basis of $\mathrm{Re} \ll 1$ and $\frac{1}{\mathrm{Pr}}\to 0$):
+    \begin{align} \label{eq:mcrw:1}
+        0 &= -\frac{1}{\rho} \pdv{P}{x_i} + \pdv{\phi}{x_i} + \frac{1}{\rho}\pdv{\tau_{ij}}{x_j}
+    \end{align}
+    with 
+    \begin{align*}
+        \tau_{ij} &= \rho \nu\left(\pdv{u_i}{x_j} + \pdv{u_j}{x_i}\right) \\
+        \nabla\phi &= \bm{g}
+    \end{align*}
+    last term in Eq.~\eqref{eq:mcrw:1} becomes \textcolor{green}{help index confusion}
+    \begin{align*}
+        \frac{1}{\rho}\pdv{\tau_{ij}}{x_j} &= \rho \nu \left(\pdv{x_j}\pdv{u_i}{x_j}+\pdv{x_j}\pdv{u_j}{x_i}\right) \\
+        &= \rho \nu (\nabla^2u_i+ \pdv{x_i}\nabla \cdot \bm{u}) \\
+    \end{align*}
+    \textbf{assuming incompressibility,} $\nabla \cdot \bm{u} = 0$, and \textcolor{green}{or should this be $\bm{u}$ (vector)?}
+    \begin{align} 
+        \frac{1}{\rho}\pdv{\tau_{ij}}{x_j} = \nu \nabla^2 u_i
+    \end{align}
+
+    Now we formulate an equation of state under the Boussinesq approximation (Taylor expansion of density $\rho(T)$ around a reference state temperature $T_0$): 
+    \begin{align*}
+        \rho &= \rho_0[1-\alpha (T-T_0)] \\
+        \frac{1}{\rho} &= \rho_0^{-1}[1-\alpha (T-T_0)]^{-1} \\
+        &\approx \rho_0^{-1}[1+\alpha (T-T_0)]
+    \end{align*}
+    with $\alpha = -\frac{1}{\rho}\left(\pdv{\rho}{T}\right)_P$ the thermal expansivity coefficient. 
+
+    We can split the pressure gradient $\nabla P$ into a hydrostatic part $(\nabla P_s)$ and a non-hydrostatic part $\nabla p$: 
+    \begin{align*}
+        \nabla P &= \nabla P_s + \nabla p  \\
+        &= \rho_0 \bm{g} + \nabla p
+    \end{align*}
+    Together with the equation of state, the pressure term + gravity in Eq.~\eqref{eq:mcrw:1} then becomes 
+    \begin{align*}
+        -\frac{1}{\rho} \nabla P + \bm{g}&= -\rho_0^{-1}(1+\alpha(T-T_0))(\nabla P_s + \nabla p) + \bm{g}\\
+        & = -\rho_0^{-1} \nabla P_s  - \rho_0^{-1}\nabla P_s \alpha(T-T_0) - \rho_0^{-1} \nabla p -  \rho_0^{-1} \nabla p \alpha(T-T_0) + \bm{g} \\
+        & \approx -\bm{g}\alpha(T-T_0) - \rho_0^{-1}\nabla p
+    \end{align*}
+    Where we neglected the second-order terms ($\sim \nabla p T$) and used that $\nabla P_s = \rho_0\bm{g}$, cancelling out the gravity terms.
+    With this, Eq.~\eqref{eq:mcrw:1} becomes 
+    \begin{align} \label{eq:mcrw:10}
+        \nu \nabla^2 \bm{u} = \bm{g}\alpha(T-T_0)+\rho_0^{-1}\nabla p
+    \end{align} 
+    \textbf{note that} $\nabla p$ \textbf{is only the non-hydrostatic pressure gradient}. 
+
+    We can take the curl of Eq.~\eqref{eq:mcrw:10}, using that $\nabla \times \bm{u} = \bm{\omega}$, that the curl of a gradient is always zero ($\nabla \times (\nabla f) =0$), and that $\bm{g} = \nabla \phi$: 
+    \begin{align} \label{eq:mcrw:13}
+        \begin{split}
+            \nu \nabla^2\bm{\omega} &= \nabla \times (\bm{g}\alpha(T-T_0))+\nabla \times (\rho_0^{-1}\nabla p) \\
+        &= \nabla \times [\bm{g}\alpha(T-T_0)] \\
+        &= \alpha(T-T_0)(\nabla \times \bm{g})+ \alpha \nabla T \times \bm{g} \\
+        & = \alpha \nabla T \times \bm{g}
+        \end{split}
+    \end{align}
+Now we assume that the flow in restricted to the $x,z$ plane, meaning 
+$\bm{u} = (u,0,w) = \left(-\pdv{\psi}{z}, 0, \pdv{\psi}{x}\right)$ (where $\psi$ is the stream function) 
+and thus $\bm{\omega} = (0,\omega, 0) = (0, -\nabla^2\psi, 0)$. With $\bm{g} = (0,0,g)$, Eq.~\ref{eq:mcrw:13} becomes (computing the cross product)
+\begin{align} \label{eq:mcrw:16}
+    \nabla^2\omega = \frac{\alpha g}{\nu}\pdv{T}{x}
+\end{align}
+From this equation, we can get an characteristic velocity for the convecting system. 
+\begin{align*}
+    \mathcal{O}(\nabla^2\omega) &=\mathcal{O}(\frac{\alpha g}{\nu} \pdv{T}{x}) \\
+    \frac{U}{d^3} &= \frac{\alpha g}{\nu_0} \frac{T_1}{d} \\
+    U &= \frac{\alpha g T_1 d^2}{\nu_0}
+\end{align*}
+Where $U$, $\nu_0$, and $T_1$ are characteristic values for velocity, kinematic viscosity, and temperature deviations from the adiabatic reference profile $T_0$, respectively. 
+\end{mdframed}
+
+For the scaling of pressure variations $P_1$ \textcolor{green}{TO DO}
+
+\begin{table}[h!] 
+    \renewcommand{\arraystretch}{1.8}   % taller rows
+    \setlength{\tabcolsep}{12pt}        % wider column gaps
+    \centering
+    \caption{characteristic values of \cite{jamc80}}
+    \label{table:nondimensionalisation}
+    \begin{tabular}{l  >{$}l<{$} >{$}l<{$}}
+        \toprule
+        Variable & \text{Characteristic value} & \text{Dimensionless variable} \\
+        \midrule
+        depth & d & (x', z') = \dfrac{(x,z)}{d}\\
+        temperature & T_1 (=1 \si{\kelvin}) & T' = \dfrac{(T-T_0)}{T_1}\\
+        density & \rho_0 & \rho_r' = \dfrac{\rho_r}{\rho_0}, \quad \rho = \dfrac{\rho}{\rho_0} \\
+        velocity & U = \dfrac{g\alpha T_1 d^2}{\nu _0} & \\
+        kinematic viscosity & \nu_0 = \eta/ \rho_0 &  \\
+        time & \tau = d/U & \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+
 
 \subsection{The anelastic-liquid approximation}
 From now on, only the dimensionless variables will be used but with primes surpressed (i.e. all variables are assumed dimensionless). 
-The dimensionless equation of state (from eq. \ref{eq:16 eq of state}) becomes 
+The dimensionless equation of state (from eq. \ref{eq:16}) becomes 
 \begin{equation}
     \rho = \rho_r[1-\mu(T-T_s)+\mu(\rho_0gd/K_T)P_1]
 \end{equation}
@@ -103,7 +205,7 @@ with $\mu = \alpha T_1$. If $\mu \to 0$, $\rho$ reduces to its reference profile
         \eta & \rho \nu & dynamic viscosity \\
         \nu && kinematic viscosity \\
         \eta_0 & \ll 1 & second or bulk viscosity \\
-        \Gamma & \dfrac{\alpha K_s}{\rho C_p} = \dfrac{\alpha K_T}{\rho C_v} & Gruneisen's parameter, assumed constant and $O(1)$\\ 
+        \Gamma & \dfrac{\alpha K_s}{\rho C_p} = \dfrac{\alpha K_T}{\rho C_v} & Grüneisen's parameter, assumed constant and $O(1)$\\ 
         K_s & & isentropic modulus of bulk compressibility \\
         K_T && isothermal modulus of bulk compressibility \\ 
         \mu & \alpha T_1 & \\
@@ -121,14 +223,14 @@ with $\mu = \alpha T_1$. If $\mu \to 0$, $\rho$ reduces to its reference profile
     \renewcommand{\arraystretch}{1.8}   % taller rows
     \setlength{\tabcolsep}{12pt}        % wider column gaps
     \centering
-    \caption{Characteristic values of \cite{jamc80}}
-    \label{table:characteristic values}
+    \caption{characteristic values of \cite{jamc80}}
+    \label{table:characteristic_values}
     \begin{tabular}{l  >{$}l<{$}  }
         \toprule
         depth & d\\
         temperature & T_1 = \dfrac{1}{\text{K}}\textcolor{green}{WHAT??} \to 1 ^{\circ} \text{K}\\
         density & \rho_0 \\
-        velocity & U = \dfrac{g\alpha T_1 d^2}{\nu _0}, \quad \nu_0 = \eta/ \rho_0 \\
+        velocity & U = \dfrac{g\alpha T_1 d^2}{\nu _0}, \quad \nu_0 = \eta/ \rho_0 \text{\textcolor{green}{help this is different from schubert}} \\
         time & \tau = d/U \\
         \bottomrule
     \end{tabular}
@@ -139,7 +241,7 @@ with $\mu = \alpha T_1$. If $\mu \to 0$, $\rho$ reduces to its reference profile
     \setlength{\tabcolsep}{12pt}        % wider column gaps
     \centering
     \caption{Dimensionless variables in \cite{jamc80}}
-    \label{table:dimensionless variables}
+    \label{table:dimensionless_variables}
     \begin{tabular}{>{$}l<{$} >{$}l<{$} }
         \toprule
         (x', z') & (x,z)/d\\
