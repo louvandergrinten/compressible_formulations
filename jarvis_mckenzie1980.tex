@@ -27,6 +27,19 @@ Combining Eq.~\eqref{eq:8} with the momentum equation \eqref{eq:4} gives the gen
 but \textcite{jamc80} does not show these. Instead, they assume that $\frac{1}{Pr} \to 0$, which
 they assume (\textcolor{green}{do they?}) is the case for the Earth's mantle, the inertial forces can be ignored. The resulting equations 
 will be discussed in the next section, which covers the approximations made by \textcite{jamc80}. 
+We also define the constant Grüneisen's parameter: 
+\begin{align} \label{eq:10}
+    \Gamma = \frac{\alpha K_s}{\rho C_p} = \frac{\alpha K_T}{\rho C_v}
+\end{align}
+Where $K_s$ and $K_T$ are the isentropic and isothermal moduli of bulk compressibility, 
+and $C_v$ and $C_p$ are the specific heat at constant volume and pressure, respectively (\ref{table:symbols}).
+
+\begin{mdframed}
+    Additional equations used in derivations in the next section: 
+    \begin{align} \label{eq:specific_heats}
+        C_p - C_v = \frac{\alpha^2K_TT}{\rho}
+    \end{align}
+\end{mdframed}
 
 \section{\cite{jamc80} Approximations}
 Problem statement: for the Boussinesq approximation to be valid, the depth range of convection $d$ must be 
@@ -38,6 +51,13 @@ set of governing equations.
 The assumptions made for the \textbf{anelastic liquid approximation} are that $d=O(H_T)$ and that $\alpha T \ll 1$
 \textcolor{green}{what does this mean and how does this relate to Prandtl number? 
 and if $\alpha \ll 1$, how come $D$ is not $\ll 1$?} 
+
+\subsection{Approximate momentum equation}
+Since volume changes in the Earth's mantle occur over timescales greater than $10^7$ years, terms containing the bulk viscosity 
+$\eta_2$ are neglected. Substituting from Eq.~\eqref{eq:8}, the momentum equation, Eq.~\eqref{eq:4}, becomes
+\begin{align*} \label{eq:9}
+    0 = -\nabla P + \rho \mathbf{g} + \pdv{x_i}\, \eta \left( \pdv{u_i}{x_j} + \pdv{u_j}{x_i} \right) - \frac{2}{3} \nabla \eta \, (\nabla \cdot \mathbf{u}).
+\end{align*}
 \subsection{Reference state and equation of state}
 A reference state with hydrostatic pressure $P_H$ and adiabatic temperature distribution (gradient?) $T_s$ is considered. 
 The equation of state is written as a linear Taylor expansion of $\rho$ about the reference state density distribution $\rho_r$: 
@@ -66,7 +86,7 @@ $H_T$ gives the Adams-Williamson relation \textcolor{green}{add images!}
 \end{equation}
 Which is valid for a \textbf{chemically homogeneous adiabatic density distribution under hydrostatic pressure}. 
 Integration of equation \ref{eq:adams-williamson} over $z$ gives the reference densitiy distribution as
-\begin{equation}
+\begin{equation} \label{eq:rho_r}
     \rho_r(z)= \rho_0 \exp[(d-z)/H_T \Gamma]
 \end{equation}
 where $\rho_0 = \rho_r(z=d)$ is the reference density value at the surface \textcolor{green}{orientation of coordinate system??}
@@ -75,7 +95,7 @@ Plugging this expression of the reference density distribution into \ref{eq:11} 
     \rho(T,P) = \rho_0 \exp[(d-z)/H_T \Gamma][1-\alpha (T-T_s)+K_T^{-1}(P-P_H)]
 \end{equation}
 
-\subsection{Nondimensionalization}
+\subsection{Nondimensionalization} \label{subsection:nondimensionalization}
 \ref{table:characteristic_values}, \ref{table:characteristic_values}. \textcolor{green}{move tables here?}
 In this section, \cite{jamc80} introduces various characteristic values of variables in order to nondimensionalize the preceding equations. These characteristic values and the resulting dimensionless 
 variables are presented in the tables below.The characteristic value for \textbf{velocity} is taken directly from \cite{mcrw74}, and their derivation is expanded below: 
@@ -142,15 +162,51 @@ and thus $\bm{\omega} = (0,\omega, 0) = (0, -\nabla^2\psi, 0)$. With $\bm{g} = (
     \nabla^2\omega = \frac{\alpha g}{\nu}\pdv{T}{x}
 \end{align}
 From this equation, we can get an characteristic velocity for the convecting system. 
-\begin{align*}
-    \mathcal{O}(\nabla^2\omega) &=\mathcal{O}(\frac{\alpha g}{\nu} \pdv{T}{x}) \\
+\begin{align} \label{eq:U}
+    \begin{split}
+       \mathcal{O}(\nabla^2\omega) &=\mathcal{O}(\frac{\alpha g}{\nu} \pdv{T}{x}) \\
     \frac{U}{d^3} &= \frac{\alpha g}{\nu_0} \frac{T_1}{d} \\
-    U &= \frac{\alpha g T_1 d^2}{\nu_0}
-\end{align*}
+    U &= \frac{\alpha g T_1 d^2}{\nu_0} 
+    \end{split}
+\end{align}
 Where $U$, $\nu_0$, and $T_1$ are characteristic values for velocity, kinematic viscosity, and temperature deviations from the adiabatic reference profile $T_0$, respectively. 
 \end{mdframed}
 
-For the scaling of pressure variations $P_1$ \textcolor{green}{TO DO}
+For the scaling of pressure variations $P_1$ are derived by considering the horizontal component of Eq.~\eqref{eq:9} and assuming the non-
+hydrostatic pressure gradient $\nabla P$ and the viscous force terms to be of the same order of magnitude
+\textcolor{green}{is this an illegal way to write this?}: 
+\begin{align*}
+    \mathcal{O}(\nabla P) &= \mathcal{O}\left(\pdv{x_i}\, \eta \left( \pdv{u_i}{x_j} + \pdv{u_j}{x_i} \right) - \frac{2}{3} \nabla \eta \, (\nabla \cdot \mathbf{u})\right) \\
+    \frac{P_{1_r}}{d} &= \frac{\eta U}{d^2} \\
+    P_{1_r} &= \frac{\eta U}{d}
+\end{align*}
+Thus, for the dimensionless pressure variable, using Eq.~\eqref{eq:U} and the kinematic viscosity $\nu_0 = \frac{\eta}{\rho_0}$, we get: 
+\begin{align*}
+    P_1' &= \frac{P_1}{P_{1_r}} = \frac{P_1 d}{\eta U} \\
+    &= \frac{P_1}{\alpha T_1 \rho_0 gd}
+\end{align*}
+
+For the dimensionless energy generation rate $\epsilon_0 = \frac{H}{\rho C_p}$ we consider the heat generation and the time scale in the energy equation \eqref{eq:5}: 
+\textcolor{green}{better way to write this down? order of magnitude way?}
+\begin{align*}
+    \pdv{T}{t} &\sim \epsilon_0 \\
+    \frac{T_1}{\tau} \pdv{T'}{t'} &\sim \epsilon_0 \\
+    \epsilon_0' &= \frac{\epsilon_0 \tau}{T_1} \\
+    &= \frac{\epsilon_0 \nu_0}{T_1^2g\alpha d}
+\end{align*}
+Where expressions from table \ref{table:characteristic_values} were used to arrive at the final expression. 
+Similarly for the thermal diffusivity, we balance the conduction term with the time-derivative term in the energy equation \eqref{eq:5} : 
+\begin{align*}
+    \mathcal{O}(\kappa_0 \nabla^2T) &= \mathcal{O}\left(\pdv{T}{t}\right) \\
+    \kappa_{0,r} \frac{T_1}{d^2} &= \frac{T_1}{\tau} \\
+    \kappa_{0,r} &= \frac{d^2}{\tau} \\
+    \kappa_0' &= \frac{\kappa_0}{\kappa_{0,r}} \\
+    &= \frac{\kappa_0 \nu_0}{d^3g\alpha T_1}
+\end{align*}
+Finally, for the dimensionless boxwidth, we simply divide the dimensional box width with the characteristic length: 
+\begin{align*}
+    \lambda = \frac{L}{d}
+\end{align*}
 
 \begin{table}[h!] 
     \renewcommand{\arraystretch}{1.8}   % taller rows
@@ -176,13 +232,62 @@ For the scaling of pressure variations $P_1$ \textcolor{green}{TO DO}
 
 
 \subsection{The anelastic-liquid approximation}
-From now on, only the dimensionless variables will be used but with primes surpressed (i.e. all variables are assumed dimensionless). 
+From now on, only the dimensionless variables will be used but with primes surpressed \textbf{(i.e. all variables are assumed dimensionless)}. 
 The dimensionless equation of state (from eq. \ref{eq:16}) becomes 
-\begin{equation}
+\begin{equation} \label{eq:19}
     \rho = \rho_r[1-\mu(T-T_s)+\mu(\rho_0gd/K_T)P_1]
 \end{equation}
 with $\mu = \alpha T_1$. If $\mu \to 0$, $\rho$ reduces to its reference profile $\rho_r$ (as is the case in the Boussinesq approximation). 
 
+Now, we want to eliminate the bulk modulus from Eq.~\eqref{eq:19}. For this, we use the Grüneisen parameter \eqref{eq:10} and 
+the specific heat identity \eqref{eq:specific_heats} to rewrite the last term: 
+\begin{align*}
+    \frac{\rho_0gd}{K_T} &= \frac{\rho_0gd}{\Gamma\rho C_p}\alpha(1+ \alpha\Gamma T) \\
+    &= \frac{\rho_0}{\rho}\frac{d}{H_T\Gamma}(1+ \alpha\Gamma T)\\
+    &= \frac{D}{\rho_r \Gamma}(1+\alpha\Gamma T)
+\end{align*}
+Where it was used that $\rho \to \rho_r$ and primes were dropped, and that $d/H_T = D$. 
+
+Now we assume $T \approx T_s$ and \textcite{jamc80} (implicitly) introduces the adiabatic temperature profile: \textcolor{green}{NOT SURE ABOUT THIS}
+\begin{align} \label{eq:adiabatic_temp}
+    T_s = T_0\exp\left\{(d-z)/H_T\right\} = T_0 \exp\left\{(1-z)D\right\}
+\end{align}
+Where we used that $z' = z/d$ and dropped the prime. 
+Subsituting \eqref{eq:adiabatic_temp} into \eqref{eq:19} gives \textcolor{green}{WHY WHY WHY derive this equation if you're just going to throw away all terms with $\mu$???}
+\begin{align}
+    \label{eq:20}
+    \rho = \rho_r\left\{1-\mu(T-T_s) + \mu\left(\frac{D}{\rho_r \Gamma}\right)[1+\mu\Gamma T_0\exp{(1-z)D}]P_1\right\}
+\end{align}
+
+\textbf{Now, some approximations are made:} 
+\begin{itemize}
+    \item First, the Mach number $M^2$ is evaluated. This dimensionless number measures the speed of the fluid relative to the local speed of sound. 
+        Using the characteristic velocity $U$ derived in section \ref{subsection:nondimensionalization} (Table \ref{table:characteristic_values}) and 
+        the velocity of sound $C = \sqrt{\frac{1.8K_s}{\rho}} = \sqrt{\frac{1.8C_p\Gamma}{\alpha}}$ \textcolor{green}{where does the 1.8 come from??}  
+        \begin{align*}
+        M^2 &= \frac{U^2}{C^2} \\
+        &= \frac{d}{H_T} \alpha T_1 \frac{g\alpha T_1 d^3}{1.8\nu_0^2\Gamma} \\
+        &= \frac{d}{H_T}\mu R* Pr^{-1} \frac{1}{1.8\Gamma}
+        \end{align*}
+        Now, for $\mathrm{O}(\Gamma) = 1$, $\mathrm{O}(\frac{d}{H_T})$, and $Pr \to \inf$, the Mach number $M^2 \ll 1$. 
+        Based on this approximation, $\pdv{\rho}{t}$ is neglected form the mass continuity equation \eqref{eq:3}. 
+    \item Since $\alpha \approx 10^{-5} \si{\kelvin}^{-1}$ and $T_1 = 1 \si{\kelvin}$, $\mu \ll 1$ and from Eq.~\eqref{eq:20} we can see that 
+            $\rho = \rho_r$ \textcolor{green}{best way to format units in math mode?}
+\end{itemize}
+
+Now, we can plug in the dimensionless $\rho_r$ \eqref{eq:rho_r} into the mass continuity equation \eqref{eq:3}: 
+\begin{align}
+    \begin{split}
+        \nabla \cdot [\bf{u} \exp((1-z)D/\Gamma)] &= 0 \\
+        \nabla \cdot [\bf{u} \exp(-zD/\Gamma)] &= 0 
+    \end{split}
+\end{align}
+Since $\Gamma$ and $D$ are both constant. \textcolor{green}{check D to be constant to be sure. also why are they bold? and is D italic/plain?}
+
+\textcolor{green}{so, for own sanity, a summary: the density in the mass continuity equation is reduced to the reference profile (neglecting variations away from density profile) while the full
+density (including variations) are used in the momentum equation (where density is multiplied with gravity). In the boussinesq equation, is the density also reduced in the body force term? }
+
+\textbf{Restricting the flow to the $x$,$z$ plane} and using that $\bf{u} \exp(-zD/\Gamma)$ is divergence-free (solenoidal), a stream function can be defined: 
 
 \section{Appendix 1: tables of symbols}
 \begin{table}[ht] 
@@ -195,6 +300,7 @@ with $\mu = \alpha T_1$. If $\mu \to 0$, $\rho$ reduces to its reference profile
         \toprule
         d & & depth of the convecting layer \\
         H_T & \dfrac{C_p}{g\alpha} & temperature scale height of the liquid \\
+        D & \dfrac{d}{H_T} & \\
         C_p & & specific heat at constant pressure \\
         C_v && specific heat at constant volume \\
         \alpha & & volume coefficient of thermal expansion \\
@@ -210,6 +316,7 @@ with $\mu = \alpha T_1$. If $\mu \to 0$, $\rho$ reduces to its reference profile
         K_T && isothermal modulus of bulk compressibility \\ 
         \mu & \alpha T_1 & \\
         \alpha & 10^{-5} \quad ^\circ K^{-1} & volume coefficient of thermal expansion \\ 
+
 
 
 
@@ -240,7 +347,7 @@ with $\mu = \alpha T_1$. If $\mu \to 0$, $\rho$ reduces to its reference profile
     \renewcommand{\arraystretch}{1.8}   % taller rows
     \setlength{\tabcolsep}{12pt}        % wider column gaps
     \centering
-    \caption{Dimensionless variables in \cite{jamc80}}
+    \caption{Dimensionless variables and numbers in \cite{jamc80}}
     \label{table:dimensionless_variables}
     \begin{tabular}{>{$}l<{$} >{$}l<{$} }
         \toprule
@@ -253,6 +360,9 @@ with $\mu = \alpha T_1$. If $\mu \to 0$, $\rho$ reduces to its reference profile
         \kappa'_0 & \kappa_0\nu_0/g\alpha T_1d^3, \quad \text{thermal diffusivity} \\
         \epsilon'_0 & \epsilon_0\nu_0/g\alpha T_1^2d, \quad \text{energy generation rate,}\quad \epsilon_0 = H/\rho_0C_p\\
         \lambda & L/d, \quad \text{box width, } \quad L \quad \text{is the dimensional box width}\\
+        M^2 & U^2/C^2 \quad \text{Mach number, where $C$ is sound speed} \\
+        R* & 1/\kappa_0' \quad \text{Rayleigh number equivalent} \\
+        Pr & \nu_0'/\kappa_0' \quad \text{Prandtl number} \\
         \bottomrule
     \end{tabular}
 \end{table}

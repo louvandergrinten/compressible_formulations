@@ -60,6 +60,53 @@
       \verb 10.1017/S002211208000225X
       \endverb
     \endentry
+    \entry{mcrw74}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=1351fda63e5113aab7174e1f97999610}{%
+           family={McKenzie},
+           familyi={M\bibinitperiod},
+           given={Dan\bibnamedelima P},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cea497df28253ec2ac8b753b9146e797}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={Jean\bibnamedelima M},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f350e8cae10682279ab4e664b3f71235}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={Nigel\bibnamedelima O},
+           giveni={N\bibinitperiod\bibinitdelim O\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{cc7690af65944e2845ef3d2aad145a4e}
+      \strng{fullhash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{fullhashraw}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{bibnamehash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{authorbibnamehash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{authornamehash}{cc7690af65944e2845ef3d2aad145a4e}
+      \strng{authorfullhash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{authorfullhashraw}{98c56b6b3758a3a316d46f8f767ece0d}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Fluid Mechanics}
+      \field{number}{3}
+      \field{title}{Convection in the Earth's mantle: towards a numerical simulation}
+      \field{volume}{62}
+      \field{year}{1974}
+      \field{pages}{465\bibrangedash 538}
+      \range{pages}{74}
+      \verb{doi}
+      \verb 10.1017/S0022112074000784
+      \endverb
+    \endentry
   \enddatalist
   \datalist[entry]{apa/global//global/global/global}
     \entry{jamc80}{article}{}{}
@@ -101,6 +148,53 @@
       \range{pages}{69}
       \verb{doi}
       \verb 10.1017/S002211208000225X
+      \endverb
+    \endentry
+    \entry{mcrw74}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=1351fda63e5113aab7174e1f97999610}{%
+           family={McKenzie},
+           familyi={M\bibinitperiod},
+           given={Dan\bibnamedelima P},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cea497df28253ec2ac8b753b9146e797}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={Jean\bibnamedelima M},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f350e8cae10682279ab4e664b3f71235}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={Nigel\bibnamedelima O},
+           giveni={N\bibinitperiod\bibinitdelim O\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{cc7690af65944e2845ef3d2aad145a4e}
+      \strng{fullhash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{fullhashraw}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{bibnamehash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{authorbibnamehash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{authornamehash}{cc7690af65944e2845ef3d2aad145a4e}
+      \strng{authorfullhash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{authorfullhashraw}{98c56b6b3758a3a316d46f8f767ece0d}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Fluid Mechanics}
+      \field{number}{3}
+      \field{title}{Convection in the Earth's mantle: towards a numerical simulation}
+      \field{volume}{62}
+      \field{year}{1974}
+      \field{pages}{465\bibrangedash 538}
+      \range{pages}{74}
+      \verb{doi}
+      \verb 10.1017/S0022112074000784
       \endverb
     \endentry
   \enddatalist
