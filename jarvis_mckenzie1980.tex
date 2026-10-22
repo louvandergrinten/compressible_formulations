@@ -270,7 +270,7 @@ Subsituting \eqref{eq:adiabatic_temp} into \eqref{eq:19} gives \textcolor{green}
         &= \frac{d}{H_T}\mu R* Pr^{-1} \frac{1}{1.8\Gamma}
         \end{align*}
         Now, for $\mathrm{O}(\Gamma) = 1$, $\mathrm{O}(\frac{d}{H_T})$, and $Pr \to \inf$, the Mach number $M^2 \ll 1$. 
-        Based on this approximation, $\pdv{\rho}{t}$ is neglected form the mass continuity equation \eqref{eq:3}. 
+        Based on this approximation, $\pdv{\rho}{t}$ is neglected form the mass continuity equation \eqref{eq:3}. \textcolor{green}{why? isentropic relation, work it out here?}
     \item Since $\alpha \approx 10^{-5} \si{\kelvin}^{-1}$ and $T_1 = 1 \si{\kelvin}$, $\mu \ll 1$ and from Eq.~\eqref{eq:20} we can see that 
             $\rho = \rho_r$ \textcolor{green}{best way to format units in math mode?}
 \end{itemize}
@@ -287,6 +287,9 @@ Since $\Gamma$ and $D$ are both constant. \textcolor{green}{check D to be consta
 \textcolor{green}{so, for own sanity, a summary: the density in the mass continuity equation is reduced to the reference profile (neglecting variations away from density profile) while the full
 density (including variations) are used in the momentum equation (where density is multiplied with gravity). In the boussinesq equation, is the density also reduced in the body force term? }
 
+\subsection{Stream function}
+\textcolor{green}{stream function for compressible flow? I thought it was only defined for incompressible flow? Or are we discussing 
+incompressible flow here because the continuity equation is reduced, even though we have density variations in the other equations?}
 \textbf{Restricting the flow to the $x$,$z$ plane} and using that $\bf{u} \exp(-zD/\Gamma)$ is divergence-free (solenoidal), a stream function can be defined: 
 
 \section{Appendix 1: tables of symbols}
