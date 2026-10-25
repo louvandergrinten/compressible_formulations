@@ -55,9 +55,9 @@ and if $\alpha \ll 1$, how come $D$ is not $\ll 1$?}
 \subsection{Approximate momentum equation}
 Since volume changes in the Earth's mantle occur over timescales greater than $10^7$ years, terms containing the bulk viscosity 
 $\eta_2$ are neglected. Substituting from Eq.~\eqref{eq:8}, the momentum equation, Eq.~\eqref{eq:4}, becomes
-\begin{align*} \label{eq:9}
+\begin{align} \label{eq:9}
     0 = -\nabla P + \rho \mathbf{g} + \pdv{x_i}\, \eta \left( \pdv{u_i}{x_j} + \pdv{u_j}{x_i} \right) - \frac{2}{3} \nabla \eta \, (\nabla \cdot \mathbf{u}).
-\end{align*}
+\end{align}
 \subsection{Reference state and equation of state}
 A reference state with hydrostatic pressure $P_H$ and adiabatic temperature distribution (gradient?) $T_s$ is considered. 
 The equation of state is written as a linear Taylor expansion of $\rho$ about the reference state density distribution $\rho_r$: 
@@ -87,12 +87,12 @@ $H_T$ gives the Adams-Williamson relation \textcolor{green}{add images!}
 Which is valid for a \textbf{chemically homogeneous adiabatic density distribution under hydrostatic pressure}. 
 Integration of equation \ref{eq:adams-williamson} over $z$ gives the reference densitiy distribution as
 \begin{equation} \label{eq:rho_r}
-    \rho_r(z)= \rho_0 \exp[(d-z)/H_T \Gamma]
+    \rho_r(z)= \rho_0 e^[(d-z)/H_T \Gamma]
 \end{equation}
 where $\rho_0 = \rho_r(z=d)$ is the reference density value at the surface \textcolor{green}{orientation of coordinate system??}
 Plugging this expression of the reference density distribution into \ref{eq:11} gives the (linearized equation) of state
 \begin{equation} \label{eq:16}
-    \rho(T,P) = \rho_0 \exp[(d-z)/H_T \Gamma][1-\alpha (T-T_s)+K_T^{-1}(P-P_H)]
+    \rho(T,P) = \rho_0 e^[(d-z)/H_T \Gamma][1-\alpha (T-T_s)+K_T^{-1}(P-P_H)]
 \end{equation}
 
 \subsection{Nondimensionalization} \label{subsection:nondimensionalization}
@@ -250,13 +250,13 @@ Where it was used that $\rho \to \rho_r$ and primes were dropped, and that $d/H_
 
 Now we assume $T \approx T_s$ and \textcite{jamc80} (implicitly) introduces the adiabatic temperature profile: \textcolor{green}{NOT SURE ABOUT THIS}
 \begin{align} \label{eq:adiabatic_temp}
-    T_s = T_0\exp\left\{(d-z)/H_T\right\} = T_0 \exp\left\{(1-z)D\right\}
+    T_s = T_0e^{(d-z)/H_T} = T_0 e^{(1-z)D}
 \end{align}
 Where we used that $z' = z/d$ and dropped the prime. 
 Subsituting \eqref{eq:adiabatic_temp} into \eqref{eq:19} gives \textcolor{green}{WHY WHY WHY derive this equation if you're just going to throw away all terms with $\mu$???}
 \begin{align}
     \label{eq:20}
-    \rho = \rho_r\left\{1-\mu(T-T_s) + \mu\left(\frac{D}{\rho_r \Gamma}\right)[1+\mu\Gamma T_0\exp{(1-z)D}]P_1\right\}
+    \rho = \rho_r\left\{1-\mu(T-T_s) + \mu\left(\frac{D}{\rho_r \Gamma}\right)[1+\mu\Gamma T_0e^{(1-z)D}]P_1\right\}
 \end{align}
 
 \textbf{Now, some approximations are made:} 
@@ -278,8 +278,8 @@ Subsituting \eqref{eq:adiabatic_temp} into \eqref{eq:19} gives \textcolor{green}
 Now, we can plug in the dimensionless $\rho_r$ \eqref{eq:rho_r} into the mass continuity equation \eqref{eq:3}: 
 \begin{align}
     \begin{split}
-        \nabla \cdot [\bf{u} \exp((1-z)D/\Gamma)] &= 0 \\
-        \nabla \cdot [\bf{u} \exp(-zD/\Gamma)] &= 0 
+        \nabla \cdot [\mathbf{u} e^((1-z)D/\Gamma)] &= 0 \\
+        \nabla \cdot [\mathbf{u} e^(-zD/\Gamma)] &= 0 
     \end{split}
 \end{align}
 Since $\Gamma$ and $D$ are both constant. \textcolor{green}{check D to be constant to be sure. also why are they bold? and is D italic/plain?}
@@ -287,10 +287,102 @@ Since $\Gamma$ and $D$ are both constant. \textcolor{green}{check D to be consta
 \textcolor{green}{so, for own sanity, a summary: the density in the mass continuity equation is reduced to the reference profile (neglecting variations away from density profile) while the full
 density (including variations) are used in the momentum equation (where density is multiplied with gravity). In the boussinesq equation, is the density also reduced in the body force term? }
 
-\subsection{Stream function}
+\subsection{Stream function and vorticity field}
 \textcolor{green}{stream function for compressible flow? I thought it was only defined for incompressible flow? Or are we discussing 
 incompressible flow here because the continuity equation is reduced, even though we have density variations in the other equations?}
-\textbf{Restricting the flow to the $x$,$z$ plane} and using that $\bf{u} \exp(-zD/\Gamma)$ is divergence-free (solenoidal), a stream function can be defined: 
+\textbf{Restricting the flow to the $x$,$z$ plane} and using that $\mathbf{u} e^(-zD/\Gamma)$ is divergence-free (solenoidal), a stream function $\psi$ can be defined: 
+\begin{align}
+    \label{eq:23}
+    \mathbf{u} e^{-zD/\Gamma} = (-\pdv{\psi}{z}, 0, \pdv{\psi}{x})
+\end{align}
+Expressing the velocity in terms of this stream function: 
+\begin{align}
+    \label{eq:24}
+    \mathbf{u} = (u,0,w) = \left(-e^{zD/\Gamma}\pdv{\psi}{z},0,e^{zD/\Gamma}\pdv{\psi}{x}\right)
+\end{align}
+Now we can relate the stream function to the vorticity field $\mathbf{\omega}$, using that $\mathbf{\omega} = \nabla \times \mathbf{u}$: 
+\begin{align*}
+    \bm{\omega} &= -\left(\pdv{w}{x}-\pdv{u}{z}\right)\hat{y} = \omega \\
+    \omega &=-e^{zD/\Gamma}\left[\pdv[2]{\psi}{x}+\pdv[2]{\psi}{z} + \frac{D}{\Gamma}\pdv{\psi}{z}\right] \\
+    -\omega e^{-zD/\Gamma}&=\nabla^2\psi +\frac{D}{\Gamma} \pdv{\psi}{z} 
+\end{align*}
+
+Now, we can relate the vorticity to the temperature and the non-hydrostatic pressure by taking the curl of the momentum equation \eqref{eq:9} and substituting the 
+(dimensionless) density distribution \eqref{eq:20}. This is a pretty lengthy derivation: 
+\begin{mdframed}
+    Starting point: Eq.~\eqref{eq:9}. Using that $\nabla \times (\nabla f) = 0$ and that $\nabla \times (\nabla \cdot \bm{A}) = 0$ for any $f$ or $\bm{A}$, taking the curl of Eq.~\eqref{eq:9} gives 
+    \begin{align*}
+        \nabla \times \left(-\nabla P + \rho \bm{g} + \pdv{x_i}\eta\left(\pdv{u_i}{x_j}+\pdv{u_j}{x_i}\right) - \frac{2}{3}\nabla \eta (\nabla \cdot \bm{u})\right)  = \nabla \times \left(\rho \bm{g}+\pdv{x_i}\eta\left(\pdv{u_i}{x_j}+\pdv{u_j}{x_i}\right) \right) \\
+    \end{align*}
+    Each term separately: 
+    Since $\nabla \times \bm{g} = 0$ and we assume $\pdv{y} = 0$, 
+    \begin{align*}
+        \nabla \times (\rho\bm{g}) &= (\nabla \rho) \times \bm{g} \\
+        &= g \pdv{\rho}{x}\hat{y}
+    \end{align*}
+    For the viscous term, we define: 
+    \begin{align*}
+        \pdv{x_i}\eta\left(\pdv{u_i}{x_j}+\pdv{u_j}{x_i}\right) = V_j
+    \end{align*}
+    Note that $j$ is a free index, while the summation is over $i=x,y,z$. Taking the curl thus gives
+    \begin{align*}
+        \nabla \times V &= -\left(\pdv{V_z}{x} -\pdv{V_x}{z}\right)\hat{y} \\
+    \end{align*}
+    Plugging in $V_x = 2\eta\pdv[2]{u}{x} + \eta \pdv{z}\left(\pdv{u}{z}+\pdv{w}{x}\right)$ (for which we carried out the summation over $i$. Note that since $\pdv{y} = 0$, the $i=y$ terms drop out.) and 
+    $V_z = 2\eta\pdv[2]{w}{z} + \eta \pdv{x}\left(\pdv{u}{z}+\pdv{w}{x}\right)$ and simplifying: 
+    \begin{align*}
+        &= \eta\left[\pdv{z}(\pdv[2]{x}+\pdv[2]{z})u - \pdv{x}(\pdv[2]{x}+\pdv[2]{z})w\right] \\
+        &=\eta \left(\pdv{z}\nabla^2u - \pdv{x}\nabla^2w\right)\\
+        &= \eta\nabla^2\omega 
+    \end{align*}
+    Putting both terms together gives: 
+    \begin{align*}
+        \eta\nabla^2\omega = -g\pdv{\rho}{x}
+    \end{align*}
+    When nondimensionalized (see Table \ref{table:characteristic_values}), this becomes: 
+    \begin{align*}
+        \nabla^2\omega' &= -\frac{gd^2}{\nu_0U}\pdv[2]{\rho'}{x} \\
+        &= -\frac{1}{\mu} \pdv{\rho'}{x'}
+    \end{align*}
+    Dropping the primes: 
+    \begin{align*}
+        \nabla^2\omega = \frac{1}{\mu}\pdv{\rho}{x}
+    \end{align*}
+    Now we can plug in (the dimensionless) Eq.~\eqref{eq:20} for $\rho$, where we use that $rho_r$, $T_s$, $\mu$, $D$, and $\Gamma$ are all constants: 
+    \begin{align*}
+            \nabla^2\omega &= -\frac{1}{\mu}\left[-\rho_r\mu\pdv{T}{x} + \mu \frac{D}{\Gamma}\left(1+\mu\Gamma T_0e^{(1-z)D}\right)\pdv{P_1}{x}\right] \\
+            &= \rho_r\pdv{T}{x} -\frac{D}{\Gamma}\left(1+\mu\Gamma T_0e^{(1-z)D}\right)\pdv{P_1}{x}
+    \end{align*}
+    with $\mu \ll 1$ and $\rho_r = e^{(1-z)D/\Gamma}$ this reduces to 
+    \begin{align} \label{eq:27}
+        \nabla^2\omega = e^{(1-z)D/\Gamma}\pdv{T}{x}-\frac{D}{\Gamma}\pdv{P_1}{x}
+    \end{align}
+    We can determine $\pdv{P_1}{x}$ from the horizontal component of Eq.~\eqref{eq:9}: 
+    \begin{align*}
+        \pdv{P_1}{x} &= \eta \left(\nabla^2u+\frac{1}{3}\pdv{x}(\nabla \cdot \bm{u})\right) \\
+    \end{align*} 
+     In dimensionless form (with primes dropped): 
+    \begin{align*}
+        \pdv{P_1}{x} = \nabla^2u+\frac{1}{3}\pdv{x}(\nabla \cdot \bm{u})
+    \end{align*}
+    To eliminate $\nabla \cdot u$, we consider the continuity equation \eqref{eq:3} with $\pdv{\rho}{t} = 0$ and $\rho = \rho_r = e^{(1-z)D/\Gamma}$:
+    \begin{align*}
+        \nabla \cdot (\rho_r u) &= \rho_r\nabla \cdot u + u \cdot \nabla\rho_r \\
+        &= \rho_r\nabla \cdot u - w \frac{D}{\Gamma} \rho_r = 0 \\
+        \nabla \cdot u &= w\frac{D}{\Gamma}
+    \end{align*} 
+    Our (dimensionless) equation for $\pdv{P_1}{x}$ becomes
+    \begin{align*}
+        \pdv{P_1}{x} = \nabla^2u+\frac{1}{3}\pdv{x}\left(w\frac{D}{\Gamma}\right)
+    \end{align*}
+    Plugging this into Eq.~\eqref{eq:27} gives the vorticity equation: 
+    \begin{align}
+        \nabla^2\omega = e^{(1-z)D/\Gamma}\pdv{T}{x}-\frac{D}{\Gamma}\left(\nabla^2u+\frac{D}{3\Gamma}\pdv{w}{x}\right)
+    \end{align}
+\end{mdframed}
+
+
+
 
 \section{Appendix 1: tables of symbols}
 \begin{table}[ht] 
@@ -355,7 +447,7 @@ incompressible flow here because the continuity equation is reduced, even though
     \begin{tabular}{>{$}l<{$} >{$}l<{$} }
         \toprule
         (x', z') & (x,z)/d\\
-        \rho_r'& \rho_r/\rho_0 = \exp[(1-z')D/\Gamma], \quad D= d/H_T\\
+        \rho_r'& \rho_r/\rho_0 = e^[(1-z')D/\Gamma], \quad D= d/H_T\\
         \rho' & \rho/\rho_0 \\
         T'& (T-T_0)/T_1 \\ 
         t' & t/\tau \\
