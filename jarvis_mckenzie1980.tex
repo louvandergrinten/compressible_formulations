@@ -270,7 +270,10 @@ Subsituting \eqref{eq:adiabatic_temp} into \eqref{eq:19} gives \textcolor{green}
         &= \frac{d}{H_T}\mu R* Pr^{-1} \frac{1}{1.8\Gamma}
         \end{align*}
         Now, for $\mathrm{O}(\Gamma) = 1$, $\mathrm{O}(\frac{d}{H_T})$, and $Pr \to \inf$, the Mach number $M^2 \ll 1$. 
-        Based on this approximation, $\pdv{\rho}{t}$ is neglected form the mass continuity equation \eqref{eq:3}. \textcolor{green}{why? isentropic relation, work it out here?}
+        Based on this approximation, $\pdv{\rho}{t}$ is neglected form the mass continuity equation \eqref{eq:3}. \textcolor{green}{why? isentropic relation, work it out here?}The continuity equation becomes 
+        \begin{align} \label{eq:21}
+        \nabla \cdot \rho \bf{u} = 0
+        \end{align} 
     \item Since $\alpha \approx 10^{-5} \si{\kelvin}^{-1}$ and $T_1 = 1 \si{\kelvin}$, $\mu \ll 1$ and from Eq.~\eqref{eq:20} we can see that 
             $\rho = \rho_r$ \textcolor{green}{best way to format units in math mode?}
 \end{itemize}
@@ -278,8 +281,8 @@ Subsituting \eqref{eq:adiabatic_temp} into \eqref{eq:19} gives \textcolor{green}
 Now, we can plug in the dimensionless $\rho_r$ \eqref{eq:rho_r} into the mass continuity equation \eqref{eq:3}: 
 \begin{align}
     \begin{split}
-        \nabla \cdot [\mathbf{u} e^((1-z)D/\Gamma)] &= 0 \\
-        \nabla \cdot [\mathbf{u} e^(-zD/\Gamma)] &= 0 
+        \nabla \cdot [\mathbf{u} e^{(1-z)D/\Gamma}] &= 0 \\
+        \nabla \cdot [\mathbf{u} e^{-zD/\Gamma}] &= 0 
     \end{split}
 \end{align}
 Since $\Gamma$ and $D$ are both constant. \textcolor{green}{check D to be constant to be sure. also why are they bold? and is D italic/plain?}
@@ -381,6 +384,165 @@ Now, we can relate the vorticity to the temperature and the non-hydrostatic pres
     \end{align}
 \end{mdframed}
 
+\subsection{Energy equation}
+Now we turn to the energy equation. Our goal is to write it in dimensionless form and in such a way that we can take the limit of $\mu \to 0$ and reduce it. 
+Our starting point is Eq.~\eqref{eq:5}: 
+\begin{align*}
+    \rho C_p \left\{\pdv{T}{t} - \frac{\alpha T}{\rho C_p}\pdv{P}{t} + \bm{u} \cdot [\nabla T - (\nabla T)_s]\right\} &= 
+    \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}}
+\end{align*}
+Or, equivalently,
+\begin{align*}
+    \rho C_p\pdv{T}{t} - \alpha T\pdv{P}{t} + \rho C_p \bm{u} \cdot \nabla T - \rho C_p \bm{u} \cdot (\nabla T)_s &= 
+    \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}}
+\end{align*}
+
+Where $P = P_1 + P_H$ where $P_H$ is the hydrostatic pressure and $P_1$ deviations from it. 
+
+Now we write this in dimensionless form. For this, we consider each term in the equation seperately, while dividing the whole equation by the advective scaling term 
+$\frac{\rho_0 C_p T_1 U}{d}$. For the scaling terms, we refer to table \ref{table:characteristic_values} and \ref{table:dimensionless_variables}.
+
+\begin{mdframed}
+First term (local rate of change of thermal energy): 
+    \begin{align*}
+        \rho C_p\pdv{T}{t} &= \frac{\rho_0T_1U}{d} \rho' \pdv{T'}{t'} \\
+    \end{align*}
+Dividing by advective scale term: 
+    \begin{align*}
+        \frac{d}{\rho_0C_p T_1 U}\frac{\rho_0T_1U}{d} \rho' \pdv{T'}{t'} =\rho' \pdv{T'}{t'} \\
+    \end{align*}
+\end{mdframed}
+
+\begin{mdframed}
+    Second term (time variation of non-hydrostatic pressure, adiabatic heating?). Since we assume the hydrostatic pressure to be time-independent \textcolor{green}{is this obvious? why? is the whole reference profile considered 
+    constant in time?}, $\pdv{P}{t} = \pdv{P_1}{t}$ 
+    \begin{align*}
+        -\alpha T \pdv{P_1}{t} &= \alpha T_1 (T' + T_0') \frac{\eta U^2}{d^2} \pdv{P_1'}{t'} \\
+        &= -\mu (T' + T_0') \frac{\eta U^2}{d^2} \pdv{P_1'}{t'}
+    \end{align*}
+    Dividing by advective scale and with $U = \frac{g\alpha T_1d^2}{\nu_0}$: 
+    \begin{align*}
+        -\frac{d}{\rho_0C_p T_1 U} \frac{\eta U^2}{d^2}\mu (T' + T_0')  \pdv{P_1'}{t'} &= -\frac{g\alpha d}{C_p} \mu (T' + T_0') \pdv{P_1'}{t'} \\
+        &= -D\mu (T' + T_0') \pdv{P_1'}{t'} \\
+    \end{align*}
+\end{mdframed}
+\begin{mdframed}
+    Third term (advection of temperature through velocity field): 
+    \begin{align*}
+        \rho C_p \bm{u}\cdot\nabla T &= \frac{\rho_0C_pUT_1}{d} \bm{u'} \cdot \nabla '(T'+T_0') \\
+    \end{align*}
+    Dividing by advective scale and noting that $\nabla \cdot T_0 = 0$:   
+    \begin{align*}
+        \frac{d}{\rho_0C_p T_1 U} \frac{\rho_0C_pUT_1}{d} \bm{u'} \cdot \nabla '(T') & = \rho' \bm{u'} \cdot \nabla 'T'
+    \end{align*}
+    With the anelastic continuity equation \eqref{eq:21}: 
+    \begin{align*}
+        \rho' \bm{u'} \cdot \nabla 'T' = \nabla' \cdot (T'\rho'\bm{u'})
+    \end{align*}
+\end{mdframed}
+
+\begin{mdframed}
+    Fourth term (adiabatic heating of fluid through pressure gradient). Table \ref{table:symbols} gives $(\nabla T)_s = \frac{\alpha T}{\rho C_p}\nabla P$, with $\nabla P = \nabla P_H + \nabla P_1$ 
+    Since $P_H$ is the hydrostatic pressure, $\nabla P_H = -\rho_r g \hat{z}$. Thus: 
+    \begin{align*}
+        -\rho C_p \bf{u} \cdot (\nabla T)_s &= -\alpha T \bm{u} \cdot (\nabla P)\\
+        &= +\alpha T w \rho_r g - \alpha T \bm{u} \cdot \nabla P_1\\
+        &= \mu \rho_0gU\rho'(T'+T_0')w' - \frac{\alpha T_1 U^2 \eta}{d^2} (\bm{u'}\cdot \nabla'P_1') \\
+    \end{align*} 
+Dividing by advective scale: 
+\begin{align*}
+    \frac{d}{\rho_0C_p T_1 U} \left(\mu \rho_0gU\rho'(T'+T_0')w' - \frac{\alpha T_1 U^2 \eta}{d^2} (\bm{u'}\cdot \nabla'P_1')\right) \\
+    = D \rho_r'(T_1'+T_0')w' - \mu D (T_1'+T_0')(\bm{u'}\cdot\nabla P_1') 
+\end{align*}
+\end{mdframed}
+\begin{mdframed}
+    Fifth term (heat conduction/diffusion). $K$ is the thermal conductivity, which is considered constant. Thus, 
+    \begin{align*}
+        \nabla \cdot (K\nabla T) &= K\nabla^2T\\
+        &= \rho_0 C_p \kappa_0  \nabla^2 T\\
+        &= \rho_0 C_p \frac{g\alpha T_1 d^3}{\nu_0} \frac{T_1}{d^2} (\kappa_0' \nabla^{2'}T') \\
+        &= \frac{\rho_0C_pUT_1}{d}\kappa_0' \nabla^{2'}T'
+    \end{align*}
+    Dividing by the advective scale: 
+    \begin{align*}
+        \frac{d}{\rho_0C_p T_1 U} \frac{\rho_0C_pUT_1}{d}\kappa_0' \nabla^{2'}T' = \kappa_0' \nabla^{2'}T' 
+    \end{align*}
+\end{mdframed}
+
+\begin{mdframed}
+    Sixth term (heat generation): 
+    \begin{align*}
+        H &= \epsilon_0\rho_0C_p\\
+        &= \frac{\rho_0C_p g \alpha T_1^2d}{\nu_0}\epsilon_0'
+    \end{align*}
+    Dividing by advective term: 
+    \begin{align*}
+        \frac{d}{\rho_0C_p T_1 U}  \frac{\rho_0C_p g \alpha T_1^2d}{\nu_0}\epsilon_0' &= \frac{g\alpha T_1 d^2 }{\nu_0 U} \epsilon_0' = \epsilon_0'
+    \end{align*}
+\end{mdframed}
+
+\begin{mdframed}
+    Seventh term (viscous dissipation). This is by far the most lengthy derivation of all terms. From Eq.~\eqref{eq:8} with the bulk viscosity $\eta_2$ neglected, we write 
+    \begin{align*}
+        \tau_{ij} = \eta \left( \pdv{u_i}{x_j} + \pdv{u_j}{x_i} - \frac{2}{3}\,\delta_{ij}\,\pdv{u_k}{x_k} \right)
+    \end{align*}
+    Now we assume(d) the flow to be restricted to the $x$,$z$ plane, so $v=0$ and $\pdv{y} =0$. \textcolor{green}{did we assume this before? or is this the first time specifying? check section streamfunction}
+    With this, the elements of the stress tensor $\tau$ become
+    \begin{align*}
+        \tau_{xx} &= \eta \left( 2\,\pdv{u}{x} - \frac{2}{3}\,\nabla \cdot \mathbf{u} \right) \\
+        \tau_{zz} &= \eta \left( 2\,\pdv{w}{z} - \frac{2}{3}\,\nabla \cdot \mathbf{u} \right) \\
+        \tau_{xz} &= \tau_{zx} = \eta \left( \pdv{u}{z} + \pdv{w}{x} \right) \\
+    \end{align*} 
+    With this, we can carry out the summation in the viscous dissipation , using the symmetry $\tau_{xz} = \tau_{zx}$: 
+    \begin{align} \label{eq:dissipation}
+            \tau_{ij}\pdv{u_i}{x_j} &= \tau_{xx}\pdv{u}{x} + \tau_{zz}\pdv{w}{z} + \tau_{xz}\left(\pdv{u}{z} + \pdv{w}{x}\right) \notag\\
+     &= \eta \left[ 2\left(\pdv{u}{x}\right)^{2} + 2\left(\pdv{w}{z}\right)^{2}
+        + \left( \pdv{u}{z} + \pdv{w}{x} \right)^{2}
+        - \frac{2}{3}\left( \pdv{u}{x} + \pdv{w}{z} \right)^{2} \right] \notag\\
+    &= \eta \left[ \left( \pdv{u}{z} + \pdv{w}{x} \right)^{2}
+        + \left( \pdv{u}{x} - \pdv{w}{z} \right)^{2}
+        + \frac{1}{3}\left( \pdv{u}{x} + \pdv{w}{z} \right)^{2} \right]
+    \end{align} 
+    Where we used that 
+    \begin{align*}
+        2a^{2} + 2b^{2} - \frac{2}{3}(a+b)^{2} = (a-b)^{2} + \frac{1}{3}(a+b)^{2}
+    \end{align*}
+    with $a = \pdv{u}{x}$ and  $b = \pdv{w}{z}$. 
+    Now we want to write this in terms of the stream function $\psi$ and in dimensionless form.
+    All (bracketed) terms in Eq.~\eqref{eq:dissipation} scale with $\left(\frac{U}{d}\right)^2$.
+    Eq.~\eqref{eq:23} gives the (dimensionless) velocity in terms of the stream function 
+    \begin{align*}
+        u &= -e^{z'D/\Gamma}\pdv{\psi}{z} \\
+        w &= e^{z'D/\Gamma}\pdv{\psi}{x}
+    \end{align*}
+    and the viscous dissipation becomes
+    \begin{align*}
+        \tau_{ij}\pdv{u_i}{x_j} &= \eta e^{2Dz'/\Gamma} \left(\frac{U}{d}\right)^2
+  \left[
+    \left( 2\pdv{\psi'}{x'}{z'} + \frac{D}{\Gamma}\pdv{\psi'}{x'} \right)^{2}
+  + \left( \pdv[2]{\psi'}{{x'}} - \pdv[2]{\psi'}{{z'}} - \frac{D}{\Gamma}\pdv{\psi'}{z'} \right)^{2}
+  + \frac{1}{3}\left( \frac{D}{\Gamma}\pdv{\psi'}{x'} \right)^{2}
+  \right]
+    \end{align*}
+    Where the product rule was used in computing the spatial derivatives of the velocity components in the bracketed 
+    terms in equation \eqref{eq:dissipation}. \textcolor{green}{show more intermediate steps?}. 
+    No, finally, dividing the prefactor by the advective scaling term gives
+    \begin{align*}
+        \frac{d}{\rho_0C_p T_1 U} \eta \left(\frac{U}{d}\right)^2 = D
+    \end{align*} 
+    thus the dimensionless viscous dissipation term becomes 
+    \begin{align*}
+    De^{2Dz'/\Gamma} \left[
+    \left( 2\pdv{\psi'}{x'}{z'} + \frac{D}{\Gamma}\pdv{\psi'}{x'} \right)^{2}
+  + \left( \pdv[2]{\psi'}{{x'}} - \pdv[2]{\psi'}{{z'}} - \frac{D}{\Gamma}\pdv{\psi'}{z'} \right)^{2}
+  + \frac{1}{3}\left( \frac{D}{\Gamma}\pdv{\psi'}{x'} \right)^{2}
+  \right]
+    \end{align*}
+\end{mdframed}
+
+The full dimensionless energy equation, with primes dropped, becomes 
+
+
 
 
 
@@ -451,6 +613,7 @@ Now, we can relate the vorticity to the temperature and the non-hydrostatic pres
         \rho' & \rho/\rho_0 \\
         T'& (T-T_0)/T_1 \\ 
         t' & t/\tau \\
+        \pdv{t'} & \frac{d}{U}\pdv{t}\\ 
         P_1' & \dfrac{P_1 d}{U\eta} = P_1 \alpha T_1 \rho_0 gd, \quad P_1 = P-P_H \\
         \kappa'_0 & \kappa_0\nu_0/g\alpha T_1d^3, \quad \text{thermal diffusivity} \\
         \epsilon'_0 & \epsilon_0\nu_0/g\alpha T_1^2d, \quad \text{energy generation rate,}\quad \epsilon_0 = H/\rho_0C_p\\
