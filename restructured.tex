@@ -15,37 +15,268 @@
 \usepackage{mdframed}
 %\usepackage{siunitx} %%NOTE: CONFLICT WITH PHYSICS WITH \QTY MACRO
 
+%%% material derivative
+\newcommand{\mdv}[2]{\frac{D #1}{D #2}}
+
 \addbibresource{bibliography.bib}
 \geometry{margin=1in}
-\title{Derivation of the anelastic liquid approximation}
+\title{Derivation of the anelastic liquid approximation for compressible mantle convection}
 \author{Lou van der Grinten}
 \date{\today}
 
 \begin{document}
 \maketitle
+\newpage
+\tableofcontents
+\newpage
+
 \section{Introduction and problem statement}
-
-\section{Starting equations}
+\begin{itemize}
+    \item why do we need to take compressibility into account?/ what improvements does (T)ALA offer? 
+    \item what approximations were being used before ALA was introduced? 
+    \item 
+\end{itemize}
+\section{General equations} \label{section:general_eq}
 \subsection{Conservational laws}
-\subsection{Stress tensor and approximate momentum equation}
-\subsection{Grüneisen parameter and other relations}
+\subsubsection{Conservation of mass}
+The conservation of mass for an infinitesimal volume element of a continuum states that
+\begin{align}
+    \pdv{\rho}{t} + \nabla \cdot (\rho\bm{u}) &= 0\\ \label{eq:mass}
+\end{align}
+Where $\pdv{\rho}{t}$ represents the change of mass in such a volume element while $\nabla \cdot (\rho\bm{u})$ represents the net flux
+of mass into or out of the volume. Various expressions of the mass continuity equations which are used by different authors include 
+\begin{align*}
+    \frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x_i}(\rho u_i) &= 0\\
+\frac{1}{\rho}\frac{D\rho}{Dt} + \frac{\partial u_i}{\partial x_i} &= 0
+\end{align*}
+which can be shown to be equivalent to Eq.~\eqref{eq:mass} using the mathematical formulations presented in Appendix \ref{section:math}.
 
-\section{Adams-Williamson equation of state}
 
-\section{Nondimensionalization}
+\subsubsection{Conservation of momentum}
+The governing equation for the acceleration of an elemental parcel subjected to external forces is 
+\begin{align} \label{eq:momentum_jamc}
+    \rho\left(\pdv{\bm{u}}{t} + \bm{u} \cdot \nabla \bm{u}\right) &= -\nabla P + \pdv{\tau_{ij}}{x_j} + \rho \bm{g} 
+\end{align}
+or, in terms of the material derivative and in tensor notation,
+\begin{align} \label{eq:momentum_scto} 
+    \rho \mdv{u_i}{t} = - \pdv{P}{x_i} + \pdv{\tau_{ij}}{x_j}+\rho g_i
+\end{align}
+The term(s) on the left of Eq.~\eqref{eq:momentum_jamc} and Eq.~\eqref{eq:momentum_scto} represent the intertia of the 
+volume element, while $\nabla P$ is the pressure gradient force, 
+$\pdv{\tau_{ij}}{x_j}$ the (viscous) deviatoric stresses, and $\rho \bm{g}$ the gravitational (body) force \autocite{scto01}. 
 
-\section{Anelastic Liquid Approximation (ALA)}
+\subsubsection{Conservation of energy}
+The relevant governing equation derived from the conservation of energy is written by \textcite{jamc80} as
+\begin{align}
+    \rho C_p \left\{\pdv{T}{t} - \frac{\alpha T}{\rho C_p}\pdv{P}{t} + \bm{u} \cdot [\nabla T - (\nabla T)_s]\right\} &= 
+    \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}} \label{eq:energy_jamc}
+\end{align}
+\textcolor{green}{check}Where the terms represent, in order, the local rate of change of thermal energy, the adiabatic heating, 
+advection of temperature, diffusion, internal heat generation, and viscous dissipation. 
+In their derivation, it is relevant for \textcite{jamc80} to write the energy equation in terms of and define the adiabatic temperature gradient as
+\begin{align*}
+    (\nabla T)_s = \frac{\alpha T}{\rho C_p} \nabla P
+\end{align*}
+Using this, Eq.~\ref{eq:energy_jamc} can alternatively be written as
+\begin{align*}
+    \rho C_p \pdv{T}{t} - \alpha T \pdv{\rho}{t} +\rho C_p \bm{u} \cdot \nabla T - \alpha T \bm{u}\cdot\nabla P &= \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}}\\
+    \rho C_p \mdv{T}{t} - \alpha T \mdv{\rho}{t} &= \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}}
+\end{align*}
+Which is the energy equation used by \textcite{scto01}. 
+Referring to Appendix \ref{section:math}, one can show that Eq.~\ref{eq:energy_jamc} can also be written as
+\begin{align*}
+    \rho C_p \left(\frac{\partial T}{\partial t} + \textbf{u} \cdot \nabla T\right) - \alpha T(\textbf{u} \cdot \nabla P)  =  \nabla \cdot(K\nabla T) + H +\tau: \dot{\varepsilon} 
+\end{align*}
+With $\dot{\varepsilon}$ the strain rate, which is adapted from the energy equation used by \textcite{gada20}.  
+
+\subsection{Stress and strain}
+In a Newtonian fluids, the stress tensor elements $\tau_{ij}$ are linearly dependent on the strain rate $e_{ij}$, and for Newtonian as well as isotropic fluids \textcolor{green}{explain what this means or is this too in-depth?} we can use this relation to 
+write the stress tensor elements in terms of the velocity field: 
+\begin{align} \label{eq:stress_1}
+\tau_{ij} = \eta \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}
+ - \frac{2}{3}\,\delta_{ij}\,\frac{\partial u_k}{\partial x_k} \right) 
+ + k_B\,\delta_{ij}\,\frac{\partial u_k}{\partial x_k}.
+\end{align}
+With $\eta$ and $k_B$ the dynamic and bulk viscosity, respectively. The derivation of Eq.~\eqref{eq:stress_1} is discussed in detail by \textcite{scto01}.
+Since the bulk viscosity is associated with rapid changes in volume and volume changes in 
+mantle convection occur over timescales greater than $10^7$ years \autocite{jamc80}, the terms with $k_B$ are neglected and Eq.~\eqref{eq:stress_1} is reduced to 
+\begin{align} \label{eq:stress}
+\tau_{ij} = \eta \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}
+ - \frac{2}{3}\,\delta_{ij}\,\frac{\partial u_k}{\partial x_k} \right) 
+\end{align}
+
+\section{Equation of state} \label{section:eq_state}
+\subsection{Linearizing the equation of state}
+A major simplification of the general equations described in section \ref{section:general_eq} derives from the linearization of the equation of state, which describes the density of the material as a function of state variables. Neglecting 
+density changes associated with phase transitions such as the olivine-spinel transition, as investigated by \textcite{itki94}, the density of the mantle material can be defined as a function of only temperature and pressure $\rho = \rho(T, P)$. 
+The mantle density increases by approximately 65\% between the surface 
+and the core-mantle boundary, and most of this change is due to hydrostatic compression \autocite{scto01}. This is why it is justified for many approximating methods 
+to assume a time-independent and adiabatic reference density profile, which remains fixed throughout the calculation \autocite{itki94}. We can therefore expand the 
+pressure, temperature and density as
+\begin{align*}
+    T &= T_s + T_1 \\
+    P &= P_H + P_1 \\
+    \rho(T,P) &= \rho_r + \rho'(P_1, T_1)
+\end{align*}
+Where $P_H$ is the hydrostatic pressure and $P_1$ deviations from it, $T_s$ is the adiabatic temperature component and $T_1$ deviations from it, and $\rho_r$ is a
+time-independent adiabatic reference profile. The deviations from this profile need not be 
+necessarily small \autocite{scto01}, but assuming that they are, the equation of state can be written 
+as a linear Taylor expansionof the density $\rho$ about the reference state $\rho_r$: 
+\begin{align*} \label{eq:eq_state}
+    \rho(T,P) &= \rho_r + \left(\pdv{\rho}{P}\right)_T P' + \left(\pdv{\rho}{T}\right)_P T' \\
+    &= \rho_r[1-\alpha(T-T_s)+K_T^{-1}(P-P_H)] 
+\end{align*}
+Where 
+\begin{align*}
+    \alpha &= - \frac{1}{\rho_r} \left(\pdv{\rho_R}{T}\right)_P \\
+    K_T &= \rho_r \left(\pdv{P}{\rho_r}\right)_T 
+\end{align*}
+Which are the thermal expansion coefficient and the isothermal modulus of bulk compressibility, respectively (i.e. coefficients that determine how the density varies with changes in temperature and pressure)(Table \ref{table:variables}; \cite{jamc80}). 
+What remains is to determine an expression for reference density profile $\rho_r$. This can be done in numerous ways, but many authors (\cite{jamc80}; \cite{lezh08}; \cite{itki94}) choose to follow the method first
+published by \textcite{birc52}, which is expanded below. However, one should 
+keep in mind that other expressions for the reference state are possible, such as the polytropic reference state presented by \textcite{glat88}. 
+
+\subsection{Adams-Williamson reference state}
+Following the approach of \textcite{jamc80} and \textcite{birc52}, an expression for the reference density distribution $\rho_r$ is done by considering the gradient of $\rho_r(S, P_H)$ with $S$ 
+the entropy per unit mass: 
+\begin{equation*}
+    \nabla\rho_R(S,P_H) = \left(\pdv{\rho_r}{S}\right)_{P_H} \nabla S + \left(\pdv{\rho_r}{P_H}\right)_S\nabla P_H
+\end{equation*}
+With $\nabla S = 0$ since the reference state is adiabatic, and with the hydrostatic component of the pressure gradient $\nabla P_H = -\rho_rg \bm{\hat{z}}$:
+\begin{equation} \label{eq:ref_K}
+    \frac{1}{\rho_r} \pdv{\rho_r}{z} = -g \left(\pdv{\rho_r}{P_H}\right)_S = -\frac{\rho_r g}{K_s}
+\end{equation} 
+with $K_s = \rho_r\left(\pdv{P_H}{\rho_r}\right)_s$ the isentropic modulus of bulk compressibility. 
+
+Using the Grüneisen parameter $\Gamma$ first introduced by \textcite{birc52}
+\begin{align}
+    \Gamma = \frac{\alpha K_s}{\rho C_p} = \dfrac{\alpha K_T}{\rho C_v}
+\end{align}
+ Eq.~\eqref{eq:ref_K} may be written as the Adams-Williamson relation for a chemically homogeneous adiabatic density distribution under hydrostatic pressure \autocite{birc52}:
+ \begin{equation} \label{eq:adams-williamson}
+    \frac{1}{\rho_r} \pdv{\rho_r}{z} = -\frac{1}{H_T \Gamma}
+\end{equation}
+\textcite{jamc80} argues that for most liquids, $\Gamma$ is approximately constant and of order $1$, thus Eq.~\ref{eq:adams-williamson} may
+be integrated over $z$ to find
+\begin{equation} \label{eq:15}
+    \rho_r(z)= \rho_0 e^{(d-z)/H_T \Gamma}
+\end{equation}
+where $\rho_0 = \rho_r(z=d)$ is the reference density value at the surface and $H_T$ is the temperature scale height of the liquid \autocite{jamc80}.
+
+
+\section{Dimensionless variables}
+
+
+
+\begin{table}[ht] 
+    %\renewcommand{\arraystretch}{1.8}   % taller rows
+    %\setlength{\tabcolsep}{12pt}        % wider column gaps
+    \centering
+    \caption{Variables of the governing equations}
+    \label{table:variables}
+    \begin{tabular}{>{$}l<{$} l >{$}l<{$}}
+        \toprule
+        \text{Symbol} & Name & \text{Normalizing factor}\\
+        \midrule
+        \rho & density & \rho_0 \\
+        \rho_r & reference density & \rho_0 \\
+        x_i & ith component of direction & d\\ 
+        t & time \textcolor{green}{maybe change this?}& \tau \\ 
+        \bm{u} & velocity vector & U\\
+        P_H & hydrostatic pressure & \\
+        P_1 & non-hydrostatic pressure & \eta U / d\\
+        T & temperature \textcolor{green}{maybe change this?} & T_r \\ 
+        S & entropy &\\
+        \tau_{ij} & deviatoric stress tensor components &\\
+        C_p & specific heat at constant pressure & \\
+        \alpha & volume coefficient of thermal expansion & \\
+        K_T & isothermal modulus of bulk compressibility& \\
+        (\nabla T)_s  & adiabatic temperature gradient & \\
+        K & thermal conductivity &\\
+        \kappa_0 & thermal diffusivity &\\
+        H & rate of internal heat generation \\
+        \eta  & dynamic viscosity \\
+        k_B & bulk viscosity &\\
+        \nu & kinematic viscosity & \\
+        H_T & temperature scale height & \\
+        T_0 & temperature at upper boundary & \\
+        
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\begin{table}[ht] 
+    %\renewcommand{\arraystretch}{1.8}   % taller rows
+    %\setlength{\tabcolsep}{12pt}        % wider column gaps
+    \centering
+    \caption{Normalizing quantities and respective characteristic values}
+    \label{table:normalizing_qt}
+    \begin{tabular}{>{$}l<{$} l >{$}l<{$}}
+        \toprule
+        \text{Symbol} & Name & \text{Value or factor}\\
+        \midrule
+        d & depth &\\
+        T_0 & temperature & 1 ^{\circ}\text{K} \\
+        \rho_0 & density at upper surface & \\
+        U & velocity & \kappa_0/d \\
+        \tau & time & d^2/\kappa_0 \\
+        \nu_0 & kinematic viscosity & \eta / \rho_0 \\
+        \kappa_0 & thermal diffusivity & g\alpha T_1 d^3/\nu_0 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+The governing equations as presented in section \ref{section:general_eq} and \ref{section:eq_state} are in their dimensional from. In order 
+to easily perform the simplification of these equations in section \ref{section:ALA}, scaling factors must be introduced to nondimensionalize them. 
+Through nondimensionalization we are then able to demonstrate which terms can be neglected when compared in scale to the process we want to resolve in our model (in this case, mantle convection).
+Physically, this means that we assume that processes that take place on a relatively short timescale, such as seismic waves, do not significantly impact mantle convection.
+An additional numerical argument is that processes on drastically different timescales can usually not be incorporated into a single numerical model, since processes that take place on timescales 
+shorter than the model timestep cannot be accurately resolved \autocite{gada20}. 
+
+\textcolor{green}{HELP}
+There are multiple approaches for choosing appropriate scaling factors. \textcite{jamc80} adopt the derivation by \textcite{mcrw74} \textcolor{green}{appendix?}, deriving a scaling factor for 
+velocity from the vorticity equation and, from this, determining a scaling factor for the thermal diffusivity. Alternatively, \textcite{scto01} assumes the diffusive scaling for velocity $\kappa/d$, 
+which means that processes happening at the velocity scale of diffusion are of order 1. 
+
+The scaling factors adapted from \textcite{jamc80}, \textcite{lezh08}, and \textcite{itki94} are presented in Table \ref{table:normalizing_qt}. Dividing the dimensional variables 
+by their respective scaling factor reulsts in the dimensionless (primed) variables in Table \ref{table:nond_variables}
+
+
+
+table with characteristic values 
+
+struggle: there are different approaches to the nondimensionalization and subsequent simplification of the governing equations. some authors 
+choose to first simplify the governing equations based on Pr inf and M=0 assumptions with physical arguments, then nondimensionalize the already simplified equations. 
+This is algebraically the easier route. However, if one wishes to first define the Mach and Prandtl number and show them to go to zero and infinity respectively, then 
+the equations must first be made dimesionless. Which approach to show here? 
+
+
+\subsection{Infinite Prandtl number and disappearing Mach number}
+Mach number: ratio of convective flow speeds to seismic wave speeds. eliminating processes on much shorter timescales than convective phenomena to greatly simplify governing equations \autocite{gada20}
+Prandtl number: ratio between momentum diffusivity and thermal diffusivity (approx infinite for earth mantle) : eliminates the intertia terms in momentum equation
+Infinite mach number implies mach number of zero \autocite{gada20}
+derivation of the dimensionless numbers by \autocite{scto01}, application by \autocite{jamc80}, physical intuition by \autocite{gada20}
+\section{Anelastic Liquid Approximation (ALA)} \label{section:ALA}
+Approximations made + nondimensionalization 
+\subsection{Approximate momentum equation}
+
+\subsection{Continuity equation}
+
 \subsection{Stream function and vorticity field}
+
 \subsection{Energy equation}
 
 \section{Boundary- and initial conditions}
 
-\section{Appendices}
-\subsection{List of all approximations and assumptions}
-\subsection{Tables: symbols, characteristic values}
-\subsection{Glossary}
-\subsection{Basic math}
-\subsection{On the topic of science communication, the big picture and philosophy of science}
+
+\appendix
+
+\section{List of all approximations and assumptions}
+\section{Tables: symbols, characteristic values}
+\section{Glossary}
+\section{Mathematical relations and identities} \label{section:math}
+
+\printbibliography[heading=bibintoc, title={References}]
 
 \end{document}
 
