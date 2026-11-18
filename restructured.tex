@@ -36,9 +36,14 @@
     \item what approximations were being used before ALA was introduced? 
     \item 
 \end{itemize}
+
+%==============================================================================
 \section{General equations} \label{section:general_eq}
-\subsection{Conservational laws}
-\subsubsection{Conservation of mass}
+
+add 'text' about conservation laws.
+
+%-------------------------------
+\subsection{Conservation of mass}
 The conservation of mass for an infinitesimal volume element of a continuum states that
 \begin{align}
     \pdv{\rho}{t} + \nabla \cdot (\rho\bm{u}) &= 0\\ \label{eq:mass}
@@ -52,10 +57,10 @@ of mass into or out of the volume. Various expressions of the mass continuity eq
 which can be shown to be equivalent to Eq.~\eqref{eq:mass} using the mathematical formulations presented in Appendix \ref{section:math}.
 
 
-\subsubsection{Conservation of momentum}
+\subsection{Conservation of momentum}
 The governing equation for the acceleration of an elemental parcel subjected to external forces is 
 \begin{align} \label{eq:momentum_jamc}
-    \rho\left(\pdv{\bm{u}}{t} + \bm{u} \cdot \nabla \bm{u}\right) &= -\nabla P + \pdv{\tau_{ij}}{x_j} + \rho \bm{g} 
+    \rho\left(\pdv{\bm{u}}{t} + \bm{u} \cdot \nabla \bm{u}\right) &= -\nabla P + \nabla\cdot {\bm \tau} + \rho \bm{g} 
 \end{align}
 or, in terms of the material derivative and in tensor notation,
 \begin{align} \label{eq:momentum_scto} 
@@ -65,11 +70,11 @@ The term(s) on the left of Eq.~\eqref{eq:momentum_jamc} and Eq.~\eqref{eq:moment
 volume element, while $\nabla P$ is the pressure gradient force, 
 $\pdv{\tau_{ij}}{x_j}$ the (viscous) deviatoric stresses, and $\rho \bm{g}$ the gravitational (body) force \autocite{scto01}. 
 
-\subsubsection{Conservation of energy}
+\subsection{Conservation of energy}
 The relevant governing equation derived from the conservation of energy is written by \textcite{jamc80} as
 \begin{align}
     \rho C_p \left\{\pdv{T}{t} - \frac{\alpha T}{\rho C_p}\pdv{P}{t} + \bm{u} \cdot [\nabla T - (\nabla T)_s]\right\} &= 
-    \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}} \label{eq:energy_jamc}
+    \nabla \cdot (K\nabla T) + H + {\bm \tau} : \nabla {\bm u} \label{eq:energy_jamc}
 \end{align}
 \textcolor{green}{check}Where the terms represent, in order, the local rate of change of thermal energy, the adiabatic heating, 
 advection of temperature, diffusion, internal heat generation, and viscous dissipation. 
@@ -77,85 +82,155 @@ In their derivation, it is relevant for \textcite{jamc80} to write the energy eq
 \begin{align*}
     (\nabla T)_s = \frac{\alpha T}{\rho C_p} \nabla P
 \end{align*}
-Using this, Eq.~\ref{eq:energy_jamc} can alternatively be written as
+Using this, Eq.~\eqref{eq:energy_jamc} can alternatively be written as
 \begin{align*}
-    \rho C_p \pdv{T}{t} - \alpha T \pdv{\rho}{t} +\rho C_p \bm{u} \cdot \nabla T - \alpha T \bm{u}\cdot\nabla P &= \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}}\\
-    \rho C_p \mdv{T}{t} - \alpha T \mdv{\rho}{t} &= \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}}
+    \rho C_p \pdv{T}{t} - \alpha T \pdv{P}{t} +\rho C_p \bm{u} \cdot \nabla T - \alpha T \bm{u}\cdot\nabla P &= \nabla \cdot (K\nabla T) + H +  {\bm \tau} : \nabla {\bm u} \\
+    \rho C_p \mdv{T}{t} - \alpha T \mdv{P}{t} &= \nabla \cdot (K\nabla T) + H + {\bm \tau} : \nabla {\bm u} 
 \end{align*}
-Which is the energy equation used by \textcite{scto01}. 
-Referring to Appendix \ref{section:math}, one can show that Eq.~\ref{eq:energy_jamc} can also be written as
+which is the energy equation used by \textcite{scto01}. 
+Referring to Appendix \ref{section:math}, one can show that Eq.~\eqref{eq:energy_jamc} can also be written as
 \begin{align*}
-    \rho C_p \left(\frac{\partial T}{\partial t} + \textbf{u} \cdot \nabla T\right) - \alpha T(\textbf{u} \cdot \nabla P)  =  \nabla \cdot(K\nabla T) + H +\tau: \dot{\varepsilon} 
+    \rho C_p \left(\frac{\partial T}{\partial t} + {\bm u} \cdot \nabla T\right) - \alpha T({\bm u} \cdot \nabla P)  
+=  \nabla \cdot(K\nabla T) + H + {\bm \tau}: \dot{\bm \varepsilon} 
 \end{align*}
-With $\dot{\varepsilon}$ the strain rate, which is adapted from the energy equation used by \textcite{gada20}.  
+{\color{red} partial P/partial t missing ?!}
+With $\dot{\bm \varepsilon}$ the strain rate tensor, which is identical to the energy equation used by \textcite{gada20} save for the .... {\color{red} include}.  
 
-\subsection{Stress and strain}
-In a Newtonian fluids, the stress tensor elements $\tau_{ij}$ are linearly dependent on the strain rate $e_{ij}$, and for Newtonian as well as isotropic fluids \textcolor{green}{explain what this means or is this too in-depth?} we can use this relation to 
+%-------------------------------
+\subsection{Viscous rheology}
+
+In a Newtonian fluid, the stress tensor ${\bm \tau}$ is linearly dependent on 
+the strain rate tensor $\dot{\bm \varepsilon}$, and for Newtonian as well as isotropic 
+fluids \footnote{anisotropic mantle viscosity leha08, leha11, SKS splitting} we can use this relation to 
 write the stress tensor elements in terms of the velocity field: 
 \begin{align} \label{eq:stress_1}
 \tau_{ij} = \eta \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}
  - \frac{2}{3}\,\delta_{ij}\,\frac{\partial u_k}{\partial x_k} \right) 
  + k_B\,\delta_{ij}\,\frac{\partial u_k}{\partial x_k}.
 \end{align}
-With $\eta$ and $k_B$ the dynamic and bulk viscosity, respectively. The derivation of Eq.~\eqref{eq:stress_1} is discussed in detail by \textcite{scto01}.
+where $\eta$ and $k_B$ are the dynamic and bulk viscosity, respectively. 
+The derivation of Eq.~\eqref{eq:stress_1} is discussed in detail by \textcite{scto01}.
 Since the bulk viscosity is associated with rapid changes in volume and volume changes in 
-mantle convection occur over timescales greater than $10^7$ years \autocite{jamc80}, the terms with $k_B$ are neglected and Eq.~\eqref{eq:stress_1} is reduced to 
+mantle convection occur over timescales greater than $10^7$ years \autocite{jamc80}, the terms with $k_B$ 
+are neglected and Eq.~\eqref{eq:stress_1} is reduced to 
 \begin{align} \label{eq:stress}
 \tau_{ij} = \eta \left( \frac{\partial u_i}{\partial x_j} + \frac{\partial u_j}{\partial x_i}
  - \frac{2}{3}\,\delta_{ij}\,\frac{\partial u_k}{\partial x_k} \right) 
 \end{align}
+or, 
+\[
+{\bm \tau} = 2\eta \dot{\bm \varepsilon}^d = 2\eta \left( \dot{\bm \varepsilon}  - \frac13 \text{tr}(\dot{\bm \varepsilon})    {\bm 1} \right)
+\]
+where $ \dot{\bm \varepsilon}^d$ is the deviatoric strain rate tensor.
 
+%==============================================================================
 \section{Equation of state} \label{section:eq_state}
+
+o{\color{red} why do we need eos ? what is it ? short intro}
+
+
+%---------------------------------------------
 \subsection{Linearizing the equation of state}
-A major simplification of the general equations described in section \ref{section:general_eq} derives from the linearization of the equation of state, which describes the density of the material as a function of state variables. Neglecting 
-density changes associated with phase transitions such as the olivine-spinel transition, as investigated by \textcite{itki94}, the density of the mantle material can be defined as a function of only temperature and pressure $\rho = \rho(T, P)$. 
-The mantle density increases by approximately 65\% between the surface 
-and the core-mantle boundary, and most of this change is due to hydrostatic compression \autocite{scto01}. This is why it is justified for many approximating methods 
-to assume a time-independent and adiabatic reference density profile, which remains fixed throughout the calculation \autocite{itki94}. We can therefore expand the 
-pressure, temperature and density as
+
+A major simplification of the general equations described in section \ref{section:general_eq} derives from the 
+linearization of the equation of state, which describes the density of the material as a function of state variables. 
+Neglecting density changes associated with phase transitions such as the olivine-spinel transition {\color{red} figure + caption explaining }, 
+as investigated by \textcite{itki94}, the density of the mantle material can be defined as a function of only 
+temperature and pressure $\rho = \rho(T, P)$. The mantle density increases by approximately 65\% between the surface 
+and the core-mantle boundary {\color{red} as shown in Fig dzan81} , and most of this change is due to hydrostatic 
+compression \autocite{scto01}. This is why it is justified for many approximating methods 
+to assume a time-independent and adiabatic reference density profile, which remains fixed throughout the 
+calculation \autocite{itki94}. We can therefore expand the pressure, temperature and density as
 \begin{align*}
     T &= T_s + T_1 \\
     P &= P_H + P_1 \\
     \rho(T,P) &= \rho_r + \rho'(P_1, T_1)
 \end{align*}
-Where $P_H$ is the hydrostatic pressure and $P_1$ deviations from it, $T_s$ is the adiabatic temperature component and $T_1$ deviations from it, and $\rho_r$ is a
-time-independent adiabatic reference profile. The deviations from this profile need not be 
+where $P_H$ is the hydrostatic pressure and $P_1$ deviations from it, 
+$T_s$ is the adiabatic temperature component and $T_1$ deviations from it, and $\rho_r$ is a
+time-independent adiabatic reference profile. 
+The deviations from this profile need not be 
 necessarily small \autocite{scto01}, but assuming that they are, the equation of state can be written 
-as a linear Taylor expansionof the density $\rho$ about the reference state $\rho_r$: 
+as a linear Taylor expansion of the density $\rho$ about the reference state $\rho_r$
+(thereby enabling us to arrive at the exact form for the 3rd equation above):
+
+The Taylor expansion of a 2-variable function in the vicinity of a point $x_0,y_0$ is given by
+\[
+f(x,y) = f(x_0,y_0) 
++ \left. \frac{\partial f}{\partial x}\right|_{x_0,y_0} (x-x_0)
++ \left. \frac{\partial f}{\partial y}\right|_{x_0,y_0} (y-y_0) + \dots
+\]
+Replacing now $f \rightarrow \rho$, $x \rightarrow T$,  $y \rightarrow P$,  
+$x_0 \rightarrow T_S$ and 
+$y_0 \rightarrow P_H$ leads to 
 \begin{align*} \label{eq:eq_state}
-    \rho(T,P) &= \rho_r + \left(\pdv{\rho}{P}\right)_T P' + \left(\pdv{\rho}{T}\right)_P T' \\
-    &= \rho_r[1-\alpha(T-T_s)+K_T^{-1}(P-P_H)] 
+\rho(T,P) 
+&= \underbrace{\rho(T_S,P_H)}_{\rho_r}  + \left(\frac{\partial \rho}{\partial T} (T_S,P_H)  \right)_P  (T-T_s)  
++ \left(\frac{\partial \rho}{\partial P} (T_S,P_H)\right)_T (P-P_H) \\
+%&= \rho_r + \left(\pdv{\rho}{T}\right)_P T_1  + \left(\pdv{\rho}{P}\right)_T P_1 \\
+&= \rho_r \left[ 1 + 
+\frac{1}{\rho_r} \left(\frac{\partial \rho}{\partial T} (T_S,P_H) \right)_P (T-T_s)  + 
+\frac{1}{\rho_r} \left(\frac{\partial \rho}{\partial P} (T_S,P_H) \right)_T (P-P_H) \right] \\
+&= \rho_r[1-\alpha(T-T_s)+K_T^{-1}(P-P_H)] 
 \end{align*}
-Where 
+where\footnote{Adding the P and T subscripts to the partial derivatives 
+is not mathematically strictly needed but it is common in thermodynamics so
+we leave these to match publications} 
 \begin{align*}
-    \alpha &= - \frac{1}{\rho_r} \left(\pdv{\rho_R}{T}\right)_P \\
-    K_T &= \rho_r \left(\pdv{P}{\rho_r}\right)_T 
+    \alpha 
+&= - \frac{1}{\rho_r} \left(\frac{\partial \rho}{\partial T} (T_S,P_H) \right)_P 
+= - \frac{1}{\rho_r} \left(\pdv{\rho_r}{T}\right)_P 
+\\
+K_T^{-1} 
+&= \frac{1}{\rho_r} \left(\frac{\partial \rho}{\partial P} (T_S,P_H) \right)_T 
+= \frac{1}{\rho_r} \left(\pdv{\rho_r}{P}\right)_T 
 \end{align*}
-Which are the thermal expansion coefficient and the isothermal modulus of bulk compressibility, respectively (i.e. coefficients that determine how the density varies with changes in temperature and pressure)(Table \ref{table:variables}; \cite{jamc80}). 
-What remains is to determine an expression for reference density profile $\rho_r$. This can be done in numerous ways, but many authors (\cite{jamc80}; \cite{lezh08}; \cite{itki94}) choose to follow the method first
+which are the thermal expansion coefficient\footnote{In jamc80 they forget minus sign} 
+and the isothermal modulus of bulk compressibility, respectively (i.e. coefficients that determine how 
+the density varies with changes in temperature and pressure)(Table \ref{table:variables}; \cite{jamc80}). 
+What remains is to determine an expression for reference density profile $\rho_r$. 
+This can be done in numerous ways, but many authors (\cite{jamc80}; \cite{lezh08}; \cite{itki94}) choose to follow the method first
 published by \textcite{birc52}, which is expanded below. However, one should 
 keep in mind that other expressions for the reference state are possible, such as the polytropic reference state presented by \textcite{glat88}. 
 
+
+
+
+
+
+
+
+%--------------------------------------------
 \subsection{Adams-Williamson reference state}
-Following the approach of \textcite{jamc80} and \textcite{birc52}, an expression for the reference density distribution $\rho_r$ is done by considering the gradient of $\rho_r(S, P_H)$ with $S$ 
+
+Following the approach of \textcite{jamc80} and \textcite{birc52}, an expression for the reference 
+density distribution $\rho_r$ is done by considering the gradient of $\rho_r(S, P_H)$ with $S$ 
 the entropy per unit mass: 
 \begin{equation*}
-    \nabla\rho_R(S,P_H) = \left(\pdv{\rho_r}{S}\right)_{P_H} \nabla S + \left(\pdv{\rho_r}{P_H}\right)_S\nabla P_H
+    \nabla\rho_r(S,P_H) = \left(\pdv{\rho_r}{S}\right)_{P_H} \nabla S + \left(\pdv{\rho_r}{P_H}\right)_S\nabla P_H
 \end{equation*}
-With $\nabla S = 0$ since the reference state is adiabatic, and with the hydrostatic component of the pressure gradient $\nabla P_H = -\rho_rg \bm{\hat{z}}$:
+with $\nabla S = 0$ since the reference state is adiabatic. In the radial direction $z$, $\nabla \rho_r = \partial_z \rho_r$ 
+and the hydrostatic component of the pressure gradient is given by $\nabla P_H = -\rho_rg \bm{\hat{z}}$ so that 
+we can write the equation above as:
 \begin{equation} \label{eq:ref_K}
-    \frac{1}{\rho_r} \pdv{\rho_r}{z} = -g \left(\pdv{\rho_r}{P_H}\right)_S = -\frac{\rho_r g}{K_s}
+    \frac{1}{\rho_r} \pdv{\rho_r}{z} = -g \left(\pdv{\rho_r}{P_H}\right)_S = -\frac{\rho_r g}{K_S}
 \end{equation} 
-with $K_s = \rho_r\left(\pdv{P_H}{\rho_r}\right)_s$ the isentropic modulus of bulk compressibility. 
+with $K_S = \rho_r\left(\pdv{P_H}{\rho_r}\right)_S$ the isentropic modulus of bulk compressibility (See definition 
+of the isothermal modulus of bulk compressibility $K_T$ in the previous subsection above for reference). 
 
 Using the Grüneisen parameter $\Gamma$ first introduced by \textcite{birc52}
 \begin{align}
-    \Gamma = \frac{\alpha K_s}{\rho C_p} = \dfrac{\alpha K_T}{\rho C_v}
+    \Gamma = \frac{\alpha K_S}{\rho C_p} = \dfrac{\alpha K_T}{\rho C_v}
+\qquad
+{\color{red} where does this come from ?}
 \end{align}
- Eq.~\eqref{eq:ref_K} may be written as the Adams-Williamson relation for a chemically homogeneous adiabatic density distribution under hydrostatic pressure \autocite{birc52}:
+Eq.~\eqref{eq:ref_K} may be written as the Adams-Williamson relation for a chemically homogeneous adiabatic density distribution under hydrostatic pressure \autocite{birc52}:
  \begin{equation} \label{eq:adams-williamson}
     \frac{1}{\rho_r} \pdv{\rho_r}{z} = -\frac{1}{H_T \Gamma}
 \end{equation}
+
+{\color{red} where does $g$ go ? def of $H_T$  ...  check eq 1 of jamc80!  \url{https://en.wikipedia.org/wiki/Scale_height}}
+
 \textcite{jamc80} argues that for most liquids, $\Gamma$ is approximately constant and of order $1$, thus Eq.~\ref{eq:adams-williamson} may
 be integrated over $z$ to find
 \begin{equation} \label{eq:15}
@@ -164,6 +239,11 @@ be integrated over $z$ to find
 where $\rho_0 = \rho_r(z=d)$ is the reference density value at the surface and $H_T$ is the temperature scale height of the liquid \autocite{jamc80}.
 
 
+{\color{red} value of Gamma ? HT ? plot rhor as fct of z for mantle ? next to rho PREM ? range of values ?}
+
+
+
+%==============================================================================
 \section{Dimensionless variables}
 
 
