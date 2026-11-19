@@ -19,6 +19,79 @@
 
 \refsection{0}
   \datalist[entry]{apa/apasortcite//global/global/global}
+    \entry{birc52}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0319e0f300c56f3709e7d411078fbbc5}{%
+           family={Birch},
+           familyi={B\bibinitperiod},
+           given={Francis},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{fullhash}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{fullhashraw}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{bibnamehash}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{authorbibnamehash}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{authornamehash}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{authorfullhash}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{authorfullhashraw}{0319e0f300c56f3709e7d411078fbbc5}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{2}
+      \field{title}{Elasticity and constitution of the Earth's interior}
+      \field{volume}{57}
+      \field{year}{1952}
+      \field{pages}{227\bibrangedash 286}
+      \range{pages}{60}
+      \verb{doi}
+      \verb 10.1029/JZ057i002p00227
+      \endverb
+    \endentry
+    \entry{dzan81}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=9007802f041489ecbea9d54c700823f8}{%
+           family={Dziewonski},
+           familyi={D\bibinitperiod},
+           given={A.M.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6e14a1cb6c315a143f3703f6e289ce02}{%
+           family={Anderson},
+           familyi={A\bibinitperiod},
+           given={D.L.},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{fullhash}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{fullhashraw}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{bibnamehash}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{authorbibnamehash}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{authornamehash}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{authorfullhash}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{authorfullhashraw}{df393df2d1511f1c974c6fb81f6cedc5}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Preliminary reference Earth model}}
+      \field{volume}{25}
+      \field{year}{1981}
+      \field{pages}{297\bibrangedash 356}
+      \range{pages}{60}
+      \verb{doi}
+      \verb 10.1016/0031-9201(81)90046-7
+      \endverb
+    \endentry
     \entry{gada20}{article}{}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=d555904deb20417b835f1c082e142130}{%
@@ -77,6 +150,39 @@
       \range{pages}{17}
       \verb{doi}
       \verb 10.1093/gji/ggaa078
+      \endverb
+    \endentry
+    \entry{glat88}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a17caf5d03d5011cc4778a243419a38b}{%
+           family={Glatzmaier},
+           familyi={G\bibinitperiod},
+           given={G.A.},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{fullhash}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{fullhashraw}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{bibnamehash}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{authorbibnamehash}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{authornamehash}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{authorfullhash}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{authorfullhashraw}{a17caf5d03d5011cc4778a243419a38b}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Numerical simulations of mantle convection: Time-dependent, three-dimensional, compressible, spherical shell}
+      \field{volume}{43}
+      \field{year}{1988}
+      \field{pages}{223\bibrangedash 264}
+      \range{pages}{42}
+      \verb{doi}
+      \verb 10.1080/03091928808213626
       \endverb
     \endentry
     \entry{itki94}{article}{}{}
@@ -160,6 +266,92 @@
       \verb 10.1017/S002211208000225X
       \endverb
     \endentry
+    \entry{lezh08}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e4959aa3a16df144e10dfd34db67356d}{%
+           family={Leng},
+           familyi={L\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3901697e067c630537961f99b6dce54c}{%
+           family={Zhong},
+           familyi={Z\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{fullhash}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{fullhashraw}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{bibnamehash}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{authorbibnamehash}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{authornamehash}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{authorfullhash}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{authorfullhashraw}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Viscous heating, adiabatic heating and energetic consistency in compressible mantle convection}
+      \field{volume}{173}
+      \field{year}{2008}
+      \field{pages}{693\bibrangedash 702}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1111/j.1365-246X.2008.03745.x
+      \endverb
+    \endentry
+    \entry{mcrw74}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=1351fda63e5113aab7174e1f97999610}{%
+           family={McKenzie},
+           familyi={M\bibinitperiod},
+           given={Dan\bibnamedelima P},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cea497df28253ec2ac8b753b9146e797}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={Jean\bibnamedelima M},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f350e8cae10682279ab4e664b3f71235}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={Nigel\bibnamedelima O},
+           giveni={N\bibinitperiod\bibinitdelim O\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{cc7690af65944e2845ef3d2aad145a4e}
+      \strng{fullhash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{fullhashraw}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{bibnamehash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{authorbibnamehash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{authornamehash}{cc7690af65944e2845ef3d2aad145a4e}
+      \strng{authorfullhash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{authorfullhashraw}{98c56b6b3758a3a316d46f8f767ece0d}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Fluid Mechanics}
+      \field{number}{3}
+      \field{title}{Convection in the Earth's mantle: towards a numerical simulation}
+      \field{volume}{62}
+      \field{year}{1974}
+      \field{pages}{465\bibrangedash 538}
+      \range{pages}{74}
+      \verb{doi}
+      \verb 10.1017/S0022112074000784
+      \endverb
+    \endentry
     \entry{scto01}{book}{}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=25918d1cab8e512937b266679862c91b}{%
@@ -201,9 +393,120 @@
       \field{labeltitlesource}{title}
       \field{title}{Mantle Convection in the Earth and Planets}
       \field{year}{2001}
+    \endentry
+    \entry{yosh10}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4395fadadef09e6be1e21eccf07fdd04}{%
+           family={Yoshino},
+           familyi={Y\bibinitperiod},
+           given={Takashi},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{fullhash}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{fullhashraw}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{bibnamehash}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{authorbibnamehash}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{authornamehash}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{authorfullhash}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{authorfullhashraw}{4395fadadef09e6be1e21eccf07fdd04}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1573-0956}
+      \field{journaltitle}{Surveys in Geophysics}
+      \field{month}{3}
+      \field{number}{2}
+      \field{title}{Laboratory Electrical Conductivity Measurement of Mantle Minerals}
+      \field{volume}{31}
+      \field{year}{2010}
+      \field{dateera}{ce}
+      \field{pages}{163\bibrangedash 206}
+      \range{pages}{44}
+      \verb{doi}
+      \verb 10.1007/s10712-009-9084-0
+      \endverb
     \endentry
   \enddatalist
   \datalist[entry]{apa/global//global/global/global}
+    \entry{birc52}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0319e0f300c56f3709e7d411078fbbc5}{%
+           family={Birch},
+           familyi={B\bibinitperiod},
+           given={Francis},
+           giveni={F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{fullhash}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{fullhashraw}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{bibnamehash}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{authorbibnamehash}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{authornamehash}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{authorfullhash}{0319e0f300c56f3709e7d411078fbbc5}
+      \strng{authorfullhashraw}{0319e0f300c56f3709e7d411078fbbc5}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{number}{2}
+      \field{title}{Elasticity and constitution of the Earth's interior}
+      \field{volume}{57}
+      \field{year}{1952}
+      \field{pages}{227\bibrangedash 286}
+      \range{pages}{60}
+      \verb{doi}
+      \verb 10.1029/JZ057i002p00227
+      \endverb
+    \endentry
+    \entry{dzan81}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=9007802f041489ecbea9d54c700823f8}{%
+           family={Dziewonski},
+           familyi={D\bibinitperiod},
+           given={A.M.},
+           giveni={A\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=6e14a1cb6c315a143f3703f6e289ce02}{%
+           family={Anderson},
+           familyi={A\bibinitperiod},
+           given={D.L.},
+           giveni={D\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{fullhash}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{fullhashraw}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{bibnamehash}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{authorbibnamehash}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{authornamehash}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{authorfullhash}{df393df2d1511f1c974c6fb81f6cedc5}
+      \strng{authorfullhashraw}{df393df2d1511f1c974c6fb81f6cedc5}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{Preliminary reference Earth model}}
+      \field{volume}{25}
+      \field{year}{1981}
+      \field{pages}{297\bibrangedash 356}
+      \range{pages}{60}
+      \verb{doi}
+      \verb 10.1016/0031-9201(81)90046-7
+      \endverb
+    \endentry
     \entry{gada20}{article}{}{}
       \name{author}{5}{}{%
         {{un=0,uniquepart=base,hash=d555904deb20417b835f1c082e142130}{%
@@ -262,6 +565,39 @@
       \range{pages}{17}
       \verb{doi}
       \verb 10.1093/gji/ggaa078
+      \endverb
+    \endentry
+    \entry{glat88}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a17caf5d03d5011cc4778a243419a38b}{%
+           family={Glatzmaier},
+           familyi={G\bibinitperiod},
+           given={G.A.},
+           giveni={G\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{fullhash}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{fullhashraw}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{bibnamehash}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{authorbibnamehash}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{authornamehash}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{authorfullhash}{a17caf5d03d5011cc4778a243419a38b}
+      \strng{authorfullhashraw}{a17caf5d03d5011cc4778a243419a38b}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Numerical simulations of mantle convection: Time-dependent, three-dimensional, compressible, spherical shell}
+      \field{volume}{43}
+      \field{year}{1988}
+      \field{pages}{223\bibrangedash 264}
+      \range{pages}{42}
+      \verb{doi}
+      \verb 10.1080/03091928808213626
       \endverb
     \endentry
     \entry{itki94}{article}{}{}
@@ -345,6 +681,92 @@
       \verb 10.1017/S002211208000225X
       \endverb
     \endentry
+    \entry{lezh08}{article}{}{}
+      \name{author}{2}{}{%
+        {{un=0,uniquepart=base,hash=e4959aa3a16df144e10dfd34db67356d}{%
+           family={Leng},
+           familyi={L\bibinitperiod},
+           given={W.},
+           giveni={W\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=3901697e067c630537961f99b6dce54c}{%
+           family={Zhong},
+           familyi={Z\bibinitperiod},
+           given={S.},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{fullhash}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{fullhashraw}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{bibnamehash}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{authorbibnamehash}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{authornamehash}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{authorfullhash}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \strng{authorfullhashraw}{1aa8737ec6884b6f4e49ce0decd44a68}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Viscous heating, adiabatic heating and energetic consistency in compressible mantle convection}
+      \field{volume}{173}
+      \field{year}{2008}
+      \field{pages}{693\bibrangedash 702}
+      \range{pages}{10}
+      \verb{doi}
+      \verb 10.1111/j.1365-246X.2008.03745.x
+      \endverb
+    \endentry
+    \entry{mcrw74}{article}{}{}
+      \name{author}{3}{}{%
+        {{un=0,uniquepart=base,hash=1351fda63e5113aab7174e1f97999610}{%
+           family={McKenzie},
+           familyi={M\bibinitperiod},
+           given={Dan\bibnamedelima P},
+           giveni={D\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=cea497df28253ec2ac8b753b9146e797}{%
+           family={Roberts},
+           familyi={R\bibinitperiod},
+           given={Jean\bibnamedelima M},
+           giveni={J\bibinitperiod\bibinitdelim M\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f350e8cae10682279ab4e664b3f71235}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={Nigel\bibnamedelima O},
+           giveni={N\bibinitperiod\bibinitdelim O\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{cc7690af65944e2845ef3d2aad145a4e}
+      \strng{fullhash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{fullhashraw}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{bibnamehash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{authorbibnamehash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{authornamehash}{cc7690af65944e2845ef3d2aad145a4e}
+      \strng{authorfullhash}{98c56b6b3758a3a316d46f8f767ece0d}
+      \strng{authorfullhashraw}{98c56b6b3758a3a316d46f8f767ece0d}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Fluid Mechanics}
+      \field{number}{3}
+      \field{title}{Convection in the Earth's mantle: towards a numerical simulation}
+      \field{volume}{62}
+      \field{year}{1974}
+      \field{pages}{465\bibrangedash 538}
+      \range{pages}{74}
+      \verb{doi}
+      \verb 10.1017/S0022112074000784
+      \endverb
+    \endentry
     \entry{scto01}{book}{}{}
       \name{author}{3}{}{%
         {{un=0,uniquepart=base,hash=25918d1cab8e512937b266679862c91b}{%
@@ -386,6 +808,44 @@
       \field{labeltitlesource}{title}
       \field{title}{Mantle Convection in the Earth and Planets}
       \field{year}{2001}
+    \endentry
+    \entry{yosh10}{article}{}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=4395fadadef09e6be1e21eccf07fdd04}{%
+           family={Yoshino},
+           familyi={Y\bibinitperiod},
+           given={Takashi},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{fullhash}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{fullhashraw}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{bibnamehash}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{authorbibnamehash}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{authornamehash}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{authorfullhash}{4395fadadef09e6be1e21eccf07fdd04}
+      \strng{authorfullhashraw}{4395fadadef09e6be1e21eccf07fdd04}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \true{uniqueprimaryauthor}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{1573-0956}
+      \field{journaltitle}{Surveys in Geophysics}
+      \field{month}{3}
+      \field{number}{2}
+      \field{title}{Laboratory Electrical Conductivity Measurement of Mantle Minerals}
+      \field{volume}{31}
+      \field{year}{2010}
+      \field{dateera}{ce}
+      \field{pages}{163\bibrangedash 206}
+      \range{pages}{44}
+      \verb{doi}
+      \verb 10.1007/s10712-009-9084-0
+      \endverb
     \endentry
   \enddatalist
 \endrefsection

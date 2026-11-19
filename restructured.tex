@@ -13,6 +13,7 @@
 \usepackage{bm}
 \usepackage{array}
 \usepackage{mdframed}
+\usepackage{subfig}
 %\usepackage{siunitx} %%NOTE: CONFLICT WITH PHYSICS WITH \QTY MACRO
 
 %%% material derivative
@@ -33,16 +34,17 @@
 \newpage
 
 \section{Introduction and problem statement}
-\begin{itemize}
+\textcolor{red}{\begin{itemize}
     \item why do we need to take compressibility into account?/ what improvements does (T)ALA offer? 
     \item what approximations were being used before ALA was introduced? 
     \item 
-\end{itemize}
+\end{itemize}}
+
 
 %==============================================================================
 \section{General equations} \label{section:general_eq}
 
-add 'text' about conservation laws.
+\textcolor{red}{add 'text' about conservation laws.}
 
 %-------------------------------
 \subsection{Conservation of mass}
@@ -56,7 +58,7 @@ of mass into or out of the volume. Various expressions of the mass continuity eq
     \frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x_i}(\rho u_i) &= 0\\
 \frac{1}{\rho}\frac{D\rho}{Dt} + \frac{\partial u_i}{\partial x_i} &= 0
 \end{align*}
-which can be shown to be equivalent to Eq.~\eqref{eq:mass} using the mathematical formulations presented in Appendix \ref{section:math}.
+which can be shown to be equivalent to Eq.~\eqref{eq:mass} using the mathematical formulations presented in Appendix \ref{material_derivative}.
 
 %-----------------------------------
 \subsection{Conservation of momentum}
@@ -91,7 +93,7 @@ Using this, Eq.~\eqref{eq:energy_jamc} can alternatively be written as
     \rho C_p \mdv{T}{t} - \alpha T \mdv{P}{t} &= \nabla \cdot (K\nabla T) + H + {\bm \tau} : \nabla {\bm u} 
 \end{align*}
 which is the energy equation used by \textcite{scto01}. 
-Referring to Appendix \ref{section:math}, one can show that Eq.~\eqref{eq:energy_jamc} can also be written as
+Again referring to Appendix \ref{material_derivative}, one can show that Eq.~\eqref{eq:energy_jamc} can also be written as
 \begin{align*}
     \rho C_p \left(\frac{\partial T}{\partial t} + {\bm u} \cdot \nabla T\right) - \alpha T\left(\pdv{P}{t}+{\bm u} \cdot \nabla P\right)  
 =  \nabla \cdot(K\nabla T) + H + {\bm \tau}: \dot{\bm \varepsilon} 
@@ -138,19 +140,29 @@ which describes the density of the material as a function of state variables.
 
 A major simplification of the general equations described in section \ref{section:general_eq} derives from the 
 linearization of the equation of state.
-Neglecting density changes associated with phase transitions such as the olivine-spinel transition {\color{red} figure + caption explaining }, 
-as investigated by \textcite{itki94}, the density of the mantle material can be defined as a function of only 
+Neglecting density changes associated with phase transitions {\color{red} figure + caption explaining }, such as the spinel to perovskite
+plus magnesiowüstite transition investigated by \textcite{itki94}, the density of the mantle material can be defined as a function of only 
 temperature and pressure $\rho = \rho(T, P)$. The mantle density increases by approximately 65\% between the surface 
-and the core-mantle boundary {\color{red} as shown in Fig dzan81} , and most of this change is due to hydrostatic 
-compression \autocite{scto01}. 
+and the core-mantle boundary (Fig. \ref{fig:PREM}), and most of this change is due to hydrostatic compression \autocite{scto01}. 
 
-\begin{figure}
-    \caption{The PREM model as first presented by \textcite{dzan81}, showing the core-mantle boundary at }
-    \includegraphics[width=\textwidth]{PREM_model}
+\begin{figure} 
+    \centering
+    \subfloat[]{\includegraphics[width=0.5\textwidth]{PREM_model}\label{fig:PREM}}
+    \hfill
+    \subfloat[]{\includegraphics[width=0.5\textwidth]{PREM_upper_mantle.png}}
+    \caption{The PREM model \autocite{dzan81}. Here, $\rho$ is the density, $v_s$, $v_p$ the radial components of seismic wave velocties, and $\eta$ the anisotropic parameter. Where $\eta =1$, 
+    the model is isotropic. Fig. (a) shows the core-mantle boundary at approximately $2900$km.}
 \end{figure}
 
+\begin{figure}[!tbp]
+  \centering
+  \subfloat[upper mantle]{\includegraphics[width=0.4\textwidth]{fig1a_yoshi.png}\label{fig:yoshi_a}}
+  \hfill
+  \subfloat[lower mantle]{\includegraphics[width=0.4\textwidth]{fig1b_yoshi.png}\label{fig:yoshi_b}}
+  \caption{\textcolor{red}{improve images with inkscape when u feel like it (x-axes)} \autocite{yosh10}}
+\end{figure}
 
-This is why it is justified for many approximating methods 
+Since most of the density increase in the mantle is due to hydrostatic compression, it is justified for many approximating methods 
 to assume a time-independent and adiabatic reference density profile, which remains fixed throughout the 
 calculation \autocite{itki94}. We can therefore expand the pressure, temperature and density as
 \begin{align*}
@@ -175,42 +187,48 @@ f(x,y) = f(x_0,y_0)
 Replacing now $f \rightarrow \rho$, $x \rightarrow T$,  $y \rightarrow P$,  
 $x_0 \rightarrow T_S$ and 
 $y_0 \rightarrow P_H$ leads to 
-\begin{align*} \label{eq:eq_state}
-\rho(T,P) 
-&= \underbrace{\rho(T_S,P_H)}_{\rho_r}  + \left(\frac{\partial \rho}{\partial T} (T_S,P_H)  \right)_P  (T-T_s)  
-+ \left(\frac{\partial \rho}{\partial P} (T_S,P_H)\right)_T (P-P_H) \\
-%&= \rho_r + \left(\pdv{\rho}{T}\right)_P T_1  + \left(\pdv{\rho}{P}\right)_T P_1 \\
-&= \rho_r \left[ 1 + 
-\frac{1}{\rho_r} \left(\frac{\partial \rho}{\partial T} (T_S,P_H) \right)_P (T-T_s)  + 
-\frac{1}{\rho_r} \left(\frac{\partial \rho}{\partial P} (T_S,P_H) \right)_T (P-P_H) \right] \\
-&= \rho_r[1-\alpha(T-T_s)+K_T^{-1}(P-P_H)] 
-\end{align*}
+% \begin{align*} \label{eq:eq_state}
+% \rho(T,P) 
+% &= \underbrace{\rho(T_S,P_H)}_{\rho_r}  + \left(\frac{\partial \rho}{\partial T} (T_S,P_H)  \right)_P  (T-T_s)  
+% + \left(\frac{\partial \rho}{\partial P} (T_S,P_H)\right)_T (P-P_H) \\
+% %&= \rho_r + \left(\pdv{\rho}{T}\right)_P T_1  + \left(\pdv{\rho}{P}\right)_T P_1 \\
+% &= \rho_r \left[ 1 + 
+% \frac{1}{\rho_r} \left(\frac{\partial \rho}{\partial T} (T_S,P_H) \right)_P (T-T_s)  + 
+% \frac{1}{\rho_r} \left(\frac{\partial \rho}{\partial P} (T_S,P_H) \right)_T (P-P_H) \right] \\
+% &= \rho_r[1-\alpha(T-T_s)+K_T^{-1}(P-P_H)] 
+% \end{align*}
+
+\begin{align}
+\rho(T,P)
+  &= \underbrace{\rho(T_S,P_H)}_{\rho_r}
+   + \left.\frac{\partial \rho}{\partial T}\right|_{T_S,P_H} (T-T_S)
+   + \left.\frac{\partial \rho}{\partial P}\right|_{T_S,P_H} (P-P_H) \nonumber \\
+  &= \rho_r \left( 1
+   + \frac{1}{\rho_r}\left.\frac{\partial \rho}{\partial T}\right|_{T_S,P_H} (T-T_S)
+   + \frac{1}{\rho_r}\left.\frac{\partial \rho}{\partial P}\right|_{T_S,P_H} (P-P_H) \right) \nonumber \\
+  &= \rho_r \left[ 1 - \alpha\,(T-T_S) + K_T^{-1}\,(P-P_H) \right]
+  \label{eq:eq_state}
+\end{align}
+
 where\footnote{Adding the P and T subscripts to the partial derivatives 
-is not mathematically strictly needed but it is common in thermodynamics so
-we leave these to match publications} 
+is not mathematically strictly needed, but this notation is commonly used in thermodynamics, so
+we leave these for consistency with other publications} 
 \begin{align*}
     \alpha 
-&= - \frac{1}{\rho_r} \left(\frac{\partial \rho}{\partial T} (T_S,P_H) \right)_P 
+&= - \frac{1}{\rho_r} \left(\left.\frac{\partial \rho}{\partial T}\right|_{T_S,P_H}\right)_P 
 = - \frac{1}{\rho_r} \left(\pdv{\rho_r}{T}\right)_P 
 \\
-K_T^{-1} 
-&= \frac{1}{\rho_r} \left(\frac{\partial \rho}{\partial P} (T_S,P_H) \right)_T 
-= \frac{1}{\rho_r} \left(\pdv{\rho_r}{P}\right)_T 
+    K_T^{-1}
+&= \frac{1}{\rho_r} \left(\left.\frac{\partial \rho}{\partial P}\right|_{T_S,P_H}\right)_T
+= \frac{1}{\rho_r} \left(\pdv{\rho_r}{P}\right)_T
 \end{align*}
-which are the thermal expansion coefficient\footnote{In jamc80 they forget minus sign} 
+which are the thermal expansion coefficient\footnote{In \textcite{jamc80}, $\alpha$ is defined without the minus sign, but this is inconsistent with Eq.~\eqref{eq:eq_state}} 
 and the isothermal modulus of bulk compressibility, respectively (i.e. coefficients that determine how 
 the density varies with changes in temperature and pressure)(Table \ref{table:variables}; \cite{jamc80}). 
 What remains is to determine an expression for reference density profile $\rho_r$. 
 This can be done in numerous ways, but many authors (\cite{jamc80}; \cite{lezh08}; \cite{itki94}) choose to follow the method first
 published by \textcite{birc52}, which is expanded below. However, one should 
 keep in mind that other expressions for the reference state are possible, such as the polytropic reference state presented by \textcite{glat88}. 
-
-
-
-
-
-
-
 
 %--------------------------------------------
 \subsection{Adams-Williamson reference state}
@@ -232,16 +250,18 @@ of the isothermal modulus of bulk compressibility $K_T$ in the previous subsecti
 
 Using the Grüneisen parameter $\Gamma$ first introduced by \textcite{birc52}
 \begin{align}
-    \Gamma = \frac{\alpha K_S}{\rho C_p} = \dfrac{\alpha K_T}{\rho C_v}
-\qquad
-{\color{red} where does this come from ?}
+    \Gamma = \frac{\alpha K_S}{\rho C_p} = \dfrac{\alpha K_T}{\rho C_v},
+    \qquad
+    \text{with} \qquad
+    \frac{K_S}{K_T} = \frac{C_p}{C_v}
 \end{align}
 Eq.~\eqref{eq:ref_K} may be written as the Adams-Williamson relation for a chemically homogeneous adiabatic density distribution under hydrostatic pressure \autocite{birc52}:
  \begin{equation} \label{eq:adams-williamson}
     \frac{1}{\rho_r} \pdv{\rho_r}{z} = -\frac{1}{H_T \Gamma}
 \end{equation}
+with $H_T = C_p/g\alpha$ the temperature scale height of the liquid. It represents the vertical distance over which a parcel of liquid must be moved in order to change its temperature (by adiabatic 
+expansion or compression) by a factor $e$ \autocite{jamc80}. 
 
-{\color{red} where does $g$ go ? def of $H_T$  ...  check eq 1 of jamc80!  \url{https://en.wikipedia.org/wiki/Scale_height}}
 
 \textcite{jamc80} argues that for most liquids, $\Gamma$ is approximately constant and of order $1$, thus Eq.~\ref{eq:adams-williamson} may
 be integrated over $z$ to find
@@ -250,6 +270,10 @@ be integrated over $z$ to find
 \end{equation}
 where $\rho_0 = \rho_r(z=d)$ is the reference density value at the surface and $H_T$ is the temperature scale height of the liquid \autocite{jamc80}.
 
+Plugging Eq.~\eqref{eq:15} into Eq.~\eqref{eq:eq_state} gives the (linearized equation) of state
+\begin{equation} \label{eq:full_eq_state}
+    \rho(T,P) = \rho_0 e^{(d-z)/H_T \Gamma}[1-\alpha (T-T_s)+K_T^{-1}(P-P_H)]
+\end{equation}
 
 {\color{red} value of Gamma ? HT ? plot rhor as fct of z for mantle ? next to rho PREM ? range of values ?}
 
@@ -258,6 +282,12 @@ where $\rho_0 = \rho_r(z=d)$ is the reference density value at the surface and $
 %==============================================================================
 \section{Dimensionless variables}
 
+\subsection{trashcan}
+\textcite{jamc80} investigate the importance of the non-Boussinesq terms in the governing equations with a varying dissipation number, which is the ratio between 
+the depth of the convecting layer $d$ and the scale height $H_T$. Using the mantle thickness as the depth of the convecting layer gives $d \approx 2900$ km (fig \ref{fig:PREM}), and using typical values (\ref{table:normalizing_qt}), 
+$H_T \approx 4000$ km. 
+
+Boussinesq approximation is valid when $\mathit{Di} = d/H_T \ll 1$. Using values typical of the Earth, 
 
 
 \begin{table}[ht] 
@@ -284,7 +314,7 @@ where $\rho_0 = \rho_r(z=d)$ is the reference density value at the surface and $
         \alpha && volume coefficient of thermal expansion & \\
         K_T && isothermal modulus of bulk compressibility& \\
         K && thermal conductivity &\\
-        \kappa & K/\rho C_p & thermal diffusivity &\\
+        \kappa & K/\rho C_p & thermal diffusivity & \kappa_0\\
         H && rate of internal heat generation \\
         k_B && bulk viscosity &\\
         \nu && kinematic viscosity & \\
@@ -315,15 +345,45 @@ where $\rho_0 = \rho_r(z=d)$ is the reference density value at the surface and $
     \end{tabular}
 \end{table}
 
+\subsection{Intro to scaling}
 The governing equations as presented in section \ref{section:general_eq} and \ref{section:eq_state} are in their dimensional from. In order 
 to easily perform the simplification of these equations in section \ref{section:ALA}, scaling factors must be introduced to nondimensionalize them. 
 Through nondimensionalization we are then able to demonstrate which terms can be neglected when compared in scale to the process we want to resolve in our model (in this case, mantle convection).
 Physically, this means that we assume that processes that take place on a relatively short timescale, such as seismic waves, do not significantly impact mantle convection.
-An additional numerical argument is that processes on drastically different timescales can usually not be incorporated into a single numerical model, since processes that take place on timescales 
+An additional numerical argument for neglecting terms is that processes on drastically different timescales can usually not be incorporated into a single numerical model, since processes that take place on timescales 
 shorter than the model timestep cannot be accurately resolved \autocite{gada20}. 
 
-\textcolor{green}{HELP}
-There are multiple approaches for choosing appropriate scaling factors. \textcite{jamc80} adopt the derivation by \textcite{mcrw74} \textcolor{green}{appendix?}, deriving a scaling factor for 
+There are multiple approaches for choosing appropriate scaling factors. 
+
+\subsection{Dimensionless numbers}
+The ultimate goal is to arrive at a set of dimensionless equations that include the Rayleigh number (Ra), the Mach number (M), the Prandtl number (Pr), and the Dissipation number (D). 
+\textcolor{green}{make table for dimensionless numbers (in appendix?)}.
+
+\textbf{The Rayleigh number (Ra)} is a dimensionless number that characterizes the main thermal transport mode of a system: 
+below a critical value, there is no convection and heat transfer in the system is purely conductive. When Ra is above this critical value, heat is also transported by convection. 
+Essentially, the Rayleigh number multiplies the buoyancy force term in the momentum equation and controls the vigor of convection \autocite{scto01}. 
+Mathematically, the Rayleigh number is defined as the ratio of the timescale of diffusive thermal transport to the timescale of convective velocities \autocite{scto01}. 
+
+\textcolor{green}{confused about rayleigh number jamc uses}
+\begin{align}
+  \mathit{Ra} \equiv
+  \frac{\alpha\, \Delta T \, \rho^2 \, g \, d^3 \, C_p}
+       {\mu_r \, \kappa}
+  \label{eq:6.10.20}
+\end{align}
+
+\textbf{The Dissipation number (Di)}  
+
+\textbf{The Mach number (M)} is the ratio of convective flow speeds to seismic wave speeds. M$\to 0$ when comparing convective velocities to seismic wave speeds. \textcite{scto01} shows why $\pdv{\rho}{t} =0$ for 
+$M^2Pr = 0$ and $\mu = \alpha T_1 = 0$, \textcite{jamc80} states. 
+
+\textbf{The Prandtl number (Pr)} is the ratio between momentum diffusivity and thermal diffusivity and is considered approximately infinite for the mantle 
+\textcolor{green}{show why}. This eliminates the intertia terms in momentum equation \eqref{eq:momentum_jamc}. \textcite{scto01} shows why this is the case. \textcite{jamc80} assume. An infinite
+Prandtl number is also assumed for the Boussinesq approximation.
+
+\textbf{$\mu = \alpha T_1$} goes to zero.  
+
+\textcite{jamc80} adopt the derivation by \textcite{mcrw74} \textcolor{green}{appendix?}, deriving a scaling factor for 
 velocity from the vorticity equation and, from this, determining a scaling factor for the thermal diffusivity. Alternatively, \textcite{scto01} assumes the diffusive scaling for velocity $\kappa/d$, 
 which means that processes happening at the velocity scale of diffusion are of order 1. 
 
@@ -341,29 +401,274 @@ the equations must first be made dimesionless. Which approach to show here?
 
 
 \subsection{Infinite Prandtl number and disappearing Mach number}
-Mach number: ratio of convective flow speeds to seismic wave speeds. eliminating processes on much shorter timescales than convective phenomena to greatly simplify governing equations \autocite{gada20}
+eliminating processes on much shorter timescales than convective phenomena to greatly simplify governing equations \autocite{gada20}
 Prandtl number: ratio between momentum diffusivity and thermal diffusivity (approx infinite for earth mantle) : eliminates the intertia terms in momentum equation
-Infinite mach number implies mach number of zero \autocite{gada20}
+%Infinite mach number implies mach number of zero \autocite{gada20} what???
 derivation of the dimensionless numbers by \autocite{scto01}, application by \autocite{jamc80}, physical intuition by \autocite{gada20}
 \section{Anelastic Liquid Approximation (ALA)} \label{section:ALA}
 Approximations made + nondimensionalization 
-\subsection{Approximate momentum equation}
 
 \subsection{Continuity equation}
+Approximations: $\pdv{\rho}{t} = 0$ because $M^2Pr \to 0$ and $\mu =0$ gives 
+\begin{align} \label{eq:ALA_cont}
+        \nabla \cdot \rho \bf{u} = 0
+\end{align}
 
-\subsection{Stream function and vorticity field}
+\subsection{Approximate momentum equation}
+\textcolor{red}{jamc does not derive a dimensionless momentum equation, instead only vorticity equation from (dimensional) momentum equation. use scto/itki instead?}
+Intertia terms are neglected based on Pr = inf.
+Also, since volume changes in the Earth's mantle occur over timescales greater than $10^7$ years, terms containing the bulk viscosity 
+$\eta_2$ are neglected. The momentum equation becomes \textcolor{red}{add eq ref here}
+\begin{align} 
+    0 = -\nabla P + \rho \mathbf{g} + \pdv{x_i}\, \eta \left( \pdv{u_i}{x_j} + \pdv{u_j}{x_i} \right) - \frac{2}{3} \nabla \eta \, (\nabla \cdot \mathbf{u}).
+\end{align}
+
+scale this according to scto and itki. 
+
+%\subsection{Stream function and vorticity field}
 
 \subsection{Energy equation}
+Now we turn to the energy equation. Our goal is to write it in dimensionless form and in such a way that we can take the limit of $\mu \to 0$ and reduce it. 
+Our starting point is Eq.~\eqref{eq:5}: 
+\begin{align*}
+    \rho C_p \left\{\pdv{T}{t} - \frac{\alpha T}{\rho C_p}\pdv{P}{t} + \bm{u} \cdot [\nabla T - (\nabla T)_s]\right\} &= 
+    \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}}
+\end{align*}
+Or, equivalently,
+\begin{align*}
+    \rho C_p\pdv{T}{t} - \alpha T\pdv{P}{t} + \rho C_p \bm{u} \cdot \nabla T - \rho C_p \bm{u} \cdot (\nabla T)_s &= 
+    \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}}
+\end{align*}
+
+Where $P = P_1 + P_H$ where $P_H$ is the hydrostatic pressure and $P_1$ deviations from it. 
+
+\textcolor{green}{put derivation in appendix?}
+Now we write this in dimensionless form. For this, we consider each term in the equation seperately, while dividing the whole equation by the advective scaling term 
+$\frac{\rho_0 C_p T_1 U}{d}$. For the scaling terms, we refer to table \ref{table:characteristic_values} and \ref{table:dimensionless_variables}. The full derivation is shown in appendix. 
+The result (in terms of stream function)
+
+The full dimensionless energy equation, with primes dropped, becomes 
+\begin{align}
+    \rho \pdv{T}{t} - &\mu D (T+T_0) \pdv{P_1}{t}
+  = -\nabla\cdot\left( T \rho \bm{u} \right)
+     - \rho D \left( T + T_0 \right) w
+     + \mu D (T+T_0) \bf{u}\cdot\nabla P_1
+     + \kappa_0 \nabla^{2} T + \epsilon_0 \notag \\
+  &\quad + D e^{2zD/\Gamma}
+  \left[
+    \left( 2\pdv{\psi}{x}{z} + \frac{D}{\Gamma}\pdv{\psi}{x} \right)^{2}
+  + \left( \pdv[2]{\psi}{x} - \pdv[2]{\psi}{z} - \frac{D}{\Gamma}\pdv{\psi}{z} \right)^{2}
+  + \frac{1}{3}\left( \frac{D}{\Gamma}\pdv{\psi}{x} \right)^{2}
+  \right] \label{eq:30}
+\end{align}
+
+In the limit where $\mu \ll 1$, all terms with $\mu$ are dropped and $\rho' = \rho_r' = e^{(1-z)D/\Gamma}$, which is the dimensionless form of
+ Eq.~\eqref{eq:15} \ref{table:dimensionless_variables}. Thus, Eq.~\eqref{eq:30} becomes
+\begin{align}
+    e^{(1-z)D/\Gamma} \pdv{T}{t}
+  &= -\nabla\cdot\left[ Te^{(1-z)D/\Gamma} \bm{u} \right]
+     - D e^{(1-z)D/\Gamma} \left( T + T_0 \right) w
+     + \kappa_0 \nabla^{2} T + \epsilon_0 \notag\\
+  &\quad + D e^{2zD/\Gamma}
+  \left[
+    \left( 2\pdv{\psi}{x}{z} + \frac{D}{\Gamma}\pdv{\psi}{x} \right)^{2}
+  + \left( \pdv[2]{\psi}{x} - \pdv[2]{\psi}{z} - \frac{D}{\Gamma}\pdv{\psi}{z} \right)^{2}
+  + \frac{1}{3}\left( \frac{D}{\Gamma}\pdv{\psi}{x} \right)^{2}
+  \right]
+\end{align} 
 
 \section{Boundary- and initial conditions}
 
 
 \appendix
 
+\section{Dimensionless energy equation derivation (not pretty)}
+\begin{mdframed}
+First term (local rate of change of thermal energy): 
+    \begin{align*}
+        \rho C_p\pdv{T}{t} &= \frac{\rho_0T_1U}{d} \rho' \pdv{T'}{t'} \\
+    \end{align*}
+Dividing by advective scale term: 
+    \begin{align*}
+        \frac{d}{\rho_0C_p T_1 U}\frac{\rho_0T_1U}{d} \rho' \pdv{T'}{t'} =\rho' \pdv{T'}{t'} \\
+    \end{align*}
+\end{mdframed}
+
+\begin{mdframed}
+    Second term (time variation of non-hydrostatic pressure, adiabatic heating?). Since we assume the hydrostatic pressure to be time-independent \textcolor{green}{is this obvious? why? is the whole reference profile considered 
+    constant in time?}, $\pdv{P}{t} = \pdv{P_1}{t}$ 
+    \begin{align*}
+        -\alpha T \pdv{P_1}{t} &= \alpha T_1 (T' + T_0') \frac{\eta U^2}{d^2} \pdv{P_1'}{t'} \\
+        &= -\mu (T' + T_0') \frac{\eta U^2}{d^2} \pdv{P_1'}{t'}
+    \end{align*}
+    Dividing by advective scale and with $U = \frac{g\alpha T_1d^2}{\nu_0}$: 
+    \begin{align*}
+        -\frac{d}{\rho_0C_p T_1 U} \frac{\eta U^2}{d^2}\mu (T' + T_0')  \pdv{P_1'}{t'} &= -\frac{g\alpha d}{C_p} \mu (T' + T_0') \pdv{P_1'}{t'} \\
+        &= -D\mu (T' + T_0') \pdv{P_1'}{t'} \\
+    \end{align*}
+\end{mdframed}
+\begin{mdframed}
+    Third term (advection of temperature through velocity field): 
+    \begin{align*}
+        \rho C_p \bm{u}\cdot\nabla T &= \frac{\rho_0C_pUT_1}{d} \bm{u'} \cdot \nabla '(T'+T_0') \\
+    \end{align*}
+    Dividing by advective scale and noting that $\nabla \cdot T_0 = 0$:   
+    \begin{align*}
+        \frac{d}{\rho_0C_p T_1 U} \frac{\rho_0C_pUT_1}{d} \bm{u'} \cdot \nabla '(T') & = \rho' \bm{u'} \cdot \nabla 'T'
+    \end{align*}
+    With the anelastic continuity equation \eqref{eq:21}: 
+    \begin{align*}
+        \rho' \bm{u'} \cdot \nabla 'T' = \nabla' \cdot (T'\rho'\bm{u'})
+    \end{align*}
+\end{mdframed}
+
+\begin{mdframed}
+    Fourth term (adiabatic heating of fluid through pressure gradient). Table \ref{table:symbols} gives $(\nabla T)_s = \frac{\alpha T}{\rho C_p}\nabla P$, with $\nabla P = \nabla P_H + \nabla P_1$ 
+    Since $P_H$ is the hydrostatic pressure, $\nabla P_H = -\rho_r g \hat{z}$. Thus: 
+    \begin{align*}
+        -\rho C_p \bf{u} \cdot (\nabla T)_s &= -\alpha T \bm{u} \cdot (\nabla P)\\
+        &= +\alpha T w \rho_r g - \alpha T \bm{u} \cdot \nabla P_1\\
+        &= \mu \rho_0gU\rho'(T'+T_0')w' - \frac{\alpha T_1 U^2 \eta}{d^2} (\bm{u'}\cdot \nabla'P_1') \\
+    \end{align*} 
+Dividing by advective scale: 
+\begin{align*}
+    \frac{d}{\rho_0C_p T_1 U} \left(\mu \rho_0gU\rho'(T'+T_0')w' - \frac{\alpha T_1 U^2 \eta}{d^2} (\bm{u'}\cdot \nabla'P_1')\right) \\
+    = D \rho_r'(T_1'+T_0')w' - \mu D (T_1'+T_0')(\bm{u'}\cdot\nabla P_1') 
+\end{align*}
+\end{mdframed}
+\begin{mdframed}
+    Fifth term (heat conduction/diffusion). $K$ is the thermal conductivity, which is considered constant. Thus, 
+    \begin{align*}
+        \nabla \cdot (K\nabla T) &= K\nabla^2T\\
+        &= \rho_0 C_p \kappa_0  \nabla^2 T\\
+        &= \rho_0 C_p \frac{g\alpha T_1 d^3}{\nu_0} \frac{T_1}{d^2} (\kappa_0' \nabla^{2'}T') \\
+        &= \frac{\rho_0C_pUT_1}{d}\kappa_0' \nabla^{2'}T'
+    \end{align*}
+    Dividing by the advective scale: 
+    \begin{align*}
+        \frac{d}{\rho_0C_p T_1 U} \frac{\rho_0C_pUT_1}{d}\kappa_0' \nabla^{2'}T' = \kappa_0' \nabla^{2'}T' 
+    \end{align*}
+\end{mdframed}
+
+\begin{mdframed}
+    Sixth term (heat generation): 
+    \begin{align*}
+        H &= \epsilon_0\rho_0C_p\\
+        &= \frac{\rho_0C_p g \alpha T_1^2d}{\nu_0}\epsilon_0'
+    \end{align*}
+    Dividing by advective term: 
+    \begin{align*}
+        \frac{d}{\rho_0C_p T_1 U}  \frac{\rho_0C_p g \alpha T_1^2d}{\nu_0}\epsilon_0' &= \frac{g\alpha T_1 d^2 }{\nu_0 U} \epsilon_0' = \epsilon_0'
+    \end{align*}
+\end{mdframed}
+
+\begin{mdframed}
+    Seventh term (viscous dissipation). This is by far the most lengthy derivation of all terms. From Eq.~\eqref{eq:8} with the bulk viscosity $\eta_2$ neglected, we write 
+    \begin{align*}
+        \tau_{ij} = \eta \left( \pdv{u_i}{x_j} + \pdv{u_j}{x_i} - \frac{2}{3}\,\delta_{ij}\,\pdv{u_k}{x_k} \right)
+    \end{align*}
+    Now we assume(d) the flow to be restricted to the $x$,$z$ plane, so $v=0$ and $\pdv{y} =0$. \textcolor{green}{did we assume this before? or is this the first time specifying? check section streamfunction}
+    With this, the elements of the stress tensor $\tau$ become
+    \begin{align*}
+        \tau_{xx} &= \eta \left( 2\,\pdv{u}{x} - \frac{2}{3}\,\nabla \cdot \mathbf{u} \right) \\
+        \tau_{zz} &= \eta \left( 2\,\pdv{w}{z} - \frac{2}{3}\,\nabla \cdot \mathbf{u} \right) \\
+        \tau_{xz} &= \tau_{zx} = \eta \left( \pdv{u}{z} + \pdv{w}{x} \right) \\
+    \end{align*} 
+    With this, we can carry out the summation in the viscous dissipation , using the symmetry $\tau_{xz} = \tau_{zx}$: 
+    \begin{align} \label{eq:dissipation}
+            \tau_{ij}\pdv{u_i}{x_j} &= \tau_{xx}\pdv{u}{x} + \tau_{zz}\pdv{w}{z} + \tau_{xz}\left(\pdv{u}{z} + \pdv{w}{x}\right) \notag\\
+     &= \eta \left[ 2\left(\pdv{u}{x}\right)^{2} + 2\left(\pdv{w}{z}\right)^{2}
+        + \left( \pdv{u}{z} + \pdv{w}{x} \right)^{2}
+        - \frac{2}{3}\left( \pdv{u}{x} + \pdv{w}{z} \right)^{2} \right] \notag\\
+    &= \eta \left[ \left( \pdv{u}{z} + \pdv{w}{x} \right)^{2}
+        + \left( \pdv{u}{x} - \pdv{w}{z} \right)^{2}
+        + \frac{1}{3}\left( \pdv{u}{x} + \pdv{w}{z} \right)^{2} \right]
+    \end{align} 
+    Where we used that 
+    \begin{align*}
+        2a^{2} + 2b^{2} - \frac{2}{3}(a+b)^{2} = (a-b)^{2} + \frac{1}{3}(a+b)^{2}
+    \end{align*}
+    with $a = \pdv{u}{x}$ and  $b = \pdv{w}{z}$. 
+    Now we want to write this in terms of the stream function $\psi$ and in dimensionless form.
+    All (bracketed) terms in Eq.~\eqref{eq:dissipation} scale with $\left(\frac{U}{d}\right)^2$.
+    Eq.~\eqref{eq:23} gives the (dimensionless) velocity in terms of the stream function 
+    \begin{align*}
+        u &= -e^{z'D/\Gamma}\pdv{\psi}{z} \\
+        w &= e^{z'D/\Gamma}\pdv{\psi}{x}
+    \end{align*}
+    and the viscous dissipation becomes
+    \begin{align*}
+        \tau_{ij}\pdv{u_i}{x_j} &= \eta e^{2Dz'/\Gamma} \left(\frac{U}{d}\right)^2
+  \left[
+    \left( 2\pdv{\psi'}{x'}{z'} + \frac{D}{\Gamma}\pdv{\psi'}{x'} \right)^{2}
+  + \left( \pdv[2]{\psi'}{{x'}} - \pdv[2]{\psi'}{{z'}} - \frac{D}{\Gamma}\pdv{\psi'}{z'} \right)^{2}
+  + \frac{1}{3}\left( \frac{D}{\Gamma}\pdv{\psi'}{x'} \right)^{2}
+  \right]
+    \end{align*}
+    Where the product rule was used in computing the spatial derivatives of the velocity components in the bracketed 
+    terms in equation \eqref{eq:dissipation}. \textcolor{green}{show more intermediate steps?}. 
+    No, finally, dividing the prefactor by the advective scaling term gives
+    \begin{align*}
+        \frac{d}{\rho_0C_p T_1 U} \eta \left(\frac{U}{d}\right)^2 = D
+    \end{align*} 
+    thus the dimensionless viscous dissipation term becomes 
+    \begin{align*}
+    De^{2Dz'/\Gamma} \left[
+    \left( 2\pdv{\psi'}{x'}{z'} + \frac{D}{\Gamma}\pdv{\psi'}{x'} \right)^{2}
+  + \left( \pdv[2]{\psi'}{{x'}} - \pdv[2]{\psi'}{{z'}} - \frac{D}{\Gamma}\pdv{\psi'}{z'} \right)^{2}
+  + \frac{1}{3}\left( \frac{D}{\Gamma}\pdv{\psi'}{x'} \right)^{2}
+  \right]
+    \end{align*}
+\end{mdframed}
+
 \section{List of all approximations and assumptions}
 \section{Tables: symbols, characteristic values}
 \section{Glossary}
+
+%=========================================
 \section{Mathematical relations and identities} \label{section:math}
+%---------------------------------------------
+\subsection{Material derivative} \label{material_derivative}
+For many authors, it is convenient to introduce the material derivative  
+\begin{align*}
+\frac{D}{Dt} &= \frac{\partial }{\partial t}+ u \frac{\partial }{\partial x} + v \frac{\partial }{\partial y} + w\frac{\partial }{\partial z}\\
+&= \frac{\partial }{\partial t} + \textbf{u}\cdot \nabla  \\
+&= \frac{\partial }{\partial t} + u_i \pdv{} {x_i} \\
+\end{align*}
+where $D/Dt$ is the time derivative \textbf{following the motion of an element of fluid}. $\partial/\partial t$ is the local time derivative, 
+whereas $u_i \pdv{} {x_i}$ are the spatial derivatives, which capture the change in the fluid element as it moves along a trajectory 
+through a spatially varying field. For example, a fluid elements temperature can change in time, and when it is transported into a colder region.  
+
+%-------------------------------------
+\subsection{Stress tensor} \label{stress_tensor}
+There are many different ways to write the dissipation term in the energy equation (Eq.~\eqref{eq:energy_jamc}). To understand these varying notations, 
+we present an overview of different tensor notations and operations below. 
+
+\begin{align*}
+\tau	_{ij}\frac{\partial u_i}{\partial x_j} = \boldsymbol{\tau}:\nabla\textbf{u}
+\end{align*}
+where 
+\begin{align*}
+\nabla\mathbf{u} =
+\begin{pmatrix}
+\dfrac{\partial u}{\partial x} & \dfrac{\partial u}{\partial y} & \dfrac{\partial u}{\partial z} \\[2mm]
+\dfrac{\partial v}{\partial x} & \dfrac{\partial v}{\partial y} & \dfrac{\partial v}{\partial z} \\[2mm]
+\dfrac{\partial w}{\partial x} & \dfrac{\partial w}{\partial y} & \dfrac{\partial w}{\partial z}
+\end{pmatrix}
+\end{align*}
+
+and 
+\begin{align*}
+    \bm{\tau} = 
+\begin{pmatrix}
+  \tau_{11} & \tau_{12} & \tau_{13} \\
+  \tau_{12} & \tau_{22} & \tau_{23} \\
+  \tau_{13} & \tau_{23} & \tau_{33}
+\end{pmatrix}
+\end{align*}
+where we used that $\bm{\tau}$ is a symmetric tensor and thus $\tau_{ij} = \tau_{ji}$.  
+The : is called the double contraction operator or the double dot products. For two second-order tensors (matrices), the double contraction yields a scalar by summing over 
+two pairs of indices. 
 
 \printbibliography[heading=bibintoc, title={References}]
 
