@@ -48,9 +48,9 @@
 
 %-------------------------------
 \subsection{Conservation of mass}
-The conservation of mass for an infinitesimal volume element of a continuum states that
+The conservation of mass, or continuity equation, for an infinitesimal volume element of a continuum states that
 \begin{align}
-    \pdv{\rho}{t} + \nabla \cdot (\rho\bm{u}) &= 0\\ \label{eq:mass}
+    \pdv{\rho}{t} + \nabla \cdot (\rho\bm{u}) &= 0 \label{eq:cont}
 \end{align}
 Where $\pdv{\rho}{t}$ represents the change of mass in such a volume element while $\nabla \cdot (\rho\bm{u})$ represents the net flux
 of mass into or out of the volume. Various expressions of the mass continuity equations which are used by different authors include 
@@ -58,7 +58,7 @@ of mass into or out of the volume. Various expressions of the mass continuity eq
     \frac{\partial \rho}{\partial t} + \frac{\partial}{\partial x_i}(\rho u_i) &= 0\\
 \frac{1}{\rho}\frac{D\rho}{Dt} + \frac{\partial u_i}{\partial x_i} &= 0
 \end{align*}
-which can be shown to be equivalent to Eq.~\eqref{eq:mass} using the mathematical formulations presented in Appendix \ref{material_derivative}.
+which can be shown to be equivalent to Eq.~\eqref{eq:cont} using the mathematical formulations presented in Appendix \ref{material_derivative}.
 
 %-----------------------------------
 \subsection{Conservation of momentum}
@@ -140,26 +140,26 @@ which describes the density of the material as a function of state variables.
 
 A major simplification of the general equations described in section \ref{section:general_eq} derives from the 
 linearization of the equation of state.
-Neglecting density changes associated with phase transitions {\color{red} figure + caption explaining }, such as the spinel to perovskite
+Neglecting density changes associated with phase transitions \ref{fig:yoshi}, such as the spinel to perovskite
 plus magnesiowüstite transition investigated by \textcite{itki94}, the density of the mantle material can be defined as a function of only 
 temperature and pressure $\rho = \rho(T, P)$. The mantle density increases by approximately 65\% between the surface 
 and the core-mantle boundary (Fig. \ref{fig:PREM}), and most of this change is due to hydrostatic compression \autocite{scto01}. 
 
 \begin{figure} 
     \centering
-    \subfloat[]{\includegraphics[width=0.5\textwidth]{PREM_model}\label{fig:PREM}}
+    \subfloat[]{\includegraphics[width=0.5\textwidth]{PREM_model}}
     \hfill
     \subfloat[]{\includegraphics[width=0.5\textwidth]{PREM_upper_mantle.png}}
     \caption{The PREM model \autocite{dzan81}. Here, $\rho$ is the density, $v_s$, $v_p$ the radial components of seismic wave velocties, and $\eta$ the anisotropic parameter. Where $\eta =1$, 
-    the model is isotropic. Fig. (a) shows the core-mantle boundary at approximately $2900$km.}
+    the model is isotropic and (a) shows the core-mantle boundary at approximately $2900$km.}\label{fig:PREM}
 \end{figure}
 
 \begin{figure}[!tbp]
   \centering
-  \subfloat[upper mantle]{\includegraphics[width=0.4\textwidth]{fig1a_yoshi.png}\label{fig:yoshi_a}}
+  \subfloat[upper mantle]{\includegraphics[width=0.5\textwidth]{fig1a_yoshi.png}\label{fig:yoshi_a}}
   \hfill
-  \subfloat[lower mantle]{\includegraphics[width=0.4\textwidth]{fig1b_yoshi.png}\label{fig:yoshi_b}}
-  \caption{\textcolor{red}{improve images with inkscape when u feel like it (x-axes)} \autocite{yosh10}}
+  \subfloat[lower mantle]{\includegraphics[width=0.5\textwidth]{fig1b_yoshi.png}\label{fig:yoshi_b}}
+  \caption{\textcolor{red}{improve images with inkscape when u feel like it (x-axes)} \autocite{yosh10}}\label{fig:yoshi}
 \end{figure}
 
 Since most of the density increase in the mantle is due to hydrostatic compression, it is justified for many approximating methods 
@@ -289,7 +289,12 @@ $H_T \approx 4000$ km.
 
 Boussinesq approximation is valid when $\mathit{Di} = d/H_T \ll 1$. Using values typical of the Earth, 
 
+eliminating processes on much shorter timescales than convective phenomena to greatly simplify governing equations \autocite{gada20}
+Prandtl number: ratio between momentum diffusivity and thermal diffusivity (approx infinite for earth mantle) : eliminates the intertia terms in momentum equation
+%Infinite mach number implies mach number of zero \autocite{gada20} what???
+derivation of the dimensionless numbers by \autocite{scto01}, application by \autocite{jamc80}, physical intuition by \autocite{gada20}
 
+Combined, this gives , and from Eq.~\eqref{eq:drho/dt} we can now show that the continuity equation \eqref{eq:cont} reduces to
 \begin{table}[ht] 
     %\renewcommand{\arraystretch}{1.8}   % taller rows
     %\setlength{\tabcolsep}{12pt}        % wider column gaps
@@ -305,7 +310,7 @@ Boussinesq approximation is valid when $\mathit{Di} = d/H_T \ll 1$. Using values
         x_i && ith component of direction & d\\ 
         t && time & \tau \\ 
         \bm{u} && velocity vector & U\\
-        P && pressure & \eta U / d\\
+        P && pressure & \eta_0 U / d\\
         T && temperature & T_r \\ 
         (\nabla T)_s  && adiabatic temperature gradient & \\
         S && entropy &\\
@@ -314,11 +319,11 @@ Boussinesq approximation is valid when $\mathit{Di} = d/H_T \ll 1$. Using values
         \alpha && volume coefficient of thermal expansion & \\
         K_T && isothermal modulus of bulk compressibility& \\
         K && thermal conductivity &\\
-        \kappa & K/\rho C_p & thermal diffusivity & \kappa_0\\
+        \kappa & K/\rho C_p & thermal diffusivity & \kappa_0=g\alpha T_1 d^3/\nu_0\\
         H && rate of internal heat generation \\
         k_B && bulk viscosity &\\
-        \nu && kinematic viscosity & \\
-        \eta  & \nu/\rho & dynamic viscosity \\
+        \nu && kinematic viscosity & \eta/\rho \\
+        \eta  & \nu/\rho & dynamic viscosity & \eta_0 = \nu_0/\rho_0\\
         H_T &C_p/g\alpha& temperature scale height & \\
         \bottomrule
     \end{tabular}
@@ -328,19 +333,21 @@ Boussinesq approximation is valid when $\mathit{Di} = d/H_T \ll 1$. Using values
     %\renewcommand{\arraystretch}{1.8}   % taller rows
     %\setlength{\tabcolsep}{12pt}        % wider column gaps
     \centering
-    \caption{Normalizing quantities and respective characteristic values}
+    \caption{Normalizing quantities and respective characteristic values \autocite{itki94,scto01}}
     \label{table:normalizing_qt}
     \begin{tabular}{>{$}l<{$} l >{$}l<{$}}
         \toprule
         \text{Symbol} & Name & \text{Value}\\
         \midrule
-        d & depth &\\
+        d & depth & 3\times10^3 \text{m}\\
         T_0 & temperature & 1 ^{\circ}\text{K} \\
-        \rho_0 & density at upper surface & \\
+        \rho_0 & density at upper surface & 3.5\times10^3 \text{kg/m}^3\\
         U & velocity & \kappa_0/d \\
         \tau & time & d^2/\kappa_0 \\
-        \nu_0 & kinematic viscosity & \eta / \rho_0 \\
-        \kappa_0 & thermal diffusivity & g\alpha T_1 d^3/\nu_0 \\
+        \eta_0  & dynamic viscosity & 10^{21} \text{Pa s}\\
+        \kappa_0 & thermal diffusivity & 10^{-6} m^2/s \\
+        K_T^{-1} & (reciprocal of) isothermal bulk modulus & 3\times10^{-12} \\
+        \alpha & thermal expansivity & 3\times10^{-5} deg K^{-1}\footnote{say something about thermal expansion considered constant} \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -355,7 +362,9 @@ shorter than the model timestep cannot be accurately resolved \autocite{gada20}.
 
 There are multiple approaches for choosing appropriate scaling factors. 
 
-\subsection{Dimensionless numbers}
+\subsection{Dimensionless equations}
+
+\subsubsection{Dimensionless numbers}
 The ultimate goal is to arrive at a set of dimensionless equations that include the Rayleigh number (Ra), the Mach number (M), the Prandtl number (Pr), and the Dissipation number (D). 
 \textcolor{green}{make table for dimensionless numbers (in appendix?)}.
 
@@ -388,7 +397,7 @@ velocity from the vorticity equation and, from this, determining a scaling facto
 which means that processes happening at the velocity scale of diffusion are of order 1. 
 
 The scaling factors adapted from \textcite{jamc80}, \textcite{lezh08}, and \textcite{itki94} are presented in Table \ref{table:normalizing_qt}. Dividing the dimensional variables 
-by their respective scaling factor reulsts in the dimensionless (primed) variables in Table \ref{table:nond_variables}
+by their respective scaling factor reulsts in the dimensionless (primed) variables in Table \ref{table:variables}
 
 
 
@@ -400,19 +409,48 @@ This is algebraically the easier route. However, if one wishes to first define t
 the equations must first be made dimesionless. Which approach to show here? 
 
 
-\subsection{Infinite Prandtl number and disappearing Mach number}
-eliminating processes on much shorter timescales than convective phenomena to greatly simplify governing equations \autocite{gada20}
-Prandtl number: ratio between momentum diffusivity and thermal diffusivity (approx infinite for earth mantle) : eliminates the intertia terms in momentum equation
-%Infinite mach number implies mach number of zero \autocite{gada20} what???
-derivation of the dimensionless numbers by \autocite{scto01}, application by \autocite{jamc80}, physical intuition by \autocite{gada20}
 \section{Anelastic Liquid Approximation (ALA)} \label{section:ALA}
 Approximations made + nondimensionalization 
 
 \subsection{Continuity equation}
-Approximations: $\pdv{\rho}{t} = 0$ because $M^2Pr \to 0$ and $\mu =0$ gives 
+In this section, we show that how elastic (seismic) waves can be eliminated from the governing equations through a scaling argument\footnote{\textcite{jamc80} do not provide a derivation for their elimination of $\pdv{rho}{t}$. This section follows the derivation
+by \textcite{scto01} but with the notation changed to match that of \textcite{jamc80}}. 
+Our starting point is the linearized equation of state \eqref{eq:eq_state}: 
+\begin{align*}
+    \rho= \rho_r \left[ 1 - \alpha\,(T-T_S) + K_T^{-1}\,(P-P_H) \right]
+\end{align*}
+
+which we can write in dimensionless form by plugging in values from Table \ref{table:variables}:
+\begin{align}
+    &=\rho'_r\left[1- \alpha T_0(T'-T'_s)+\frac{\eta \kappa_0}{K_Td^2}(P'-P'_H) \right] \notag \\
+    &=\rho'_r\left[[1+ \frac{\rho_0 \kappa_0^2}{K_T d^2}\frac{\nu_0}{\kappa_0}P'_1-\alpha T_0 T'_1]\right] \notag\\ 
+    &=\rho_r\left[1+P_1M^2Pr - \mu T_1\right] \label{eq:nond_eq_state}\\ 
+\end{align}
+where we dropped de primes in the last line (all variables are dimensionless), and\footnote{\textcite{jamc80} and \textcite{scto01} define different Mach numbers, but since \cite{jamc80} does not 
+elaborate their chosen acoustic (seismic) wave velocity, we use the Mach number as defined by \cite{scto01} in this section.}
+\begin{align*}
+    M^2 = \frac{\kappa_0^2\rho_0}{K_T d^2}, \qquad Pr = \frac{\nu_0}{\kappa_0}, \qquad \mu=\alpha T_0 
+\end{align*}  
+
+Taking the time derivative of Eq.~\eqref{eq:nond_eq_state} gives 
+\begin{align} \label{eq:drho/dt}
+    \pdv{\rho}{t} = &=\rho_r\left[M^2Pr \pdv{P_1}{t} - \mu \pdv{T_1}{t}\right]
+\end{align}
+
+The Mach number $M$ measures the influence of compressibility: it is the ratio between a characteristic velocity to the speed of sound in the 
+considered medium \autocite{scto01,jamc80}. Plugging in values typical of Earth presented in Table \ref{table:normalizing_qt}, $M^2 \approx 10^{-33}$ \textcolor{red}{check when you have calculator!!}. 
+The Prandtl number $Pr$ with values typical of the Earth plugged in gives $Pr \approx 2.5\times 10^{23}$ \textcolor{red}{check with calc!! },
+which is considered infinite. 
+
+Plugging Eq.~\eqref{eq:nond_eq_state} and Eq.~\eqref{eq:drho/dt} into Eq.~\eqref{eq:cont}, we can show that the general continuity equation with $M^2Pr \to 0$ and \textcolor{green}{plug in values for mu} reduces to 
 \begin{align} \label{eq:ALA_cont}
         \nabla \cdot \rho \bf{u} = 0
 \end{align}
+which is dimensionless. 
+\textcolor{green}{Compare final set of equations between:
+\cite{jamc80}, \cite{itki94}, \cite{scto01}, \cite{gada20}
+\cite{jamc80} uses stream function}
+
 
 \subsection{Approximate momentum equation}
 \textcolor{red}{jamc does not derive a dimensionless momentum equation, instead only vorticity equation from (dimensional) momentum equation. use scto/itki instead?}
@@ -429,7 +467,7 @@ scale this according to scto and itki.
 
 \subsection{Energy equation}
 Now we turn to the energy equation. Our goal is to write it in dimensionless form and in such a way that we can take the limit of $\mu \to 0$ and reduce it. 
-Our starting point is Eq.~\eqref{eq:5}: 
+Our starting point is Eq.~\eqref{eq:}: 
 \begin{align*}
     \rho C_p \left\{\pdv{T}{t} - \frac{\alpha T}{\rho C_p}\pdv{P}{t} + \bm{u} \cdot [\nabla T - (\nabla T)_s]\right\} &= 
     \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}}
