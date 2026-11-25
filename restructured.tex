@@ -40,7 +40,21 @@
     \item 
 \end{itemize}}
 
-
+\textcite{jamc80}: The Boussinesq condition on d/HT was relaxed by Ogura \& Phillips (1962) and
+Gough (1969) in their one-parameter expansions for deep gaseous layers. These expansions
+lead to the anelastic equations for a gas provided the relative potential
+temperature fluctuation (Ogura \& Phillips 1962) or the square of the Mach number
+M (ratio of convective velocity to sound velocity) (Gough 1969) is small. In the
+anelastic approximation @/at = 0 (where p is density and t is time) and consequently
+acoustic modes do not exist. In this paper we will consider an approximate set of equations for an infinite
+Prandtl number Newtonian fluid in which it is assumed that d = O(HT) and that
+aT < 1, where T is the absolute temperature. (The Prandtl number is the ratio of the
+kinematic viscosity to the thermal diffusivity and gives a measure of the relative
+importance of viscous and inertial forces. For the Earth’s mantle the Prandtl number
+is at least loz2, essentially infinite.) In gases a z 1/T (where T is absolute temperature) and hence aT is O(1). 
+The condition that aT be small thus restricts the application
+of this study to liquids and creeping solids for which a is generally small and only
+weakly dependent on T.
 %==============================================================================
 \section{General equations} \label{section:general_eq}
 
@@ -416,9 +430,25 @@ the terms scaling with the dissipation number are dropped when applying the Bous
 However, using the values in Table \ref{table:normalizing_qt}, we arrive at $\mathit{Di} \approx 0.75$, and the Boussinesq approximation is only approximately valid. 
 
 
-\textbf{The Mach number (M)} is the ratio of convective flow speeds to seismic wave speeds. M$\to 0$ when comparing convective velocities to seismic wave speeds. 
-\textcite{scto01} shows why $\pdv{\rho}{t} =0$ for 
-$M^2Pr = 0$ and $\mu = \alpha T_1 = 0$, \textcite{jamc80} states. 
+\textbf{The Mach number (M)} compares the characteristic speed of an object or fluid $U$ to the local speed of sound in the surrounding medium $C$. 
+\begin{align*}
+    M^2 = \frac{U^2}{C^2}
+\end{align*}
+
+The Mach number is often used in aviation, where the speed of an object is 
+compared to the speed of sound in the atmosphere. Here, however, we have some freedom to chose the characteristic speed. 
+Some authors choose $U$ to be a Stokes (convective) velocity, derived from the vorticity equation \autocite{mcrw74}, $U_S \approx 300 \text{m yr}^{-1}$ \autocite{jamc80}, which is very fast compared compared to geological scales. Others choose $U$ 
+as the characteristic velocity of thermal 
+diffusion (based on the diffusive timescale) $U_D = \kappa_0/d \approx 7 \times 10^{-6} \text{m yr}^{-1}$ \autocite{rica07,scto01,itki94,lezh08}, which is very slow compared to geological scales. 
+Whether one chooses one velocity scale over the other, both result in a sufficiently small Mach number. Using values from Table \ref{table:normalizing_qt} and the diffusive velocity as characteristic velocity scale,
+we can show that the Earth's Mach number (squared) is of order $10^{-33}$. Using a Stokes velocity results in $M^2 \approx 10^{-24}$. 
+
+In the next section, we will show that  $M^2 \ll 1$ (or, more specifically, $M^2Pr$) allows for the elastic waves (seismic, acoustic waves) to be ignored. Accordingly, the 
+anelastic approximation is sometimes called the small Mach number approximation.  
+One should note, however, that the anelastic approximation calls for $M^2Pr \ll 1$. Consequently, a planet could have a very low Mach number but so large a Prandtl number (very large momentum diffusivity compared 
+to thermal diffusivity) that the anelastic approximation would not be valid \autocite{rica07}.
+
+
 
 \textbf{The Prandtl number (Pr)} is the ratio between momentum diffusivity and thermal diffusivity and is considered approximately infinite for the mantle 
 \textcolor{green}{show why}. This eliminates the intertia terms in momentum equation \eqref{eq:momentum_jamc}. \textcite{scto01} shows why this is the case. 
@@ -426,11 +456,6 @@ $M^2Pr = 0$ and $\mu = \alpha T_1 = 0$, \textcite{jamc80} states.
 Prandtl number is also assumed for the Boussinesq approximation.
 
 \textbf{$\mu = \alpha T_1$} goes to zero.  
-
-\textcite{jamc80} adopt the derivation by \textcite{mcrw74} \textcolor{green}{appendix?}, deriving a scaling factor for 
-velocity from the vorticity equation and, from this, determining a scaling factor for the thermal diffusivity. Alternatively, \textcite{scto01} 
-assumes the diffusive scaling for velocity $\kappa/d$, 
-which means that processes happening at the velocity scale of diffusion are of order 1. 
 
 The scaling factors adapted from \textcite{jamc80}, \textcite{lezh08}, and \textcite{itki94} are presented in Table \ref{table:normalizing_qt}. 
 Dividing the dimensional variables 
