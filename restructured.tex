@@ -39,6 +39,11 @@
     \item what approximations were being used before ALA was introduced? 
     \item 
 \end{itemize}}
+\cite{jamc80}:A two-dimensional time-dependent numerical model has been developed for infinite
+Prandtl number Newtonian fluids in order to investigate the effects of compressibility,
+viscous dissipation, adiabatic heating and non-hydrostatic pressure gradients on the
+flow, energetics and stability of deep convecting layers.
+\cite{cudu19} intro. difference between anelastic and anelastic liquid model
 
 \textcite{jamc80}: The Boussinesq condition on d/HT was relaxed by Ogura \& Phillips (1962) and
 Gough (1969) in their one-parameter expansions for deep gaseous layers. These expansions
@@ -55,6 +60,14 @@ is at least loz2, essentially infinite.) In gases a z 1/T (where T is absolute t
 The condition that aT be small thus restricts the application
 of this study to liquids and creeping solids for which a is generally small and only
 weakly dependent on T.
+
+\cite{glat88}: An alternative method of capturing the effects of subsonic compressibility,
+without having to apply artificial damping, is the anelastic
+approximation. This method provides a more realistic
+representation of a stratified convection zone compared to the
+Boussinesq approximation while avoiding the problems of a fully
+compressible model by filtering out sound waves even when the
+inertial term is retained, i.e., for finite Prandtl number convection.
 %==============================================================================
 \section{General equations} \label{section:general_eq}
 
@@ -335,7 +348,7 @@ $\eta_2$ are neglected from the momentum equation \eqref{eq:momentum_jamc}, and 
         t && time & \tau \\ 
         \bm{u} && velocity vector & U\\
         P && pressure & \eta_0 U / d\\
-        T && temperature & T_r \\ 
+        T && temperature & T_0 \\ 
         (\nabla T)_s  && adiabatic temperature gradient & \\
         S && entropy &\\
         \tau_{ij} && deviatoric stress tensor components &\\
@@ -347,7 +360,7 @@ $\eta_2$ are neglected from the momentum equation \eqref{eq:momentum_jamc}, and 
         \kappa & K/\rho C_p & thermal diffusivity & \kappa_0=g\alpha T_1 d^3/\nu_0\\
         H && rate of internal heat generation \\
         k_B && bulk viscosity &\\
-        \nu && kinematic viscosity & \eta/\rho \\
+        \nu &\eta/\rho & kinematic viscosity & \nu_0\\
         \eta  & \nu/\rho & dynamic viscosity & \eta_0 = \nu_0/\rho_0\\
         H_T &C_p/g\alpha& temperature scale height & \\
         H_\rho & K_s/g\rho& density scale height \\
@@ -374,7 +387,7 @@ $\eta_2$ are neglected from the momentum equation \eqref{eq:momentum_jamc}, and 
         \eta_0  & dynamic viscosity & 10^{21} \text{Pa s}\\
         \kappa_0 & thermal diffusivity & 10^{-6} m^2/s \\
         K_T^{-1} & (reciprocal of) isothermal bulk modulus & 3\times10^{-12} \\
-        \alpha & thermal expansivity & 3\times10^{-5} deg K^{-1}\footnote{say something about thermal expansion considered constant} \\
+        \alpha & thermal expansivity\footnote{say something about thermal expansion considered constant} & 3\times10^{-5} deg K^{-1} \\
         C_p & heat capacity & 1200 J/kg \\
         \bottomrule
     \end{tabular}
@@ -442,33 +455,43 @@ as the characteristic velocity of thermal
 diffusion (based on the diffusive timescale) $U_D = \kappa_0/d \approx 7 \times 10^{-6} \text{m yr}^{-1}$ \autocite{rica07,scto01,itki94,lezh08}, which is very slow compared to geological scales. 
 Whether one chooses one velocity scale over the other, both result in a sufficiently small Mach number. Using values from Table \ref{table:normalizing_qt} and the diffusive velocity as characteristic velocity scale,
 we can show that the Earth's Mach number (squared) is of order $10^{-33}$. Using a Stokes velocity results in $M^2 \approx 10^{-24}$. 
+Moreover, \textcite{cudu19} show that even though this arbitrariness in the choice of characteristic velocity or acoustic wave velocity exists, taking the infinite limit of the Prandtl number 
+always leads to a Mach number of zero. 
 
 In the next section, we will show that  $M^2 \ll 1$ (or, more specifically, $M^2Pr$) allows for the elastic waves (seismic, acoustic waves) to be ignored. Accordingly, the 
 anelastic approximation is sometimes called the small Mach number approximation.  
 One should note, however, that the anelastic approximation calls for $M^2Pr \ll 1$. Consequently, a planet could have a very low Mach number but so large a Prandtl number (very large momentum diffusivity compared 
 to thermal diffusivity) that the anelastic approximation would not be valid \autocite{rica07}.
 
+\textbf{The Prandtl number (Pr)} is the ratio between momentum diffusivity (kinematic viscosity, \autocite{jamc80}) and thermal diffusivity\footnote{\textcite{jamc80} mention 
+how the Prandtl number measures the relative importance of viscous and intertial forces, but this is incorrect. \textcolor{red}{check with cedric}}. 
 
+\begin{align*}
+    \mathit{Pr} = \frac{\nu_0}{\kappa_0} = \frac{\eta_0}{\rho_0\kappa_0}
+\end{align*}
 
-\textbf{The Prandtl number (Pr)} is the ratio between momentum diffusivity and thermal diffusivity and is considered approximately infinite for the mantle 
-\textcolor{green}{show why}. This eliminates the intertia terms in momentum equation \eqref{eq:momentum_jamc}. \textcite{scto01} shows why this is the case. 
-\textcite{jamc80} assume. An infinite
-Prandtl number is also assumed for the Boussinesq approximation.
+The momentum diffusivity $\nu$ (see Table \ref{table:variables}) measures how quickly momentum spreads through a fluid, whereas the thermal diffusivity $\kappa$ measures how quickly 
+heat spreads through a material relative to how much heat the material stores per unit volume. The Prandtl number thus compares the 
+two diffusive processes: i.e. the diffusion of momentum and heat. In the Earth's high-viscosity, low-conductivity mantle \autocite{glat88}, the Prandtl number is very large: using 
+values from Table \ref{table:normalizing_qt}, we can show that $\mathit{Pr} \approx 10^{23}$, which is generally considered infinite. Taking the infinite limit of the Prandtl number also implies a 
+Mach number of zero \autocite{cudu19}, of which the implications are discussed above. 
 
-\textbf{$\mu = \alpha T_1$} goes to zero.  
+Since the inertial terms scale with $\mathit{Ra}/\mathit{Pr}$ (as shown in section \ref{section:ALA}), an infinite Prandtl number allows us to fully 
+eliminate the inertial terms from the momentum equation \eqref{eq:momentum_jamc}. \textcite{glat88} additionally shows how the Coriolios and centrifugal forces are negligible when considering the 
+Earth's mantle. 
 
-The scaling factors adapted from \textcite{jamc80}, \textcite{lezh08}, and \textcite{itki94} are presented in Table \ref{table:normalizing_qt}. 
-Dividing the dimensional variables 
-by their respective scaling factor reulsts in the dimensionless (primed) variables in Table \ref{table:variables}
+The fact that inertia is totally negligible in the Earth's mantle is the most striking difference between mantle 
+convection and most other forms of convection (i.e. in the atmosphere or ocean, or convection on smaller scales). The resulting anelastic-liquid momentum equation, representing a balance among the
+pressure gradient, buoyancy, and viscous forces, is significantly simpler 
+than the anelastic-gas equation \autocite{jamc80,rica07,glat88}. 
 
+The dimensionless parameter $\mu = \alpha T_0$ is \textbf{the fractional density change} of mantle rocks caused by the nonadiabatic temperature variations of magnitude $T_0$\footnote{$T_0$ is the scaling factor for 
+for nonadiabatic temperature variations. For \textcite{jamc80}, $T_0 = 1 $K, for \textcite{scto01} $T_0 = 10^3$K.}. Since a volume element displaced adiabatically always has the same temperature, and hence the same density, as its surroundings at the new
+depth, the adiabatic temperature profile does not produce any buoyancy force, and only the nonadiabatic temperature variations drive convection \autocite{scto01}.
+With $\alpha = 3 \times 10^{-5} \text{K}^{-1}$ and $T_0 = 1-10^3$ K,  $\mu = 3 \times 10^{-5}-10^{-2}$ \textcolor{green}{rewrite, this is ugly}
 
-
-table with characteristic values 
-
-struggle: there are different approaches to the nondimensionalization and subsequent simplification of the governing equations. some authors 
-choose to first simplify the governing equations based on Pr inf and M=0 assumptions with physical arguments, then nondimensionalize the already simplified equations. 
-This is algebraically the easier route. However, if one wishes to first define the Mach and Prandtl number and show them to go to zero and infinity respectively, then 
-the equations must first be made dimesionless. Which approach to show here? 
+The scaling factors based on values used by \textcite{jamc80}, \textcite{lezh08}, and \textcite{itki94} are presented in Table \ref{table:normalizing_qt}. 
+Dividing the dimensional variables by their respective scaling factor results in the dimensionless (primed) variables in Table \ref{table:variables}. 
 
 %=======================================
 \section{Anelastic Liquid Approximation (ALA)} \label{section:ALA}
