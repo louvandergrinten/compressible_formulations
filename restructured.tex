@@ -188,7 +188,7 @@ and the core-mantle boundary (Fig. \ref{fig:PREM}), and most of this change is d
   \subfloat[upper mantle]{\includegraphics[width=0.5\textwidth]{fig1a_yoshi.png}\label{fig:yoshi_a}}
   \hfill
   \subfloat[lower mantle]{\includegraphics[width=0.5\textwidth]{fig1b_yoshi.png}\label{fig:yoshi_b}}
-  \caption{\textcolor{red}{improve images with inkscape when u feel like it (x-axes)} \autocite{yosh10}}\label{fig:yoshi}
+  \caption{\textcolor{green}{add caption}\autocite{yosh10}}\label{fig:yoshi}
 \end{figure}
 
 Since most of the density increase in the mantle is due to hydrostatic compression, it is justified for many approximating methods 
@@ -476,7 +476,7 @@ two diffusive processes: i.e. the diffusion of momentum and heat. In the Earth's
 values from Table \ref{table:normalizing_qt}, we can show that $\mathit{Pr} \approx 10^{23}$, which is generally considered infinite. Taking the infinite limit of the Prandtl number also implies a 
 Mach number of zero \autocite{cudu19}, of which the implications are discussed above. 
 
-Since the inertial terms scale with $\mathit{Ra}/\mathit{Pr}$ (as shown in section \ref{section:ALA}), an infinite Prandtl number allows us to fully 
+Since the inertial terms scale with $1/\mathit{Pr}$ (as shown in section \ref{section:ALA}), an infinite Prandtl number allows us to fully 
 eliminate the inertial terms from the momentum equation \eqref{eq:momentum_jamc}. \textcite{glat88} additionally shows how the Coriolios and centrifugal forces are negligible when considering the 
 Earth's mantle. 
 
@@ -485,7 +485,7 @@ convection and most other forms of convection (i.e. in the atmosphere or ocean, 
 pressure gradient, buoyancy, and viscous forces, is significantly simpler 
 than the anelastic-gas equation \autocite{jamc80,rica07,glat88}. 
 
-The dimensionless parameter $\mu = \alpha T_0$ is \textbf{the fractional density change} of mantle rocks caused by the nonadiabatic temperature variations of magnitude $T_0$\footnote{$T_0$ is the scaling factor for 
+\textbf{The dimensionless parameter} $\mu = \alpha T_0$ is the \textbf{fractional density change} of mantle rocks caused by the nonadiabatic temperature variations of magnitude $T_0$\footnote{$T_0$ is the scaling factor for 
 for nonadiabatic temperature variations. For \textcite{jamc80}, $T_0 = 1 $K, for \textcite{scto01} $T_0 = 10^3$K.}. Since a volume element displaced adiabatically always has the same temperature, and hence the same density, as its surroundings at the new
 depth, the adiabatic temperature profile does not produce any buoyancy force, and only the nonadiabatic temperature variations drive convection \autocite{scto01}.
 With $\alpha = 3 \times 10^{-5} \text{K}^{-1}$ and $T_0 = 1-10^3$ K,  $\mu = 3 \times 10^{-5}-10^{-2}$ \textcolor{green}{rewrite, this is ugly}
@@ -513,12 +513,12 @@ Our starting point is the linearized equation of state \eqref{eq:eq_state}:
 which we can write in dimensionless form by plugging in values from Table \ref{table:variables}:
 \begin{align}
     &=\rho'_r\left[1- \alpha T_0(T'-T'_s)+\frac{\eta \kappa_0}{K_Td^2}(P'-P'_H) \right] \notag \\
-    &=\rho'_r\left[[1+ \frac{\rho_0 \kappa_0^2}{K_T d^2}\frac{\nu_0}{\kappa_0}P'_1-\alpha T_0 T'_1]\right] \notag\\ 
-    &=\rho_r\left[1+P_1M^2Pr - \mu T_1\right] \label{eq:nond_eq_state}\\ 
+    &=\rho'_r\left[1+ \frac{\rho_0 \kappa_0^2}{K_T d^2}\frac{\nu_0}{\kappa_0}P'_1-\alpha T_0 T'_1\right] \notag\\ 
+    &=\rho_r\left[1+P_1M^2Pr - \mu T_1\right] \label{eq:nond_eq_state}
 \end{align}
 where we dropped de primes in the last line (all variables are dimensionless), and\footnote{\textcite{jamc80} and \textcite{scto01} define different Mach numbers, 
-but since \cite{jamc80} does not 
-elaborate their chosen acoustic (seismic) wave velocity, we use the Mach number as defined by \cite{scto01} in this section.}
+but since \cite{jamc80} do not 
+elaborate on their chosen acoustic (seismic) wave velocity, we use the Mach number as defined by \cite{scto01} in this section.}
 \begin{align*}
     M^2 = \frac{\kappa_0^2\rho_0}{K_T d^2}, \qquad Pr = \frac{\nu_0}{\kappa_0}, \qquad \mu=\alpha T_0 
 \end{align*}  
@@ -540,29 +540,59 @@ Taking the time derivative of Eq.~\eqref{eq:nond_eq_state} gives
 
 The Mach number $M$ in Eqs.~\eqref{eq:nond_eq_state} and \eqref{eq:drho/dt} measures the effect of compressibility: it is the ratio between a characteristic velocity (here 
 the velocity of thermal diffusion, see section \ref{section:stokes_diff}) to the speed of sound in the medium \autocite{scto01,jamc80}. Plugging in values typical of Earth presented in Table \ref{table:normalizing_qt}, $M^2 \approx 10^{-33}$. This shows that acoustic waves occur on a much shorter timescale than convective processes. 
-The Prandtl number $Pr$ with values typical of the Earth plugged in gives $Pr \approx 2.8\times 10^{23}$. The Prandtl number of the Earth's mantle is essentially infinite. The implications of this 
-are discussed in section \ref{section:momentum_eq}. 
-\textcolor{green}{do the same for mu}
-
-Plugging Eq.~\eqref{eq:nond_eq_state} and Eq.~\eqref{eq:drho/dt} into Eq.~\eqref{eq:cont}, we can see that the general continuity equation with $M^2Pr \to 0$ and 
-$\mu \to 0$ reduces to 
+As shown in the previous section, for the Earth $\mathit{Pr} \to \infty$ and $\mu \to 0$. Plugging Eq.~\eqref{eq:nond_eq_state} and Eq.~\eqref{eq:drho/dt} into Eq.~\eqref{eq:cont}, we can see that the general continuity equation 
+under these conditions reduces to
 \begin{align} \label{eq:ALA_cont}
         \nabla \cdot \rho \bf{u} = 0
 \end{align}
-which is dimensionless. 
+which is the nondimensional anelastic-liquid continuity equation. 
 
 
 %------------------------------------
 \subsection{Approximate momentum equation} \label{section:momentum_eq}
 
-The momentum equation \eqref{eq:momentum_jamc} with Eq.~\eqref{eq:stress} plugged in gives the Navier-Stokes equation: 
-
-\footnote{\textcite{jamc80} does not derive a dimensionless
+Our starting point is the (component-wise) momentum conservation equation \eqref{eq:momentum_scto} with Eq.~\eqref{eq:stress} plugged in\footnote{\textcite{jamc80} does not derive a dimensionless
 momentum equation, since their model utilizes the stream function and vorticity equation. We do need a momentum equation however, so this section is based on the derivations 
 by \textcite{scto01}, \textcite{itki94} and \textcite{rica07}}:
-\begin{align} 
-    0 = -\nabla P + \rho \mathbf{g} + \pdv{x_i}\, \eta \left( \pdv{u_i}{x_j} + \pdv{u_j}{x_i} \right) - \frac{2}{3} \nabla \eta \, (\nabla \cdot \mathbf{u}).
+\begin{align*}
+    \rho\mdv{u_i}{t} &= -\pdv{P}{x_i} + \pdv{x_j}\, \eta \left( \pdv{u_i}{x_j} + \pdv{u_j}{x_i} -\frac{2}{3}\pdv{u_k}{x_k}\delta_{ij}\right)  + \rho g_i
+\end{align*}
+with
+\begin{align*}
+    \pdv{P}{x_i} = \pdv{P_H}{x_i} + \pdv{P_1}{x_i} = \rho_rg_i + \pdv{P_1}{x_i}
+\end{align*}
+
+thus 
+\begin{align*}
+    \rho\mdv{u_i}{t} &= -\pdv{P_1}{x_i} + \pdv{x_j}\, \eta \left( \pdv{u_i}{x_j} + \pdv{u_j}{x_i} -\frac{2}{3}\pdv{u_k}{x_k}\delta_{ij}\right)  + (\rho-\rho_r) g_i
+\end{align*}
+With the scaling factors in Table \ref{table:variables} and \ref{table:normalizing_qt}, we can write this in nondimensional form
+\begin{align*}
+    \frac{\rho_0U}{\tau}\left(\rho'\mdv{u'}{t'}\right)&=-\frac{\eta_0U}{d^2}\pdv{P_1'}{x_i'}+\frac{\eta_0U}{d^2}\pdv{x'_j}\,\eta \left( \pdv{u'_i}{x'_j} 
+    + \pdv{u'_j}{x'_i} -\frac{2}{3}\pdv{u'_k}{x'_k}\delta_{ij}\right)  + \rho_0g_0(\rho'-\rho'_r) g_i'\\
+    \frac{\rho_0\kappa_0^2}{d^3} \left(\rho'\mdv{u'}{t'}\right)&= -\frac{\eta_0\kappa_0}{d^3}\left[\pdv{P_1'}{x_i'}+\pdv{x_j}\,\eta \left( \pdv{u'_i}{x'_j} 
+    + \pdv{u'_j}{x'_i} -\frac{2}{3}\pdv{u'_k}{x'_k}\delta_{ij}\right)\right] + \rho_0g_0(\rho'-\rho'_r) g_i'\\
+    \frac{\rho_0\kappa_0}{\eta_0} \left(\rho'\mdv{u'}{t'}\right)&= -\pdv{P_1'}{x_i'}+\pdv{x'_j}\,\eta \left( \pdv{u'_i}{x'_j} 
+    + \pdv{u'_j}{x'_i} -\frac{2}{3}\pdv{u'_k}{x'_k}\delta_{ij}\right) + \frac{\rho_0g_0d^3}{\eta_0\kappa_0}(\rho'-\rho'_r) g_i'\\
+    \frac{1}{\mathit{Pr}} \left(\rho\mdv{u}{t}\right)&= -\pdv{P_1}{x_i}+\pdv{x_j}\,\eta \left( \pdv{u_i}{x_j} 
+    + \pdv{u_j}{x_i} -\frac{2}{3}\pdv{u_k}{x_k}\delta_{ij}\right) + \frac{Ra}{\mu}(\rho-\rho_r) g_i\\
+\end{align*}
+where we dropped the primes in the last line. Eq.~\eqref{eq:nond_eq_state} can be pluggen in for $\rho$ to arrive at
+\begin{align*}
+    \frac{1}{\mathit{Pr}}\left(\rho_r\left[1+P_1M^2\mathit{Pr}-\mu T_1\right]\mdv{u_i}{t}\right)&= -\pdv{P_1}{x_i}+\pdv{x_j}\,\eta\left(\pdv{u_i}{x_j}+\pdv{u_j}{x_i}-\frac{2}{3}\pdv{u_k}{x_k}\delta_{ij}\right)
+    +\rho_r g_i\left(\frac{Ra}{\mu}M^2\mathit{Pr}\,P_1-Ra\,T_1\right)\\
+    &= -\pdv{P_1}{x_i}+\pdv{x_j}\,\eta\left(\pdv{u_i}{x_j}+\pdv{u_j}{x_i}-\frac{2}{3}\pdv{u_k}{x_k}\delta_{ij}\right)+\rho_r g_i\left[\frac{D}{\Gamma}\frac{C_p}{C_v}P_1-Ra\,T_1\right]
+\end{align*}
+where we note that the last line only holds when $K_T$ and $C_v$ are considered constants\footnote{\textcolor{green}{discuss which authors do this and which don't}}. 
+As discussed in the previous section, $\mathit{Pr} \to \infty$ and the equation above shows that in this limit, the intertial terms in the left-hand side of the momentum equation
+vanish. The anelastic-liquid momentum equation in dimensionless form is thus 
+\begin{align} \label{eq:ALA_momentum}
+    0 = -\pdv{P_1}{x_i}+\pdv{x_j}\,\eta\left(\pdv{u_i}{x_j}+\pdv{u_j}{x_i}-\frac{2}{3}\pdv{u_k}{x_k}\delta_{ij}\right)+\rho_r g_i\left(\frac{D}{\Gamma}\frac{C_p}{C_v}P_1-Ra\,T_1\right)
 \end{align}
+or, in a more compact form 
+\begin{align*}
+    \nabla P_1 = \nabla \cdot \bm{\tau} + \frac{\mathit{Ra}}{\mu}(\rho-\rho_r)\bm{g}
+\end{align*}
  
 %------------------------------------
 \subsection{Energy equation}
@@ -578,9 +608,8 @@ Or, equivalently,
     \nabla \cdot (K\nabla T) + H + \tau_{ij}\pdv{u_i}{u_{ij}}
 \end{align*}
 
-Where $P = P_1 + P_H$ where $P_H$ is the hydrostatic pressure and $P_1$ deviations from it. 
+Where $P = P_1 + P_H$ with $P_H$ the hydrostatic pressure and $P_1$ deviations from it. 
 
-\textcolor{green}{put derivation in appendix?}
 Now we write this in dimensionless form. For this, we consider each term in the equation seperately, while dividing the whole equation by the advective scaling term 
 $\frac{\rho_0 C_p T_1 U}{d}$. For the scaling terms, we refer to table \ref{table:characteristic_values} and \ref{table:dimensionless_variables}. 
 The full derivation is shown in appendix. 
